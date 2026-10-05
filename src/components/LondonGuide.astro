@@ -1,5 +1,6 @@
 ---
 // LondonGuide.astro
+const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser=1&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
 ---
 
 <section id="london" class="london-section">
@@ -9,13 +10,30 @@
       <span class="badge">Culinary Exploration &amp; Roasteries</span>
     </div>
 
-    <div class="london-header">
-      <h2 class="heading-lg london-title">
-        Exploring London: <span class="text-gradient-coffee">Specialty Counters &amp; Hidden Dining Gems</span>
-      </h2>
-      <p class="london-desc">
-        One of the biggest joys of living in London is the inexhaustible food and coffee scene. When I'm not writing PySpark jobs or configuring MCP harnesses, I love wandering through different London neighborhoods, discovering new independent roasters, tucked-away pasta counters, and vibrant wood-fired kitchens.
-      </p>
+    <div class="london-header-row">
+      <div class="london-header-text">
+        <h2 class="heading-lg london-title">
+          Exploring London: <span class="text-gradient-coffee">Specialty Counters &amp; Hidden Dining Gems</span>
+        </h2>
+        <p class="london-desc">
+          One of the biggest joys of living in London is the inexhaustible food and coffee scene. When I'm not writing PySpark jobs or configuring MCP harnesses, I love wandering through different London neighborhoods—from West London Thames walks in Kew and Richmond to tucked-away pasta counters in Soho and roasteries in Shoreditch.
+        </p>
+      </div>
+      <div class="maps-cta-box card">
+        <div class="maps-icon">🗺️</div>
+        <div class="maps-text">
+          <div class="maps-title">Robin's London Map</div>
+          <div class="maps-sub">Curated spots across London</div>
+        </div>
+        <a 
+          href={mapsUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-coffee btn-sm"
+        >
+          Open Google Maps ↗
+        </a>
+      </div>
     </div>
 
     <div class="london-grid">
@@ -43,7 +61,31 @@
         </ul>
       </div>
 
-      <!-- Card 2: Handcrafted Pasta & Italian -->
+      <!-- Card 2: West London & Riverside -->
+      <div class="card guide-card west-london-card">
+        <div class="guide-badge badge-data">🌊 West London &amp; Thames Riverside</div>
+        <h3 class="heading-sm guide-card-title">Kew, Richmond &amp; Chiswick</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>Kew Bridge &amp; Brentford Lock</strong>
+            <span>Peaceful riverside paths, houseboats, and weekend coffee strolls along the Grand Union Canal.</span>
+          </li>
+          <li>
+            <strong>Richmond upon Thames</strong>
+            <span>Historic riverside green, view from Richmond Hill, and specialty spots tucked in the paved lanes.</span>
+          </li>
+          <li>
+            <strong>Chiswick High Road &amp; Chief Coffee</strong>
+            <span>Artisan bakeries, independent coffee roasts, and quiet leafy weekend brunches.</span>
+          </li>
+          <li>
+            <strong>Petersham Nurseries</strong>
+            <span>Glasshouse cafe and seasonal produce dining under trailing bougainvillea and jasmine.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Handcrafted Pasta & Italian -->
       <div class="card guide-card">
         <div class="guide-badge badge-data">🍝 Fresh Pasta &amp; Italian</div>
         <h3 class="heading-sm guide-card-title">Craft &amp; Texture</h3>
@@ -63,7 +105,7 @@
         </ul>
       </div>
 
-      <!-- Card 3: Open-Fire & Distinctive Flavors -->
+      <!-- Card 4: Open-Fire & Distinctive Flavors -->
       <div class="card guide-card">
         <div class="guide-badge badge-ai">🔥 Wood-Fire &amp; Regional Flavors</div>
         <h3 class="heading-sm guide-card-title">Vibrant Dining Spaces</h3>
@@ -88,18 +130,33 @@
       </div>
     </div>
 
-    <!-- The Weekend City Walk Route -->
-    <div class="card walk-card">
-      <div class="walk-header">
-        <div class="walk-icon">🚶‍♂️</div>
-        <div>
-          <span class="walk-tag font-mono">FAVORITE WEEKEND RECHARGE</span>
-          <h3 class="heading-sm walk-title">The Southwark-to-Shoreditch Walk</h3>
+    <!-- The Weekend City Walk Routes -->
+    <div class="walks-dual-grid">
+      <div class="card walk-card">
+        <div class="walk-header">
+          <div class="walk-icon">🌊</div>
+          <div>
+            <span class="walk-tag font-mono">WEST LONDON RECHARGE</span>
+            <h3 class="heading-sm walk-title">The Kew-to-Richmond Thames Trail</h3>
+          </div>
         </div>
+        <p class="walk-text">
+          Start at <strong>Kew Bridge</strong> with an espresso ➔ Follow the Thames towpath past Old Deer Park and the historic lock ➔ Stroll across Richmond riverside green ➔ Finish with lunch around Richmond lanes or climb up to Richmond Hill for the legendary Turner view over the Thames valley.
+        </p>
       </div>
-      <p class="walk-text">
-        Morning filter coffee at <strong>Origin (Southwark)</strong> ➔ Walk through Borough Market and along the Thames South Bank past Tate Modern ➔ Cross the river towards the historic City alleyways ➔ Wrap up with an afternoon lunch around Spitalfields or Shoreditch, followed by a second pour-over at <strong>Ozone</strong> or <strong>Nude Coffee Roasters</strong>.
-      </p>
+
+      <div class="card walk-card">
+        <div class="walk-header">
+          <div class="walk-icon">🚶‍♂️</div>
+          <div>
+            <span class="walk-tag font-mono">CENTRAL &amp; EAST LONDON STROLL</span>
+            <h3 class="heading-sm walk-title">The Southwark-to-Shoreditch Walk</h3>
+          </div>
+        </div>
+        <p class="walk-text">
+          Morning filter coffee at <strong>Origin (Southwark)</strong> ➔ Walk through Borough Market and along the Thames South Bank past Tate Modern ➔ Cross the river towards the historic City alleyways ➔ Wrap up with an afternoon lunch around Spitalfields or Shoreditch, followed by a second pour-over at <strong>Ozone</strong> or <strong>Nude</strong>.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -111,8 +168,23 @@
     border-top: 1px solid var(--border-subtle);
   }
 
-  .london-header {
-    margin-bottom: 2.5rem;
+  .london-header-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.75rem;
+  }
+
+  @media (min-width: 860px) {
+    .london-header-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .london-header-text {
+    max-width: 680px;
   }
 
   .london-title {
@@ -123,7 +195,41 @@
     color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
-    max-width: 820px;
+  }
+
+  .maps-cta-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-tertiary);
+    border-color: rgba(217, 119, 6, 0.35);
+    flex-shrink: 0;
+  }
+
+  .maps-icon {
+    font-size: 2rem;
+  }
+
+  .maps-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .maps-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .maps-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .btn-sm {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
   }
 
   .london-grid {
@@ -133,9 +239,15 @@
     margin-bottom: 2.5rem;
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 640px) {
     .london-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .london-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -143,6 +255,11 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .west-london-card {
+    border-color: rgba(6, 182, 212, 0.3);
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, var(--bg-card) 100%);
   }
 
   .guide-badge {
@@ -168,13 +285,25 @@
 
   .guide-list strong {
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 0.925rem;
   }
 
   .guide-list span {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.825rem;
     line-height: 1.5;
+  }
+
+  .walks-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .walks-dual-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .walk-card {
@@ -195,7 +324,7 @@
   }
 
   .walk-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--accent-coffee-light);
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -208,7 +337,7 @@
 
   .walk-text {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     line-height: 1.65;
   }
 

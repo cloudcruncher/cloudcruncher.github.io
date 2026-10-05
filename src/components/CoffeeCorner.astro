@@ -15,16 +15,18 @@
           Dialing In: <span class="text-gradient-coffee">The Science of Brewing &amp; Grinding</span>
         </h2>
         <p class="coffee-subtitle">
-          Outside of data lakehouses and autonomous agent loops, I am deeply into specialty coffee brewing. To me, dialing in an extraction on a V60 is identical to tuning a distributed PySpark job: it requires understanding flow rates, particle size distribution, solvent chemistry, and precision feedback loops.
+          Outside of data lakehouses and autonomous agent loops, I am deeply into specialty coffee brewing. Every morning starts with dialing in a velvety flat white on my <strong>Sage Barista Pro</strong> and <strong>DF54 flat burr grinder</strong>, followed by afternoon precision pour-overs dialed on the <strong>1Zpresso ZP6 Special</strong>. To me, extraction dynamics match distributed data systems: flow rates, particle size distributions, and precision feedback loops.
         </p>
       </div>
       <div class="coffee-stats-pill card">
         <div class="gear-header">My Daily Brewing Rig</div>
         <ul class="gear-list font-mono">
-          <li><span>Grinder:</span> Comandante C40 MK4 / 64mm Flat Burrs</li>
-          <li><span>Drippers:</span> Hario V60 (Ceramic & Plastic), Kalita 185</li>
+          <li><span>Pour-Over Grinder:</span> 1Zpresso ZP6 Special (Unimodal clarity king)</li>
+          <li><span>Espresso Grinder:</span> DF54 Flat Burr (Single-dose zero retention)</li>
+          <li><span>Espresso Machine:</span> Sage Barista Pro (Daily morning flat whites)</li>
+          <li><span>Drippers:</span> Hario V60 (Ceramic &amp; Plastic), Kalita 185</li>
           <li><span>Kettle:</span> Fellow Stagg EKG (Variable Temp Gooseneck)</li>
-          <li><span>Scale:</span> Acaia Pearl (0.1g & flow-rate telemetry)</li>
+          <li><span>Scale:</span> Acaia Pearl (0.1g &amp; flow-rate telemetry)</li>
           <li><span>Water:</span> Custom Remineralized (50 ppm GH, 20 ppm KH)</li>
         </ul>
       </div>
@@ -38,7 +40,7 @@
         <p class="pillar-text">
           Extraction ceiling is set by the grinder, not the kettle. Controlled burr geometry minimizes fines (&lt;100µm) that choke paper filters, preventing astringent channeling and unlocking floral, tea-like clarity.
         </p>
-        <div class="pillar-metric font-mono">Target: 650 - 750µm (22-24 clicks)</div>
+        <div class="pillar-metric font-mono">Target: 650 - 750µm (1Zpresso ZP6 dial ~4.2)</div>
       </div>
 
       <div class="card pillar-card">
@@ -57,6 +59,31 @@
           Conical 60° drippers provide high bypass for sparkling transparency. Flat-bottom beds maximize contact uniformity for dense, syrupy sweetness and balanced chocolate notes.
         </p>
         <div class="pillar-metric font-mono">Draw-Down: 2m 45s - 3m 15s</div>
+      </div>
+    </div>
+
+    <!-- Daily Dual Ritual: Morning Flat White vs Afternoon Pour-Over -->
+    <div class="daily-routine-grid">
+      <div class="card routine-card morning-routine">
+        <div class="routine-badge badge-coffee font-mono">🌅 MORNING RITUAL • ESPRESSO &amp; FLAT WHITE</div>
+        <h3 class="heading-sm routine-title">Sage Barista Pro + DF54 Flat Burrs</h3>
+        <p class="routine-desc">
+          Zero-retention single-dosing through the 54mm custom flat burrs into an 18g precision basket. Extracted at 9-bar with low-pressure pre-infusion, followed by steaming glossy, tight-bubble microfoam at 62°C for a rich, balanced flat white.
+        </p>
+        <div class="routine-recipe font-mono">
+          <span>Dose: 18.0g</span> • <span>Yield: 36.0g</span> • <span>Time: 28-30s</span> • <span>Temp: 93°C</span>
+        </div>
+      </div>
+
+      <div class="card routine-card afternoon-routine">
+        <div class="routine-badge badge-data font-mono">☀️ AFTERNOON RITUAL • PRECISION POUR-OVER</div>
+        <h3 class="heading-sm routine-title">1Zpresso ZP6 Special + Hario V60 / Kalita</h3>
+        <p class="routine-desc">
+          Hand-cranked with the legendary ZP6 unimodal burr set on calibrated external dial (~4.0 - 4.5). Minimizes fines for high bypass flow, extracting sweet peach, jasmine, and bergamot tea notes with high clarity.
+        </p>
+        <div class="routine-recipe font-mono">
+          <span>Dose: 18.0g</span> • <span>Water: 270g (1:15)</span> • <span>Dripper: V60 60°</span> • <span>Drawdown: 3:00</span>
+        </div>
       </div>
     </div>
 
@@ -243,6 +270,63 @@
     padding: 0.35rem 0.65rem;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+
+  .daily-routine-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .daily-routine-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .routine-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .morning-routine {
+    border-color: rgba(217, 119, 6, 0.35);
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.08) 0%, var(--bg-card) 100%);
+  }
+
+  .afternoon-routine {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, var(--bg-card) 100%);
+  }
+
+  .routine-badge {
+    font-size: 0.72rem;
+    align-self: flex-start;
+  }
+
+  .routine-title {
+    color: var(--text-primary);
+  }
+
+  .routine-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .routine-recipe {
+    font-size: 0.78rem;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
   .calc-card {

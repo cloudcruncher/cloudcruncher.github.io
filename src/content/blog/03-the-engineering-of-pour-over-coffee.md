@@ -29,7 +29,11 @@ When coffee beans shatter between steel burrs, they produce:
 2. **Boulders** (underextracted, sour, grassy).
 3. **Fines** (microscopic particles <100 microns).
 
-Fines migrate with water flow, clogging the paper filter pores ("filter stalling"). This causes localized pooling, extending contact time and overextracting bitter chlorogenic acid derivatives. Upgrading to precision burrs (like Comandante C40 clicks or 64mm SSP Multipurpose flats) tightens the standard deviation of particle size, unlocking clarity you can actually taste.
+Fines migrate with water flow, clogging the paper filter pores ("filter stalling"). This causes localized pooling, extending contact time and overextracting bitter chlorogenic acid derivatives. 
+
+In my setup, I separate workflows by purpose:
+- **Espresso & Flat Whites**: A **DF54 flat burr grinder** single-dosing into a **Sage Barista Pro** at 9-bar pre-infusion, delivering rich crema, thick mouthfeel, and sweet balanced extractions for morning milk drinks.
+- **Precision Pour-Overs**: The legendary **1Zpresso ZP6 Special** hand grinder. With its calibrated external dial (60 clicks per rotation) and specialized geometry, it produces an extraordinarily unimodal particle curve with virtually zero fines, unlocking pristine floral clarity and sparkling tea-like acidity on light roasts.
 
 ---
 
@@ -60,7 +64,7 @@ When I want maximum sweetness and balanced acidity, I use a modified 4:6 method 
 - **Dose**: 20g coffee
 - **Total Water**: 300g (1:15 ratio)
 - **Water Temp**: 93°C (for light roasts)
-- **Grind**: Medium-coarse (approx. 24 clicks on Comandante C40)
+- **Grind**: Medium-coarse (dial setting ~4.2 – 4.5 on the 1Zpresso ZP6 Special)
 
 ```
 00:00 - 00:45 | Pour 1: 60g bloom (activates degassing, sets acid balance)
