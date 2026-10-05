@@ -6,24 +6,24 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
 <section id="london" class="london-section">
   <div class="container">
     <div class="section-badge-row">
-      <span class="badge badge-coffee">📍 London City &amp; Dining Guide</span>
-      <span class="badge">Culinary Exploration &amp; Roasteries</span>
+      <span class="badge badge-coffee">📍 London City &amp; Craft Guide</span>
+      <span class="badge">Roasteries • Beer Passport • Sourdough Bakeries</span>
     </div>
 
     <div class="london-header-row">
       <div class="london-header-text">
         <h2 class="heading-lg london-title">
-          Exploring London: <span class="text-gradient-coffee">Specialty Counters &amp; Hidden Dining Gems</span>
+          Exploring London: <span class="text-gradient-coffee">Beer, Sourdough &amp; Local Roasteries</span>
         </h2>
         <p class="london-desc">
-          One of the biggest joys of living in London is the inexhaustible food and coffee scene. When I'm not writing PySpark jobs or configuring MCP harnesses, I love wandering through different London neighborhoods—from West London Thames walks in Kew and Richmond to tucked-away pasta counters in Soho and roasteries in Shoreditch.
+          Beyond data pipelines, I have a deep love for the craft of fermentation and extraction. In London, that means stamping my <strong>Beer Passport</strong> across independent microbreweries and historic pubs, hunting down naturally leavened sourdough from neighborhood bakeries, and sourcing beans <em>strictly from London-based roasteries</em>.
         </p>
       </div>
       <div class="maps-cta-box card">
         <div class="maps-icon">🗺️</div>
         <div class="maps-text">
           <div class="maps-title">Robin's London Map</div>
-          <div class="maps-sub">Curated spots across London</div>
+          <div class="maps-sub">Saved roasteries, pubs &amp; bakeries</div>
         </div>
         <a 
           href={mapsUrl} 
@@ -36,95 +36,166 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
       </div>
     </div>
 
+    <!-- Craft & Home Brewing Spotlight Banner -->
+    <div class="card craft-spotlight-card">
+      <div class="craft-grid">
+        <div class="craft-col">
+          <div class="craft-badge badge-coffee font-mono">🍺 HOME BEER BREWING • PINTER</div>
+          <h3 class="heading-sm craft-title">Fresh Draft Brewing with Pinter</h3>
+          <p class="craft-text">
+            Brewing fresh craft beer at home using my <strong>Pinter</strong>. Exploring cold conditioning, precise fermentation temperature control, and tapping fresh carbonated IPAs, hazy pales, and stouts straight from the draft handle.
+          </p>
+        </div>
+        <div class="craft-col">
+          <div class="craft-badge badge-data font-mono">🥖 SOURDOUGH FERMENTATION</div>
+          <h3 class="heading-sm craft-title">Artisan Baking &amp; Wild Yeast</h3>
+          <p class="craft-text">
+            Fascinated by high-hydration doughs, open crumb structures, and wild lactobacillus fermentation. Constantly visiting London's artisan bakeries to analyze blistered crusts and baking sourdough at home.
+          </p>
+        </div>
+        <div class="craft-col">
+          <div class="craft-badge badge-ai font-mono">🛂 THE BEER PASSPORT</div>
+          <h3 class="heading-sm craft-title">London Microbreweries &amp; Old Pubs</h3>
+          <p class="craft-text">
+            Proud holder of the <strong>London Beer Passport</strong>. Tracking independent railway arch taprooms (Bermondsey Beer Mile) and 400-year-old historic riverside coaching inns along the Thames.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div class="london-grid">
-      <!-- Card 1: Precision Coffee Counters -->
+      <!-- Card 1: Strictly London Roasteries -->
       <div class="card guide-card">
-        <div class="guide-badge badge-coffee">☕ Specialty Coffee Roasters</div>
-        <h3 class="heading-sm guide-card-title">Precision Extraction Counters</h3>
+        <div class="guide-badge badge-coffee">☕ London Roasteries Only</div>
+        <h3 class="heading-sm guide-card-title">Local Roasting Pioneers</h3>
         <ul class="guide-list">
           <li>
-            <strong>WatchHouse (Bermondsey / St Mary Axe)</strong>
-            <span>Extraordinary modern design with rare anaerobic Geisha pour-overs on brew bar.</span>
+            <strong>Assembly Coffee (Brixton)</strong>
+            <span>Clean, expressive micro-lots; exceptional transparency in roast development.</span>
           </li>
           <li>
-            <strong>Workshop Coffee (Fitzrovia &amp; Marylebone)</strong>
-            <span>Super clean Scandinavian roast profiles; exceptional morning flat whites.</span>
+            <strong>WatchHouse (Bermondsey / City)</strong>
+            <span>Architectural brew bars highlighting rare anaerobic &amp; thermal shock Geishas.</span>
           </li>
           <li>
-            <strong>Rosslyn Coffee (Queen Victoria St / Moorgate)</strong>
-            <span>High-volume Australian hospitality in the City with tournament-grade batch brew.</span>
+            <strong>Workshop Coffee (Marylebone)</strong>
+            <span>Consistent benchmark Scandinavian roast profiles; stellar morning espresso.</span>
           </li>
           <li>
-            <strong>Origin Coffee Roasters (Southwark)</strong>
-            <span>Railway arch roastery serving vibrant seasonal single-origins under the brick vaults.</span>
+            <strong>Climpson &amp; Sons &amp; Origin</strong>
+            <span>Pioneers of London specialty coffee; perfect single-origins for V60 dialing.</span>
           </li>
         </ul>
       </div>
 
-      <!-- Card 2: West London & Riverside -->
+      <!-- Card 2: Beer Passport & Microbreweries -->
+      <div class="card guide-card beer-card">
+        <div class="guide-badge badge-coffee">🍺 Beer Passport &amp; Taprooms</div>
+        <h3 class="heading-sm guide-card-title">Craft Breweries &amp; Old Pubs</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>Bermondsey Beer Mile</strong>
+            <span>The Kernel, Anspach &amp; Hobday, Moor Beer, and Cloudwater taprooms under the brick arches.</span>
+          </li>
+          <li>
+            <strong>The Mayflower (Rotherhithe)</strong>
+            <span>Historic 1620 Thames-side pub with a jetty over the river and cozy timber interiors.</span>
+          </li>
+          <li>
+            <strong>The Dove (Hammersmith)</strong>
+            <span>Riverside terrace pub where Charles II romance was whispered; superb real ales.</span>
+          </li>
+          <li>
+            <strong>Ye Olde Cheshire Cheese (Fleet St)</strong>
+            <span>Rebuilt in 1667 after the Great Fire; atmospheric stone vaults and historic beers.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Artisan Bakeries & Sourdough -->
+      <div class="card guide-card bakery-card">
+        <div class="guide-badge badge-data">🥖 Artisan Sourdough Bakeries</div>
+        <h3 class="heading-sm guide-card-title">Crust, Crumb &amp; Wild Yeast</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>The Dusty Knuckle (Dalston / Green Lanes)</strong>
+            <span>Legendary potato sourdough loaves and blistered crusts that set the London standard.</span>
+          </li>
+          <li>
+            <strong>Toad Bakery (Camberwell)</strong>
+            <span>Unmatched creativity with whole grains, dark crusts, and morning pastries.</span>
+          </li>
+          <li>
+            <strong>Jolene (Newington Green)</strong>
+            <span>Wild fermented loaves milled from regenerative UK grains; extraordinary crumb.</span>
+          </li>
+          <li>
+            <strong>The Snapery &amp; E5 Bakehouse</strong>
+            <span>Traditional sourdough heritage, community mills, and rich fermented sour tang.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 4: West London & Thames Riverside -->
       <div class="card guide-card west-london-card">
-        <div class="guide-badge badge-data">🌊 West London &amp; Thames Riverside</div>
+        <div class="guide-badge badge-data">🌊 West London &amp; Riverside</div>
         <h3 class="heading-sm guide-card-title">Kew, Richmond &amp; Chiswick</h3>
         <ul class="guide-list">
           <li>
             <strong>Kew Bridge &amp; Brentford Lock</strong>
-            <span>Peaceful riverside paths, houseboats, and weekend coffee strolls along the Grand Union Canal.</span>
+            <span>Peaceful riverside paths, canal barges, and quiet weekend walks along the water.</span>
           </li>
           <li>
-            <strong>Richmond upon Thames</strong>
-            <span>Historic riverside green, view from Richmond Hill, and specialty spots tucked in the paved lanes.</span>
+            <strong>Richmond Green &amp; Richmond Hill</strong>
+            <span>Historic riverside strolls, craft taprooms, and the iconic Turner viewpoint.</span>
           </li>
           <li>
             <strong>Chiswick High Road &amp; Chief Coffee</strong>
-            <span>Artisan bakeries, independent coffee roasts, and quiet leafy weekend brunches.</span>
+            <span>Specialty roasts, artisan bakeries, and quiet leafy West London brunch spots.</span>
           </li>
           <li>
             <strong>Petersham Nurseries</strong>
-            <span>Glasshouse cafe and seasonal produce dining under trailing bougainvillea and jasmine.</span>
+            <span>Dining in a botanical glasshouse surrounded by fragrant jasmine and seasonal produce.</span>
           </li>
         </ul>
       </div>
 
-      <!-- Card 3: Handcrafted Pasta & Italian -->
+      <!-- Card 5: Handcrafted Pasta & Italian -->
       <div class="card guide-card">
-        <div class="guide-badge badge-data">🍝 Fresh Pasta &amp; Italian</div>
+        <div class="guide-badge badge-ai">🍝 Fresh Pasta &amp; Italian</div>
         <h3 class="heading-sm guide-card-title">Craft &amp; Texture</h3>
         <ul class="guide-list">
           <li>
             <strong>Bancone (Covent Garden &amp; Soho)</strong>
-            <span>The famous silk handkerchiefs with walnut butter and confit egg yolk are perfection.</span>
+            <span>Silk handkerchiefs with walnut butter and confit egg yolk; pure comfort.</span>
           </li>
           <li>
             <strong>Padella (Borough Market)</strong>
-            <span>Pici cacio e pepe and 8-hour beef shin ragu tagliarini, best enjoyed right by the market.</span>
+            <span>Pici cacio e pepe and slow-cooked beef shin ragu right alongside the food stalls.</span>
           </li>
           <li>
             <strong>Manteca (Shoreditch)</strong>
-            <span>Nose-to-tail Italian with handmade fazzoletti duck ragu and wood-fired focaccia.</span>
+            <span>Nose-to-tail Italian with handmade duck ragu fazzoletti and wood-fired focaccia.</span>
           </li>
         </ul>
       </div>
 
-      <!-- Card 4: Open-Fire & Distinctive Flavors -->
+      <!-- Card 6: Open-Fire & Regional Dining -->
       <div class="card guide-card">
-        <div class="guide-badge badge-ai">🔥 Wood-Fire &amp; Regional Flavors</div>
+        <div class="guide-badge badge-coffee">🔥 Wood-Fire &amp; Regional Flavors</div>
         <h3 class="heading-sm guide-card-title">Vibrant Dining Spaces</h3>
         <ul class="guide-list">
           <li>
             <strong>Kiln (Soho)</strong>
-            <span>Counter dining over glowing charcoal embers cooking regional northern Thai clay pots.</span>
+            <span>Charcoal clay pot cooking with northern Thai wood-fired herbs and spices.</span>
           </li>
           <li>
             <strong>Brat (Shoreditch)</strong>
             <span>Basque-inspired cooking: wood-fired bread, smoked potatoes, and wild turbot over embers.</span>
           </li>
           <li>
-            <strong>Dishoom (King's Cross / Shoreditch)</strong>
-            <span>The legendary 24-hour slow-cooked Black Daal and gunpowder potatoes never disappoint.</span>
-          </li>
-          <li>
-            <strong>Roti King (Euston / Battersea)</strong>
-            <span>Freshly stretched, flaky roti canai with deeply spiced dahl and kari.</span>
+            <strong>Dishoom &amp; Roti King</strong>
+            <span>24-hour slow-cooked Black Daal and freshly stretched flaky roti canai.</span>
           </li>
         </ul>
       </div>
@@ -136,25 +207,25 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
         <div class="walk-header">
           <div class="walk-icon">🌊</div>
           <div>
-            <span class="walk-tag font-mono">WEST LONDON RECHARGE</span>
-            <h3 class="heading-sm walk-title">The Kew-to-Richmond Thames Trail</h3>
+            <span class="walk-tag font-mono">WEST LONDON RIVER &amp; SOURDOUGH</span>
+            <h3 class="heading-sm walk-title">The Kew-to-Richmond River Walk</h3>
           </div>
         </div>
         <p class="walk-text">
-          Start at <strong>Kew Bridge</strong> with an espresso ➔ Follow the Thames towpath past Old Deer Park and the historic lock ➔ Stroll across Richmond riverside green ➔ Finish with lunch around Richmond lanes or climb up to Richmond Hill for the legendary Turner view over the Thames valley.
+          Grab a morning flat white near <strong>Kew Bridge</strong> ➔ Pick up a warm sourdough loaf along Chiswick High Road ➔ Walk the Thames towpath past Old Deer Park and the historic weir ➔ Stroll across Richmond riverside green and end with a pint of fresh cask ale at an old riverside pub.
         </p>
       </div>
 
       <div class="card walk-card">
         <div class="walk-header">
-          <div class="walk-icon">🚶‍♂️</div>
+          <div class="walk-icon">🍺</div>
           <div>
-            <span class="walk-tag font-mono">CENTRAL &amp; EAST LONDON STROLL</span>
-            <h3 class="heading-sm walk-title">The Southwark-to-Shoreditch Walk</h3>
+            <span class="walk-tag font-mono">BEER PASSPORT &amp; ROASTERIES</span>
+            <h3 class="heading-sm walk-title">The Bermondsey Mile &amp; South Bank Route</h3>
           </div>
         </div>
         <p class="walk-text">
-          Morning filter coffee at <strong>Origin (Southwark)</strong> ➔ Walk through Borough Market and along the Thames South Bank past Tate Modern ➔ Cross the river towards the historic City alleyways ➔ Wrap up with an afternoon lunch around Spitalfields or Shoreditch, followed by a second pour-over at <strong>Ozone</strong> or <strong>Nude</strong>.
+          Start with a single-origin V60 at <strong>WatchHouse Bermondsey</strong> ➔ Pick up a loaf at The Snapery Bakery ➔ Walk down the railway arches stamping your Beer Passport at <strong>The Kernel</strong> &amp; <strong>Anspach &amp; Hobday</strong> ➔ Finish crossing London Bridge towards the historic City alleyways.
         </p>
       </div>
     </div>
@@ -232,6 +303,50 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
     font-size: 0.8rem;
   }
 
+  .craft-spotlight-card {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(16, 185, 129, 0.06) 50%, rgba(99, 102, 241, 0.06) 100%);
+    border-color: rgba(217, 119, 6, 0.3);
+    padding: 2.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .craft-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 860px) {
+    .craft-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .craft-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .craft-badge {
+    align-self: flex-start;
+    font-size: 0.72rem;
+  }
+
+  .craft-title {
+    color: var(--text-primary);
+  }
+
+  .craft-text {
+    color: var(--text-secondary);
+    font-size: 0.885rem;
+    line-height: 1.6;
+  }
+
+  .craft-text strong {
+    color: var(--text-primary);
+  }
+
   .london-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -247,7 +362,7 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
 
   @media (min-width: 1024px) {
     .london-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -255,6 +370,16 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .beer-card {
+    border-color: rgba(217, 119, 6, 0.3);
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.05) 0%, var(--bg-card) 100%);
+  }
+
+  .bakery-card {
+    border-color: rgba(245, 158, 11, 0.3);
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, var(--bg-card) 100%);
   }
 
   .west-london-card {

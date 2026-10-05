@@ -26,8 +26,9 @@
           <li><span>Espresso Machine:</span> Sage Barista Pro (Daily morning flat whites)</li>
           <li><span>Drippers:</span> Hario V60 (Ceramic &amp; Plastic), Kalita 185</li>
           <li><span>Kettle:</span> Fellow Stagg EKG (Variable Temp Gooseneck)</li>
-          <li><span>Scale:</span> Acaia Pearl (0.1g &amp; flow-rate telemetry)</li>
+          <li><span>Scale:</span> Timemore Black Mirror (0.1g auto-timer &amp; matte stealth display)</li>
           <li><span>Water:</span> Custom Remineralized (50 ppm GH, 20 ppm KH)</li>
+          <li><span>Roasteries:</span> Strictly London-based (Assembly, Workshop, WatchHouse, Climpson &amp; Sons, Square Mile)</li>
         </ul>
       </div>
     </div>
@@ -95,7 +96,8 @@
           <h3 class="heading-sm calc-title">Robin's Precision Pour-Over Calculator</h3>
         </div>
         <div class="calc-method-pills">
-          <button class="calc-tab active" data-method="46">Tetsu 4:6 Method</button>
+          <button class="calc-tab active" data-method="lance">Lance Hedrick (Favorite)</button>
+          <button class="calc-tab" data-method="46">Tetsu 4:6 Method</button>
           <button class="calc-tab" data-method="3pour">Hoffmann 3-Pour</button>
           <button class="calc-tab" data-method="kalita">Kalita Wave Flat</button>
         </div>
@@ -537,7 +539,7 @@
 
     if (!doseInput || !ratioInput || !stepsContainer) return;
 
-    let currentMethod = '46';
+    let currentMethod = 'lance';
 
     function renderSteps() {
       const dose = parseFloat(doseInput.value);
@@ -550,7 +552,18 @@
 
       let steps = [];
 
-      if (currentMethod === '46') {
+      if (currentMethod === 'lance') {
+        targetTempEl.textContent = '93°C';
+        const bloom = Math.round(dose * 3);
+        const mainPour = totalWater - bloom;
+
+        steps = [
+          { time: '00:00 - 00:15', weight: `+${bloom}g (to ${bloom}g)`, action: 'Extended Bloom: gentle circular pour, full bed saturation' },
+          { time: '00:15 - 01:20', weight: 'Rest & Swirl', action: 'Gentle swirl to eliminate dry pockets; 1m 20s degassing for maximum solubility' },
+          { time: '01:20 - 02:00', weight: `+${mainPour}g (to ${totalWater}g)`, action: 'Main Pour: Low-agitation center spiral (spout close to water)' },
+          { time: '02:00 - 02:45', weight: 'Level & Drawdown', action: 'One gentle swirl & tap to level bed; sweet, unimodal ZP6 drawdown' },
+        ];
+      } else if (currentMethod === '46') {
         targetTempEl.textContent = '93°C';
         const p1 = Math.round(totalWater * 0.16);
         const p2 = Math.round(totalWater * 0.24);

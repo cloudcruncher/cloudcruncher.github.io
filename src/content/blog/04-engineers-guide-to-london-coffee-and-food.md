@@ -1,52 +1,74 @@
 ---
-title: "The Engineer's Guide to London: Specialty Coffee Roasters & Hidden Food Gems"
-description: "My personal map of London: precision espresso bars, third-wave roasteries, tucked-away pasta spots, and weekend dining discoveries across the city."
+title: "The Engineer's Guide to London: Local Roasteries, The Beer Passport & Sourdough Quests"
+description: "My personal map of London: strictly London-based roasteries, stamping the Beer Passport along Bermondsey's railway arches, hunting down blistered sourdough loaves, and West London Thames trails."
 pubDate: 2026-06-15
 category: "London & Lifestyle"
-tags: ["London", "Coffee Roasters", "Food", "Restaurants", "City Walks"]
-readTime: "5 min read"
+tags: ["London", "Coffee Roasters", "Beer Passport", "Sourdough", "Breweries", "Restaurants"]
+readTime: "7 min read"
 featured: false
 ---
 
-Living and working in London as an engineer means having one of the world's most dynamic culinary and coffee landscapes at your doorstep. When I step away from code and pipelines, you will usually find me wandering different boroughs hunting down new roasters and authentic independent restaurants.
+Living and working in London as an engineer means having one of the world's most dynamic culinary and craft landscapes right outside your door. Beyond distributed data systems and agentic harnesses, I find immense joy in the shared physics of extraction and fermentation: coffee brewing, craft beer, and naturally leavened sourdough bread.
 
-Here is my curated list of favorites across London.
-
----
-
-## ☕ London's Premier Coffee Counters
-
-### 1. WatchHouse (Various locations, Bermondsey & 70 St Mary Axe)
-Known for their modern architectural aesthetic and rigorous sourcing. Their "Rare & Decadent" single-origin pour-over menu regularly features anaerobic thermal-shock Geishas and micro-lots that push flavor boundaries.
-
-### 2. Workshop Coffee (Fitzrovia & Marylebone)
-Consistent perfection. Clean, light-roasted Scandinavian profile with razor-sharp espresso extraction. A fantastic spot for an early morning flat white before deep-work focus sessions.
-
-### 3. Rosslyn Coffee (City of London - Queen Victoria St & London Wall)
-Run with Australian coffee hospitality in the heart of the Square Mile. They operate at staggering peak-hour volume while maintaining tournament-level extraction standards. Their guest batch brews and iced filters are unmatched.
-
-### 4. Origin Coffee Roasters (Scoresby St, Southwark)
-Tucked under the railway arches near Southwark station. Incredible seasonal single origins, knowledgeable baristas, and an airy, relaxed weekend brunch vibe.
+Here is my personal field guide to exploring London through taste, craft, and neighborhood walks.
 
 ---
 
-## 🍝 Dining Discoveries: From Hand-Rolled Pasta to Fire-Grilled Feasts
+## ☕ 1. Strictly London-Based Roasteries
 
-### Padella & Bancone (Borough Market & Covent Garden)
-For anyone who appreciates the pure tactile simplicity of fresh pasta. The *silk handkerchiefs with walnut butter and confit egg yolk* at Bancone or the *pici cacio e pepe* at Padella are pure comfort food after a week of refactoring distributed systems.
+I make it a rule to support and drink coffee exclusively from **London-based roasteries**. The roasting community here is world-class, pairing obsessive origin transparency with dialed roast profiles:
 
-### Kiln (Soho)
-Counter dining at its finest. Clay pot cooking over open wood embers with northern Thai flavors. The pork belly and glass noodle clay pot or the spicy claypot fish are electrifying.
+### Assembly Coffee (Brixton)
+Assembly consistently produces some of the most nuanced, clean coffees in the country. Their approach to sensory categorization and micro-lot curation is extraordinary. A washed Ethiopian or Kenyan from Assembly on a V60 is a masterclass in clarity.
 
-### Brat (Shoreditch & Climpson's Arch, Hackney)
-Basque-inspired cooking over charcoal. From whole turbot grilled gently over wood embers to smoked potatoes and wood-fired bread. It is rustic, focused, and exceptional produce-first cooking.
+### WatchHouse (Bermondsey & 70 St Mary Axe)
+Known for modern architectural counters and rigorous sourcing. Their "Rare & Decadent" single-origin filter menu frequently features anaerobic thermal-shock Geishas and experimental processing methods that expand what coffee can taste like.
 
-### Dishoom (King's Cross / Shoreditch)
-An enduring London staple for Bombay comfort food. The slow-simmered 24-hour Black Daal and gunpowder potatoes paired with roomali roti never miss.
+### Workshop Coffee (Marylebone & Fitzrovia)
+Consistent Scandinavian-style light roast perfection. Clean sweetness, bright balanced acidity, and razor-sharp extraction standards. My go-to for dialing in morning espresso and flat whites.
+
+### Climpson & Sons & Origin Coffee (Broadway Market & Southwark)
+East and South London pioneers of the specialty coffee movement. Consistently delicious single-origins that shine under Lance Hedrick's extended bloom method on the 1Zpresso ZP6.
 
 ---
 
-## The Perfect Saturday Walk
-Start at **Monmouth Coffee** or **Origin** in Southwark, stroll along the South Bank past the Tate Modern, cross over through the City, and finish with lunch around Spitalfields or Shoreditch.
+## 🍺 2. The London Beer Passport & Historic Pubs
 
-Have a hidden restaurant or coffee gem in London I should visit next? Connect with me and share your recommendations!
+I love brewing beer at home with my **Pinter** (exploring cold conditioning and fresh draft carbonation), but nothing beats London's pub and microbrewery culture. I actively stamp my **London Beer Passport** across independent taprooms and centuries-old riverside inns:
+
+### The Bermondsey Beer Mile
+A legendary stretch of railway arches in South London housing world-class craft brewers:
+- **The Kernel Brewery**: The godfather of London craft beer. Uncompromising dry stouts, historical table beers, and pale ales that define the modern standard.
+- **Anspach & Hobday**: Masters of traditional styles, especially their famous London Black nitro porter.
+- **Cloudwater & Moor Beer**: Fantastic hop-forward hazy IPAs and naturally conditioned cellar ales.
+
+### Historic Riverside Coaching Inns
+- **The Mayflower (Rotherhithe)**: Perched directly over the Thames where the Pilgrim Ship set sail in 1620. Wooden beams, open fireplaces, and a dark pint of ale while waves lap beneath your feet.
+- **The Dove (Hammersmith)**: A riverside gem with the smallest bar room in Britain, a wonderful terrace overlooking the river, and fresh traditional cask ales.
+- **Ye Olde Cheshire Cheese (Fleet Street)**: Rebuilt in 1667 after the Great Fire of London. Deep subterranean stone vaults and Dickensian atmosphere.
+
+---
+
+## 🥖 3. The Quest for London's Best Sourdough
+
+Sourdough baking is pure applied biology: managing wild Saccharomyces cerevisiae and lactobacillus cultures, ambient humidity, hydration percentages, and thermal spring in the oven. When I'm not testing loaves at home, I'm visiting London's artisan bakeries:
+
+- **The Dusty Knuckle (Dalston / Green Lanes)**: Famous for their signature potato sourdough. Incredibly chewy, open crumb, deep blistered crust, and rich fermented sour tang.
+- **Toad Bakery (Camberwell)**: Wildly inventive, exceptional dark-baked heritage grain sourdough loaves and morning pastries.
+- **Jolene (Newington Green)**: Dedicated to regenerative agriculture, milling UK grains on site for loaves with exceptional wheaty sweetness and complex wild-yeast depth.
+- **The Snapery & E5 Bakehouse**: Pioneers of traditional sourdough baking and wood-fired bread.
+
+---
+
+## 🌊 4. The Perfect Weekend: Kew to Richmond Thames Trail
+
+My favorite weekend recharge starts in West London:
+1. Morning flat white near **Kew Bridge** or **Chief Coffee** in Chiswick.
+2. Pick up a freshly baked sourdough loaf from a local bakery.
+3. Follow the Thames towpath past Old Deer Park, watching rowers and canal barges navigate the lock.
+4. Walk across Richmond Green and up to Richmond Hill for the legendary panoramic view over the Thames valley.
+5. Finish at a riverside pub with a fresh pint of cask bitter and fish & chips.
+
+---
+
+*Explore my saved spots, roasteries, and microbreweries directly on my [London Google Maps List](https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser=1&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D). Have a roastery, brewery, or bakery recommendation? Let me know!*
