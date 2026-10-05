@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://robinsaini.dev',
+  site: 'https://cloudcruncher.github.io',
   base: process.env.BASE_PATH || '/',
   integrations: [sitemap()],
 });
