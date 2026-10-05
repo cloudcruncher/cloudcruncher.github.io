@@ -11,7 +11,7 @@ This is the personal portfolio and engineering platform for **Robin Saini** (`@c
 
 ### Key Highlights
 - **Modern Landing Page**: High-impact metrics (15+ yrs tech, 1TB+/mo Snowflake lakehouse, 40% batch speedup, >90% manual case reduction with Agentic AI).
-- **Featured GitHub Projects**: Showcase of active open-source & engineering repositories (`fiduciary-agent`, `open-lakehouse`, `lakehouse-markets-data`, `job-harness`, `Real_Estate`, `hackathon-2026`).
+- **Featured GitHub Projects**: Showcase of verified public open-source repositories (`fiduciary-agent`, `open-lakehouse`, `lakehouse-markets-data`) and enterprise architecture case studies.
 - **Data Engineering Skills Matrix**: Snowflake, PySpark, Airflow, dbt, Kafka, AWS, Pydantic contracts, and banking governance.
 - **The Agentic Lab**: Production architectures with Google Antigravity, Claude Code, and reusable Model Context Protocol (MCP) servers.
 - **The Coffee Lab & Dial-In Tool**: Interactive pour-over calculator (V60 4:6 method, Kalita Wave, Aeropress) and deep dives into grind particle size distribution, water mineral chemistry, and burr geometries.

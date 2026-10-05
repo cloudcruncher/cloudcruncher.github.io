@@ -1,54 +1,121 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
+import { projects, enterpriseCaseStudies } from '../data/projects';
 ---
 
 <BaseLayout 
-  title="GitHub Projects & Engineering Systems | Robin Saini"
-  description="Explore open source and enterprise projects built by Robin Saini: autonomous agent harnesses, multi-tenant lakehouse architectures, and financial streaming pipelines."
+  title="Projects & Enterprise Architecture | Robin Saini"
+  description="Explore public open-source projects and enterprise architectures built by Robin Saini: autonomous agent harnesses, multi-tenant lakehouses, and financial streaming pipelines."
 >
   <div class="projects-page-header">
     <div class="container">
       <div class="section-badge-row">
         <span class="badge badge-ai">github.com/cloudcruncher</span>
-        <span class="badge">Open Source &amp; Architectures</span>
+        <span class="badge">Open Source &amp; Enterprise Architecture</span>
       </div>
       <h1 class="heading-xl page-title">
-        Featured <span class="text-gradient-ai">GitHub Projects</span>
+        Systems &amp; <span class="text-gradient-ai">Architectures</span>
       </h1>
       <p class="page-subtitle">
-        Hands-on systems spanning autonomous agent harnesses, multi-tenant Kafka lakehouses, financial ingestion sensors, and deterministic career tooling.
+        A curated showcase of verified public open-source engineering systems and tier-1 enterprise architectures delivering mission-critical scale in UK banking.
       </p>
 
-      <!-- Category Filter Tabs -->
-      <div class="filter-bar">
-        <button class="filter-tab active" data-filter="all">All Projects ({projects.length})</button>
-        <button class="filter-tab" data-filter="Agentic AI">Agentic AI</button>
-        <button class="filter-tab" data-filter="Lakehouse & Data">Lakehouse &amp; Data</button>
-        <button class="filter-tab" data-filter="Harnesses & Tools">Harnesses &amp; Tools</button>
+      <div class="nav-jump-pills">
+        <a href="#opensource" class="jump-pill">
+          <span class="pulse-dot"></span> Public GitHub Repos ({projects.length})
+        </a>
+        <a href="#enterprise" class="jump-pill">
+          🏢 Enterprise Case Studies ({enterpriseCaseStudies.length})
+        </a>
       </div>
     </div>
   </div>
 
   <div class="projects-page-content">
     <div class="container">
-      <div class="projects-grid" id="projects-grid">
-        {projects.map((project) => (
-          <div class="project-wrapper" data-category={project.category}>
-            <ProjectCard 
-              title={project.title}
-              repo={project.repo}
-              category={project.category}
-              description={project.description}
-              architecture={project.architecture}
-              tags={project.tags}
-              githubUrl={project.githubUrl}
-              featured={project.featured}
-            />
+      <!-- Section 1: Public Open-Source Projects -->
+      <section id="opensource" class="projects-sub-section">
+        <div class="sub-section-header">
+          <div class="section-badge-row">
+            <span class="badge badge-ai">Verified Public Code</span>
+            <span class="badge font-mono">MIT / Open Source</span>
           </div>
-        ))}
-      </div>
+          <h2 class="heading-lg">Public Open-Source Repositories</h2>
+          <p class="sub-section-desc">
+            Production-grade open-source implementations authored and maintained on GitHub.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <div class="project-wrapper">
+              <ProjectCard 
+                title={project.title}
+                repo={project.repo}
+                category={project.category}
+                description={project.description}
+                architecture={project.architecture}
+                tags={project.tags}
+                githubUrl={project.githubUrl}
+                featured={project.featured}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Section 2: Enterprise Production Case Studies -->
+      <section id="enterprise" class="projects-sub-section enterprise-section">
+        <div class="sub-section-header">
+          <div class="section-badge-row">
+            <span class="badge badge-data">Enterprise Scale</span>
+            <span class="badge font-mono">Regulated UK Financial Services</span>
+          </div>
+          <h2 class="heading-lg">Enterprise Architecture Case Studies</h2>
+          <p class="sub-section-desc">
+            High-impact modernization and AI deployments delivered across NatWest Group and Lloyds Banking Group.
+          </p>
+        </div>
+
+        <div class="case-studies-grid">
+          {enterpriseCaseStudies.map((study) => (
+            <article class="card case-study-card">
+              <div class="case-study-top">
+                <div class="case-meta">
+                  <span class="badge badge-data">{study.category}</span>
+                  <span class="case-company font-mono">{study.company}</span>
+                </div>
+                <span class="case-period font-mono">{study.period}</span>
+              </div>
+
+              <h3 class="heading-sm case-title">{study.title}</h3>
+
+              <div class="case-impact-box font-mono">
+                <span class="impact-label">KEY IMPACT:</span>
+                <span class="impact-text">{study.impact}</span>
+              </div>
+
+              <p class="case-desc">{study.description}</p>
+
+              <div class="case-highlights">
+                <div class="highlights-title font-mono">DELIVERY &amp; ARCHITECTURAL HIGHLIGHTS</div>
+                <ul class="highlights-list">
+                  {study.highlights.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="case-tech-tags">
+                {study.techStack.map((tech) => (
+                  <span class="tag-pill font-mono">{tech}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   </div>
 </BaseLayout>
@@ -79,16 +146,19 @@ import { projects } from '../data/projects';
     margin-bottom: 2rem;
   }
 
-  .filter-bar {
+  .nav-jump-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
-  .filter-tab {
-    padding: 0.5rem 1rem;
+  .jump-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.85rem;
     font-weight: 600;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
     background: var(--bg-tertiary);
     border: 1px solid var(--border-subtle);
@@ -96,15 +166,35 @@ import { projects } from '../data/projects';
     transition: all 0.15s ease;
   }
 
-  .filter-tab.active,
-  .filter-tab:hover {
-    background: var(--accent-ai);
-    border-color: var(--accent-ai);
-    color: #ffffff;
+  .jump-pill:hover {
+    color: var(--text-primary);
+    background: var(--bg-card-hover);
+    border-color: var(--border-highlight);
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
   }
 
   .projects-page-content {
     padding: 4rem 0 6rem 0;
+  }
+
+  .projects-sub-section {
+    margin-bottom: 5rem;
+  }
+
+  .sub-section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .sub-section-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
   }
 
   .projects-grid {
@@ -115,7 +205,7 @@ import { projects } from '../data/projects';
 
   @media (min-width: 768px) {
     .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -123,32 +213,127 @@ import { projects } from '../data/projects';
     display: flex;
     flex-direction: column;
   }
-</style>
 
-<script is:inline>
-  function setupProjectFilters() {
-    const tabs = document.querySelectorAll('.filter-tab');
-    const items = document.querySelectorAll('.project-wrapper');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const filter = tab.getAttribute('data-filter');
-
-        items.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.style.display = 'flex';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
+  .enterprise-section {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 4rem;
   }
 
-  setupProjectFilters();
-  document.addEventListener('astro:after-swap', setupProjectFilters);
-</script>
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .case-study-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2.25rem;
+  }
+
+  .case-study-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 640px) {
+    .case-study-top {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .case-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .case-company {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .case-period {
+    font-size: 0.8rem;
+    color: var(--accent-coffee-light);
+  }
+
+  .case-title {
+    color: var(--text-primary);
+  }
+
+  .case-impact-box {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.85rem;
+    font-size: 0.825rem;
+    color: var(--accent-data-light);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  @media (min-width: 640px) {
+    .case-impact-box {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+  }
+
+  .impact-label {
+    font-weight: 800;
+  }
+
+  .case-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .case-highlights {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .highlights-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.65rem;
+  }
+
+  .highlights-list {
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .case-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag-pill {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.55rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+  }
+</style>
