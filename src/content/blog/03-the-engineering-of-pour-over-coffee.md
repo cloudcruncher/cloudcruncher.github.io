@@ -1,6 +1,6 @@
 ---
 title: "The Engineering of Pour-Over Coffee: Dialing In Grind Distribution, Extraction & Flow Dynamics"
-description: "How a senior data engineer approaches the morning cup: particle size distribution, bypass ratios, water mineral chemistry, and mastering the V60 4:6 technique."
+description: "How a senior data engineer approaches the morning cup: particle size distribution, bypass ratios, why water matters, and mastering the V60 4:6 technique."
 pubDate: 2026-07-22
 category: "Coffee & Brewing"
 tags: ["Coffee", "Pour Over", "V60", "Dial-In", "Extraction", "Engineering"]
@@ -37,15 +37,15 @@ In my setup, I separate workflows by purpose:
 
 ---
 
-## 2. Water Chemistry: The Solvent Architecture
+## 2. Water: The Solvent
 
-Coffee is 98.5% water. If your solvent is unbalanced, even an award-winning Geisha will taste flat or chalky.
+Coffee is 98.5% water. If your solvent is off, even an award-winning Geisha will taste flat or chalky.
 
-The two key metrics:
+Two things matter most:
 - **General Hardness (GH - Calcium & Magnesium)**: Magnesium ions ($\text{Mg}^{2+}$) bind efficiently to volatile oxygen-rich flavor compounds, pulling out fruit notes and floral acidity. Calcium ($\text{Ca}^{2+}$) pulls heavier body and creamy notes.
 - **Carbonate Hardness (KH / Buffer)**: Bicarbonate buffers acidity. If alkalinity is too high (>50 ppm $\text{CaCO}_3$), the bright phosphoric and malic acidity of African coffees gets muted into boring cardboard. If it is too low (<15 ppm), the cup tastes sharp and sour.
 
-My daily target: **50 ppm GH, 20 ppm KH** using distilled water remineralized with magnesium sulfate and sodium bicarbonate.
+I keep it simple: I brew with tap water run through a **limescale filter**. London water is hard, and scale is the main thing that dulls a cup and clogs a kettle. Enthusiasts who want to go further can build their own recipe from distilled water and minerals, but a decent filter gets most of the benefit.
 
 ---
 

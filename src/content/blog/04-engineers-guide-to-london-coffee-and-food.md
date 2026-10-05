@@ -71,4 +71,4 @@ My favorite weekend recharge starts in West London:
 
 ---
 
-*Explore my saved spots, roasteries, and microbreweries directly on my [London Google Maps List](https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser=1&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D). Have a roastery, brewery, or bakery recommendation? Let me know!*
+*Explore my saved spots, roasteries, and microbreweries directly on my [London coffee map](https://maps.app.goo.gl/zCmWeUtELyHkAQiW9) and [taproom map](https://maps.app.goo.gl/egQFtgJ4SHpDUike6). Have a roastery, brewery, or bakery recommendation? Let me know!*

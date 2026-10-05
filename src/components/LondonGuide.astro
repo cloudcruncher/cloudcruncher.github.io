@@ -1,6 +1,7 @@
 ---
 // LondonGuide.astro
-const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser=1&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
+const coffeeMapUrl = "https://maps.app.goo.gl/zCmWeUtELyHkAQiW9";
+const taproomMapUrl = "https://maps.app.goo.gl/egQFtgJ4SHpDUike6";
 ---
 
 <section id="london" class="london-section">
@@ -25,14 +26,14 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
           <div class="maps-title">Robin's London Map</div>
           <div class="maps-sub">Saved roasteries, pubs &amp; bakeries</div>
         </div>
-        <a 
-          href={mapsUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-coffee btn-sm"
-        >
-          Open Google Maps ↗
-        </a>
+        <div class="maps-links">
+          <a href={coffeeMapUrl} target="_blank" rel="noopener noreferrer" class="btn btn-coffee btn-sm">
+            ☕ Coffee map ↗
+          </a>
+          <a href={taproomMapUrl} target="_blank" rel="noopener noreferrer" class="btn btn-coffee btn-sm">
+            🍺 Taproom map ↗
+          </a>
+        </div>
       </div>
     </div>
 
@@ -276,6 +277,12 @@ const mapsUrl = "https://www.google.com/maps/@51.4831098,-0.2938173,14z?authuser
     background: var(--bg-tertiary);
     border-color: rgba(217, 119, 6, 0.35);
     flex-shrink: 0;
+  }
+
+  .maps-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .maps-icon {

@@ -1,68 +1,85 @@
 ---
-title: "Building Production Agentic Systems with MCP Servers & Antigravity Harnesses"
-description: "Architectural insights on orchestrating enterprise agentic workflows, building reusable Model Context Protocol (MCP) servers, and achieving sub-second tool execution."
+title: "Production Agentic Systems Are a Data Engineering Problem: MCP Servers, Contracts and Observability"
+description: "What a data engineer actually does to take AI agents from proof of concept to production: reusable MCP servers, data contracts, resilient writers and observability."
 pubDate: 2026-09-18
 category: "Agentic AI"
-tags: ["Agentic AI", "Antigravity", "Claude Code", "MCP", "Python", "Observability"]
-readTime: "7 min read"
+tags: ["Agentic AI", "Kiro CLI", "MCP", "Data Contracts", "Python", "Observability"]
+readTime: "5 min read"
 featured: true
 ---
 
-Building AI agents that work reliably in enterprise financial services is fundamentally a data engineering and systems reliability problem—not just a prompting exercise. 
+Building AI agents that work reliably in a regulated enterprise is mostly a data engineering and systems reliability problem, not a prompting exercise.
 
-Over the past year leading data engineering for agentic AI deployments at NatWest Group, our innovation team transitioned multi-agent workflows from experimental proofs-of-concept into hardened production systems. Along the way, we replaced bespoke point-to-point tool connectors with standardized **Model Context Protocol (MCP)** servers and integrated robust harness frameworks like Google Antigravity and Claude Code.
-
-Here are the key engineering patterns we discovered.
+I lead the data engineering function for agentic AI projects in an enterprise innovation team at NatWest Group, taking work from proof of concept to production. Our team's coding harness is Kiro CLI. On my own projects I also use Google Antigravity and Claude Code. This post is about the general patterns that matter, not any one system.
 
 ---
 
-## 1. Why Point-to-Point Tools Fail at Scale
+## 1. Why Point-to-Point Tools Break Down
 
-In early agent prototypes, tools are often implemented as ad-hoc Python functions directly bound to an LLM runner. While simple for a demo, this quickly falls apart:
-- **Duplicated Data Access Logic**: Each agent duplicates connection pools, credentials, and query parsing.
-- **Fragile Context Bloat**: Returning uncurated database schemas or raw REST responses eats thousands of input tokens and triggers hallucinated parameters.
-- **Security & Audit Blindspots**: Enterprise audit teams require strict provenance over what data an agent queried, who authorized it, and what parameters were passed.
+Early agent prototypes usually bind ad-hoc Python functions straight to an LLM runner. That is fine for a demo, but it breaks down quickly:
+
+- **Duplicated data access logic**: every agent re-implements connections, credentials and query handling.
+- **Context bloat**: returning raw schemas or full API responses wastes tokens and invites hallucinated parameters.
+- **Audit blind spots**: compliance teams need to know what data an agent touched, on whose authority, and with what parameters.
 
 ```
-[Agent Core] ──(Ad-hoc scripts)──> [Raw DB / API]  ❌ Fragile & Unaudited
+[Agent] ──(ad-hoc scripts)──> [Raw DB / API]            fragile, unaudited
 
-[Agent Core] ──(JSON-RPC / MCP)──> [MCP Server] ──(Pydantic Contracts)──> [Enterprise Systems] ✅ Production
+[Agent] ──(MCP)──> [MCP server] ──(contracts)──> [Enterprise systems]   reusable, auditable
 ```
 
-By decoupling agent reasoning from enterprise data layers using MCP servers, we created clean abstraction barriers.
+---
+
+## 2. Reusable MCP Servers
+
+The Model Context Protocol (MCP) standardises how an agent reaches databases, APIs and files. Packaging data access as an MCP server means downstream agents consume it with no data-access code of their own, which cuts integration effort.
+
+Good MCP tools tend to share a few traits:
+
+1. **Typed, self-documenting schemas**: narrow inputs with clear descriptions, so the model has little room to guess.
+2. **Deterministic work done in code**: aggregations and lookups run as tested functions, not as open-ended model-written queries.
+3. **Validated inputs and outputs**: when an agent sends bad parameters, the server returns a clear validation error the model can correct on its next turn.
 
 ---
 
-## 2. Decoupled Tooling via Reusable MCP Servers
+## 3. Data Contracts, Quality Gates and Audit Trails
 
-MCP (Model Context Protocol) standardizes how LLMs interact with external databases, APIs, and file systems. In our stack:
+Agent inputs need the same discipline as any regulated data feed:
 
-1. **Self-Documenting Schemas**: Tools expose strictly typed JSON schemas with concise descriptions. Tool definitions specify exact bounds, enum options, and validation rules.
-2. **Deterministic Pre-computation**: Instead of letting the LLM compute aggregations or execute open-ended SQL, our MCP servers expose deterministic analytical tools (e.g. `query_counterparty_exposure`, `validate_onboarding_kyc`).
-3. **Pydantic Data Contracts**: Tool inputs and outputs pass through Pydantic V2 models. If an agent supplies invalid parameters, the MCP layer returns deterministic validation errors that guide the LLM to self-correct on the next turn.
-
----
-
-## 3. Sandboxing & The Antigravity Harness
-
-When orchestrating agent loops, you need safety guarantees and deterministic state management. Agentic harnesses like **Google Antigravity** and **Claude Code** provide:
-
-- **Isolated Execution Sandboxes**: Running tool actions in isolated environments with explicit file system and network guardrails.
-- **Session Hydration & Response Caching**: Warmed connection pools and persistent session states cut tool latency by over 65%.
-- **Resilient Microservices with Jittered Back-off**: When an agent writes back to Snowflake or PostgreSQL, transient lock contention is handled transparently using exponential back-off with full jitter.
+- **Schema validation** (for example with Pydantic) at the boundary, before data reaches an agent or a warehouse.
+- **Quality gates** that stop bad data early instead of letting it flow downstream.
+- **Audit trails** recording what each agent saw and decided, so decisions can be reviewed later.
 
 ---
 
-## 4. Observability: Splunk Dashboards & LLM-as-a-Judge
+## 4. Resilient Writers
 
-You cannot manage what you do not measure. In production banking environments, we feed every agent interaction into Splunk:
+Agents write results back to databases such as Snowflake and PostgreSQL, often concurrently. Retrying immediately makes contention worse. A generic pattern is exponential back-off with jitter, so retries spread out instead of arriving together:
 
-- **Tool-Call Latency**: Breakdown of LLM inference time vs. MCP tool response time.
-- **Decision Quality & Drift**: Running automated LLM-as-a-judge pipelines that sample 10% of completed cases and rate reasoning coherence, regulatory compliance, and grounding fidelity.
-- **Token Efficiency**: Tracking token consumption per solved ticket to optimize prompt caching and reduce inference overhead.
+```python
+import random
+import time
 
-The result? Our agentic investigation workflows cut manual commercial case-handling time by **over 90%**, supporting quality checks on 300+ applications every single day.
+def with_jitter(fn, max_retries=5, base=1.0, cap=30.0):
+    for attempt in range(max_retries):
+        try:
+            return fn()
+        except TransientError:
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(random.uniform(0, min(cap, base * 2 ** attempt)))
+```
+
+Pairing a writer like this with Snowflake CI/CD and automated tests for the data loaders took deployment issues to near zero for us.
 
 ---
 
-*Interested in exploring agentic architectures, MCP servers, or autonomous agent evaluation? Check out my open-source projects on [GitHub](https://github.com/cloudcruncher) or reach out via [LinkedIn](https://linkedin.com/in/robinsaini).*
+## 5. Observability
+
+You cannot manage what you do not measure. We built Splunk observability around agent execution, tool-call performance and decision quality, and used LLM-as-a-judge evaluation to monitor output quality over time. Retrieval pipelines get the same treatment: when answers are poor, the fix is usually in the data, so debug retrieval at the source.
+
+The outcome in our case was a cut of over 90% in manual case-handling time, and an AI-assisted due-diligence capability supporting quality checks on 300+ commercial onboarding applications a day.
+
+---
+
+*Interested in agent architectures or MCP servers? See my open-source work on [GitHub](https://github.com/cloudcruncher) or get in touch via [LinkedIn](https://linkedin.com/in/robinsaini).*

@@ -29,7 +29,7 @@ export const projects: Project[] = [
     repo: 'cloudcruncher/open-lakehouse',
     category: 'Lakehouse & Data',
     description: 'Production-shaped open lakehouse: Apache Iceberg + Polaris Catalog + Trino + Open Policy Agent (OPA), CDC streaming, and a governed AI assistant. Self-healing, chaos-tested, SLO-driven.',
-    architecture: 'Kafka event streaming with tenant-isolated ACLs, Apache Iceberg / Delta Lake storage format, Trino query engine, and automated data quality gates.',
+    architecture: 'Debezium CDC into Kafka with tenant-isolated ACLs, Apache Iceberg tables behind a Polaris REST catalog, Trino with OPA row filters and masks, and chaos-tested self-healing.',
     tags: ['Apache Iceberg', 'Trino', 'Kafka', 'PySpark', 'Polaris', 'Data Contracts'],
     githubUrl: 'https://github.com/cloudcruncher/open-lakehouse',
     featured: true,
@@ -40,8 +40,8 @@ export const projects: Project[] = [
     repo: 'cloudcruncher/lakehouse-markets-data',
     category: 'Lakehouse & Data',
     description: 'Markets & Payments Intelligence: Data engineering tenant of open-lakehouse handling Coinbase crypto streams, card authorisations, FX rates, sanctions screening; Kappa architecture and medallion data products.',
-    architecture: 'Airflow partition sensors, PySpark market data transforms, Snowflake micro-partition clustering, and automated backfills.',
-    tags: ['Snowflake', 'Airflow', 'PySpark', 'Market Data', 'Financial Engineering', 'Kafka'],
+    architecture: 'Dagster assets run PySpark transforms through bronze, silver and gold medallion layers, with Kafka as the replayable source of truth.',
+    tags: ['Dagster', 'PySpark', 'Kafka', 'Market Data', 'Financial Engineering', 'Medallion'],
     githubUrl: 'https://github.com/cloudcruncher/lakehouse-markets-data',
     featured: true,
   },
@@ -71,10 +71,10 @@ export const enterpriseCaseStudies: CaseStudy[] = [
     highlights: [
       'Packaged reusable MCP servers consumed by downstream agents with zero ad-hoc data access code',
       'Designed Pydantic schema validation gates and audit trails meeting UK banking and financial-crime standards',
-      'Engineered Splunk observability pipelines tracking tool-call latency, token efficiency, and LLM-as-a-judge decision drift',
-      'Reduced database lock contention to near zero via jittered exponential back-off microservice writers',
+      'Engineered Splunk observability pipelines covering agent execution, tool-call performance, and decision quality',
+      'Built a resilient Snowflake writer microservice with jittered back-off, reducing deployment issues to near zero',
     ],
-    techStack: ['Python', 'MCP Protocol', 'Google Antigravity', 'Claude Code', 'Snowflake', 'Airflow', 'PostgreSQL', 'Splunk', 'Pydantic'],
+    techStack: ['Python', 'MCP Protocol', 'Kiro CLI', 'Snowflake', 'Airflow', 'PostgreSQL', 'Splunk', 'Pydantic'],
   },
   {
     id: 'snowflake-esg-lakehouse',
@@ -86,7 +86,7 @@ export const enterpriseCaseStudies: CaseStudy[] = [
     description: 'Led the engineering team delivering NatWest’s enterprise ESG and climate risk data platform on Snowflake, processing 1TB+ of refreshed data monthly across 50+ internal and external vendor feeds.',
     highlights: [
       'Redesigned batch processing with PySpark and dbt incremental models, slashing daily execution by 40%',
-      'Optimised Snowflake query partition pruning by 85% through clustering keys and materialised views',
+      'Tuned Snowflake performance with clustering keys and materialised views',
       'Implemented automated CI testing for data loaders and perimeter quality gates to catch schema drift before warehouse landing',
       'Collaborated closely with Climate Risk Data Scientists and regulatory compliance teams',
     ],
@@ -103,8 +103,8 @@ export const enterpriseCaseStudies: CaseStudy[] = [
     highlights: [
       'Architected S3, AWS Glue, EMR, and Athena pipelines serving analytical and data science workloads',
       'Tuned high-volume SQL and batch applications, dramatically reducing CPU consumption on core operational datastores',
-      'Implemented GDPR-compliant data governance frameworks and automated reconciliation gates',
+      'Implemented a GDPR-compliant data governance framework',
     ],
-    techStack: ['AWS (S3, Glue, EMR, Athena)', 'Teradata', 'IBM DB2', 'Python', 'SQL', 'Shell Scripting'],
+    techStack: ['AWS (S3, Glue, EMR, Athena)', 'Teradata', 'IBM DB2', 'Python', 'SQL'],
   },
 ];
