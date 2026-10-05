@@ -8,7 +8,7 @@ readTime: "7 min read"
 featured: false
 ---
 
-Living and working in London as an engineer means having one of the world's most dynamic culinary and craft landscapes right outside your door. Beyond distributed data systems and agentic harnesses, I find immense joy in the shared physics of extraction and fermentation: coffee brewing, craft beer, and naturally leavened sourdough bread.
+Living and working in London as an engineer means having one of the world's most dynamic culinary and craft landscapes right outside your door. Beyond data platforms and AI agents, I find immense joy in the shared physics of extraction and fermentation: coffee brewing, craft beer, and naturally leavened sourdough bread.
 
 Here is my personal field guide to exploring London through taste, craft, and neighborhood walks.
 

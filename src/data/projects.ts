@@ -52,7 +52,7 @@ export interface CaseStudy {
   title: string;
   company: string;
   period: string;
-  category: 'Enterprise Agentic AI' | 'Lakehouse Modernisation' | 'Cloud Data Lake';
+  category: 'Enterprise Agentic AI' | 'Lakehouse Modernisation' | 'Retail Analytics';
   impact: string;
   description: string;
   highlights: string[];
@@ -62,17 +62,18 @@ export interface CaseStudy {
 export const enterpriseCaseStudies: CaseStudy[] = [
   {
     id: 'agentic-investigation-natwest',
-    title: 'Enterprise Agentic Investigation & Decision-Support System',
+    title: 'Data Foundation for Enterprise Agentic Investigation & Decision Support',
     company: 'NatWest Group (Enterprise Innovation)',
     period: 'Aug 2025 – Present',
     category: 'Enterprise Agentic AI',
     impact: '>90% reduction in manual case-handling time across 300+ daily onboarding applications',
-    description: 'Architected and delivered the data engineering foundation for enterprise multi-agent workflows. Transitioned proof-of-concept AI agents to production with decoupled Model Context Protocol (MCP) servers, Pydantic data contracts, and jittered database writers.',
+    description: 'The data engineering side of enterprise agentic workflows: connecting agents to data sources, giving them trustworthy datasets and context, and helping take proof-of-concept agents to production. Delivered through reusable Model Context Protocol (MCP) servers, Pydantic data contracts, quality gates and a resilient Snowflake writer.',
     highlights: [
       'Packaged reusable MCP servers consumed by downstream agents with zero ad-hoc data access code',
+      'Complaints investigation delivered in June, helping reimagine the complaints process with AI (see NatWest’s “Transforming Complaints with GenAI”)',
       'Designed Pydantic schema validation gates and audit trails meeting UK banking and financial-crime standards',
       'Engineered Splunk observability pipelines covering agent execution, tool-call performance, and decision quality',
-      'Built a resilient Snowflake writer microservice with jittered back-off, reducing deployment issues to near zero',
+      'Built a resilient Snowflake writer for the agent evaluation service: jittered, batched writes so the warehouse is not woken for every insert, reducing deployment issues to near zero',
     ],
     techStack: ['Python', 'MCP Protocol', 'Kiro CLI', 'Snowflake', 'Airflow', 'PostgreSQL', 'Splunk', 'Pydantic'],
   },
@@ -83,28 +84,30 @@ export const enterpriseCaseStudies: CaseStudy[] = [
     period: 'Jul 2023 – Aug 2025',
     category: 'Lakehouse Modernisation',
     impact: '40% faster batch processing and 30% reduction in data quality incidents',
-    description: 'Led the engineering team delivering NatWest’s enterprise ESG and climate risk data platform on Snowflake, processing 1TB+ of refreshed data monthly across 50+ internal and external vendor feeds.',
+    description: 'Led the engineering team delivering NatWest’s ESG and climate data platform on Snowflake, processing 1TB+ of data monthly from 50+ internal and external sources. Built with Snowflake, Airflow and dbt in a layered, medallion-style design, governed by a Data Guardian framework (contracts and data quality), enriched with many third-party datasets, and published as emissions data products on a data marketplace.',
     highlights: [
-      'Redesigned batch processing with PySpark and dbt incremental models, slashing daily execution by 40%',
-      'Tuned Snowflake performance with clustering keys and materialised views',
-      'Implemented automated CI testing for data loaders and perimeter quality gates to catch schema drift before warehouse landing',
-      'Collaborated closely with Climate Risk Data Scientists and regulatory compliance teams',
+      'Layered, medallion-style Snowflake design, orchestrated with Airflow and transformed with dbt',
+      'Data Guardian framework: data contracts and data-quality checks so each source is trusted before it is used',
+      'Ingested many third-party data sources to enrich the ESG lakehouse alongside internal data',
+      'Published emissions data products to a data marketplace for downstream consumers',
+      'Cut batch processing by 40% (PySpark and dbt optimisation) and data quality incidents by 30% (automated monitoring and quality controls)',
+      'Worked with Data Architects and Data Scientists to deliver production climate risk models; set team engineering standards and mentored junior engineers',
     ],
-    techStack: ['Snowflake', 'PySpark', 'dbt Core', 'Apache Airflow', 'GitLab CI/CD', 'Docker', 'SQL'],
+    techStack: ['Snowflake', 'Airflow', 'dbt', 'PySpark', 'Python', 'SQL', 'GitLab CI/CD', 'Docker'],
   },
   {
-    id: 'aws-ml-data-lake-lloyds',
-    title: 'Enterprise ML-Ready Data Lake & Warehouse Modernisation',
-    company: 'Lloyds Banking Group (TCS)',
-    period: 'Jun 2019 – Sep 2021',
-    category: 'Cloud Data Lake',
-    impact: '50% lower ETL load times and 45% fewer data errors',
-    description: 'Designed and deployed an ML-ready data lake on AWS powering Lloyds’ enterprise data science programmes. Led a 5-member team managing Teradata, IBM DB2 operational stores, and cloud migrations.',
+    id: 'retail-analytics-natwest',
+    title: 'Retail Data Marts for Decision-Making',
+    company: 'NatWest Group (Retail Data & Analytics Decisioning)',
+    period: 'Sep 2021 – Jul 2023',
+    category: 'Retail Analytics',
+    impact: 'Trusted customer, mortgage and deposit data for retail leadership decisions',
+    description: 'Built enterprise batch pipelines and Snowflake data models for the Retail Data & Analytics Decisioning team. Customer, mortgage and deposit data marts gave the business a dependable foundation for better decisions by retail leadership.',
     highlights: [
-      'Architected S3, AWS Glue, EMR, and Athena pipelines serving analytical and data science workloads',
-      'Tuned high-volume SQL and batch applications, dramatically reducing CPU consumption on core operational datastores',
-      'Implemented a GDPR-compliant data governance framework',
+      'Built customer, mortgage and deposit data marts for retail analytics and decisioning',
+      'Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets',
+      'Designed Snowflake data models for high-volume analytical workloads, tuned with clustering, partitioning and materialised views',
     ],
-    techStack: ['AWS (S3, Glue, EMR, Athena)', 'Teradata', 'IBM DB2', 'Python', 'SQL'],
+    techStack: ['Snowflake', 'PySpark', 'Python', 'SQL', 'StreamSets'],
   },
 ];

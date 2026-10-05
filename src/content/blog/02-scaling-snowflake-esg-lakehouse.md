@@ -1,65 +1,59 @@
 ---
-title: "Running a 1TB+/Month ESG Data Platform on Snowflake: What a Data Engineering Team Actually Does"
-description: "Lessons from leading a team delivering a 50+ source climate and ESG platform on Snowflake: data contracts, incremental modelling, clustering and resilient ingestion."
+title: "Building a 1TB+/Month ESG Data Platform on Snowflake: Medallion Layers, Data Guardian and Data Products"
+description: "How a data engineering team built NatWest's 50+ source ESG and climate platform on Snowflake, Airflow and dbt, with contracts and data quality built in, third-party enrichment, and emissions products published to a data marketplace."
 pubDate: 2026-08-10
 category: "Data Engineering"
-tags: ["Snowflake", "PySpark", "dbt", "Data Contracts", "Lakehouse", "Airflow"]
-readTime: "5 min read"
+tags: ["Snowflake", "dbt", "Airflow", "Data Quality", "Data Contracts", "Data Products"]
+readTime: "6 min read"
 featured: true
 ---
 
-ESG analytics is a hard data problem. The data comes from 50+ different providers (emissions reports, governance disclosures, third-party ratings), in formats that change without warning.
+ESG analytics is a hard data problem. The data comes from many different providers (emissions reports, governance disclosures, third-party ratings), in formats that change without warning, and it feeds analytics and regulatory reporting where trust matters.
 
-At NatWest Group I led the team of data engineers delivering the enterprise ESG data platform on Snowflake, processing 1TB+ of climate and ESG data a month for analytics and regulatory reporting. Optimising PySpark and dbt batch processing cut batch times by 40%, and automated monitoring and quality controls reduced data quality incidents by 30%.
+At NatWest Group I led the team of data engineers delivering the ESG and climate data platform on Snowflake: 50+ internal and external sources and 1TB+ of data processed a month. Optimising PySpark and dbt batch processing cut batch times by 40%, and automated monitoring and quality controls reduced data quality incidents by 30%.
 
-This post covers the general practices behind that, which apply to most platforms of this kind.
-
----
-
-## Where Batch Platforms Usually Hurt
-
-1. **Schema drift**: a vendor changes a format and a downstream job fails mid-batch.
-2. **Poorly matched storage layout**: queries that filter on a few common columns still scan far more data than they need.
-3. **Recomputing history**: models that rebuild everything on each run when only new data changed.
+This post covers the approach, which applies to most platforms like this.
 
 ---
 
-## 1. Data Contracts at the Boundary
+## 1. Layered, medallion-style design
 
-Push quality to the edge. Validate every incoming batch against a typed schema (we used Pydantic) before it lands in the warehouse. Records that fail go to a quarantine area with error details, so one bad file does not stall the pipeline, and data owners find out quickly. Automated monitoring on top of this is what brought incidents down.
+The platform is built on Snowflake with **Airflow** for orchestration and **dbt** for transformation, organised in layers similar to a medallion architecture: raw data lands as received, is then cleaned and conformed, and is finally modelled into curated datasets for consumers. Keeping the layers separate means a problem in one source stays contained and can be traced.
 
----
+## 2. A Data Guardian framework
 
-## 2. Efficient Transformation: PySpark and dbt
+Trust is the product, so we built a **Data Guardian** framework around the pipelines. Its job is to make sure data is only used once it has earned it:
 
-Typical wins on a platform like this:
+- **Data contracts** that describe what each source should look like.
+- **Data-quality checks** applied as data moves between layers.
+- **Automated monitoring** so problems are found by the platform before they reach consumers.
 
-- **Incremental models**: process only new and changed records, with clear watermarks, instead of rebuilding history.
-- **Right-sized Spark work**: tune the heavy PySpark steps and avoid unnecessary shuffles.
-- **Tested macros and models**: automated CI testing for loaders and models, so breaking changes are caught before merge.
+This is what brought data quality incidents down by 30%.
 
----
+## 3. Enriching with third-party data
 
-## 3. Snowflake Layout and Tuning
+The value of an ESG lakehouse comes from combining sources. Alongside internal data we ingested many third-party datasets to enrich it. Every new source went through the same contracts and quality checks, so adding a provider was a repeatable process, not a one-off project.
 
-Match the physical layout to how the data is queried. In Snowflake that means choosing clustering keys for your main query patterns, using materialised views where they pay off, and checking query profiles for scans that prune poorly. For example:
+## 4. Publishing data products
 
-```sql
--- Generic pattern: cluster on the columns most queries filter by
-ALTER TABLE my_fact_table CLUSTER BY (reporting_period, entity_id);
-```
+The end goal was not tables but **products**. The platform publishes emissions data products to a data marketplace, so downstream teams can discover and use well-defined, quality-checked datasets without needing to understand the pipelines behind them.
 
----
+## 5. Keeping batches fast
 
-## 4. Resilient Ingestion
-
-With dozens of Airflow DAGs writing to one warehouse, occasional contention and rate limits are normal. Replace fixed retries with exponential back-off and jitter so retries spread out instead of colliding. Combined with Snowflake CI/CD, this made our loader deployments far more dependable.
+Typical wins on a platform like this are incremental dbt models that process only new and changed data, tuning the heavy PySpark steps, and checking Snowflake query behaviour. Together they gave the 40% reduction in batch times.
 
 ---
 
-## Key Takeaways
+## The same idea in retail analytics
 
-1. **Validate at the boundary**: contracts before the warehouse.
-2. **Model incrementally**: do not recompute what has not changed.
-3. **Lay data out for its main consumers**: clustering and views should follow query patterns.
-4. **Treat pipelines as software**: CI/CD, automated tests and sensible retries turn brittle batch jobs into dependable platforms.
+Earlier at NatWest, in the Retail Data & Analytics Decisioning team, the job was similar in spirit: building **customer, mortgage and deposit data marts** that give retail leadership trusted data for better decisions. Different domain, same principle. A good data mart is a tool that lets the business decide with confidence.
+
+---
+
+## Key takeaways
+
+1. **Layer your data**, so problems stay contained and traceable.
+2. **Build quality in**: contracts and checks as a framework, not an afterthought.
+3. **Make new sources repeatable**, so enrichment scales.
+4. **Ship data products**, not just tables.
+5. **Design for the decision**: the best platforms are judged by the choices they enable.

@@ -5,7 +5,7 @@ pubDate: 2026-10-05
 category: "Agentic AI"
 tags: ["Agentic AI", "Local LLM", "Privacy", "Evaluation", "MCP", "Python"]
 readTime: "5 min read"
-featured: false
+featured: true
 ---
 
 [fiduciary-agent](https://github.com/cloudcruncher/fiduciary-agent) is a personal open-source project, not a NatWest system. It is a local-first personal finance harness for Apple Silicon that reads UK bank data (via Open Banking providers such as TrueLayer, plus Wise), and answers questions using a local model. It is built on Python managed with `uv`, with FastAPI and Pydantic, and its README reports 136 passing tests. Here is what building it taught me about reliable AI systems.

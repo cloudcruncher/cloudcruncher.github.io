@@ -10,7 +10,7 @@ featured: true
 
 There is a direct cognitive parallel between tuning distributed PySpark partitions and dialing in a high-elevation washed Ethiopian heirloom on a V60. Both involve fluid dynamics, surface area optimization, parameter constraints, and repeatable feedback loops.
 
-If you know me outside of data architecture and agentic harnesses, you know I am obsessed with specialty coffee. Here is how I approach the science of brewing pour-overs at home.
+If you know me outside of data engineering and AI agents, you know I am obsessed with specialty coffee. Here is how I approach the science of brewing pour-overs at home.
 
 ---
 

@@ -11,7 +11,7 @@ const categories = ['All', ...new Set(allPosts.map((p) => p.data.category))];
 
 <BaseLayout 
   title="Blog & Field Notes | Robin Saini"
-  description="Technical writings and field notes by Robin Saini on data engineering, Snowflake lakehouses, autonomous agent harnesses, and specialty coffee brewing science."
+  description="Technical writings and field notes by Robin Saini on data engineering, Snowflake platforms, data for AI agents, and specialty coffee brewing science."
 >
   <div class="blog-header-section">
     <div class="container">
@@ -23,7 +23,7 @@ const categories = ['All', ...new Set(allPosts.map((p) => p.data.category))];
         Engineering &amp; <span class="text-gradient-coffee">Extraction Notes</span>
       </h1>
       <p class="page-subtitle">
-        Long-form architectural write-ups on Snowflake, PySpark, Model Context Protocol (MCP) servers, agentic harnesses, and the physics of pour-over coffee.
+        Long-form architectural write-ups on Snowflake, PySpark, Model Context Protocol (MCP) servers, data for AI agents, and the physics of pour-over coffee.
       </p>
 
       <!-- Category Filter Tabs -->
@@ -38,14 +38,6 @@ const categories = ['All', ...new Set(allPosts.map((p) => p.data.category))];
   </div>
 
   <div class="container blog-content-section">
-    <!-- Writing Guide Callout -->
-    <div class="card markdown-tip-card no-print">
-      <div class="tip-icon">✍️</div>
-      <div class="tip-text">
-        <strong>How to write a new blog post:</strong> Simply create a new <code>.md</code> file in <code>src/content/blog/</code> with frontmatter (title, date, tags, category, readTime). Astro handles static generation, Markdown parsing, and syntax highlighting automatically!
-      </div>
-    </div>
-
     <!-- Posts Grid -->
     <div class="blog-grid" id="blog-grid">
       {sortedPosts.map((post) => (

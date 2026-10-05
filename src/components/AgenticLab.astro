@@ -5,106 +5,109 @@
 <section id="agentic" class="agentic-section">
   <div class="container">
     <div class="section-badge-row">
-      <span class="badge badge-ai">🤖 Autonomous Agent Engineering</span>
-      <span class="badge">Kiro CLI, Antigravity &amp; Claude Code Harnesses</span>
+      <span class="badge badge-ai">🤖 AI Data Engineering</span>
+      <span class="badge">MCP • Data Contracts • Context</span>
     </div>
 
     <div class="agentic-header">
       <h2 class="heading-lg agentic-title">
-        The Agentic Lab: <span class="text-gradient-ai">Harnesses, MCP Servers &amp; Autonomous Loops</span>
+        Working with AI Agents: <span class="text-gradient-ai">Trustworthy Data &amp; Context</span>
       </h2>
       <p class="agentic-desc">
-        AI coding assistants and autonomous multi-agent systems are not just prompt wrappers—they are distributed execution engines. At NatWest, our team's harness is <strong>Kiro CLI</strong>. In my own open-source systems, I design and run agents using <strong>Google Antigravity</strong> and <strong>Claude Code</strong> harnesses, backed by production-grade <strong>Model Context Protocol (MCP)</strong> servers.
+        Agents are only as good as the data and context behind them. At NatWest I'm the data engineer on agentic projects: connecting agents to the right data sources, giving them datasets they can trust, and building the context that leads to good outcomes.
       </p>
     </div>
 
-    <!-- Agentic Architecture Diagram -->
+    <!-- Data-to-agent flow -->
     <div class="card arch-diagram-card">
-      <div class="arch-diagram-title font-mono">AGENTIC SYSTEM TOPOLOGY</div>
+      <div class="arch-diagram-title font-mono">FROM DATA SOURCES TO AGENT OUTCOMES</div>
       <div class="diagram-flow">
         <div class="diagram-step">
-          <div class="step-badge badge-ai">1. Prompt &amp; Task</div>
+          <div class="step-badge badge-data">1. Sources</div>
           <div class="step-card">
-            <div class="step-name">User / Event Trigger</div>
-            <div class="step-sub">Complex business case, data anomaly, or batch job</div>
+            <div class="step-name">Enterprise data</div>
+            <div class="step-sub">Snowflake, PostgreSQL and internal services</div>
           </div>
         </div>
 
         <div class="diagram-arrow">➔</div>
 
         <div class="diagram-step">
-          <div class="step-badge badge-ai">2. Harness Loop</div>
+          <div class="step-badge badge-data">2. Pipelines</div>
+          <div class="step-card">
+            <div class="step-name">Contracts &amp; quality gates</div>
+            <div class="step-sub">Airflow workflows, Pydantic schema validation, audit trails</div>
+          </div>
+        </div>
+
+        <div class="diagram-arrow">➔</div>
+
+        <div class="diagram-step">
+          <div class="step-badge badge-coffee">3. Access</div>
+          <div class="step-card">
+            <div class="step-name">Reusable MCP servers</div>
+            <div class="step-sub">Agents reach data through tools, with no data-access code of their own</div>
+          </div>
+        </div>
+
+        <div class="diagram-arrow">➔</div>
+
+        <div class="diagram-step">
+          <div class="step-badge badge-data">4. Context</div>
+          <div class="step-card">
+            <div class="step-name">Retrieval &amp; context pipelines</div>
+            <div class="step-sub">Relevant, trustworthy context for each task</div>
+          </div>
+        </div>
+
+        <div class="diagram-arrow">➔</div>
+
+        <div class="diagram-step">
+          <div class="step-badge badge-ai">5. Outcomes</div>
           <div class="step-card highlight-harness">
-            <div class="step-name">Agent / Harness</div>
-            <div class="step-sub">Autonomous reasoning loop with tool calls (built and developed with Kiro CLI)</div>
-          </div>
-        </div>
-
-        <div class="diagram-arrow">➔</div>
-
-        <div class="diagram-step">
-          <div class="step-badge badge-coffee">3. Protocol Layer</div>
-          <div class="step-card">
-            <div class="step-name">Custom MCP Servers</div>
-            <div class="step-sub">Standardized JSON-RPC tools with Pydantic contracts</div>
-          </div>
-        </div>
-
-        <div class="diagram-arrow">➔</div>
-
-        <div class="diagram-step">
-          <div class="step-badge badge-data">4. Data Lakehouse</div>
-          <div class="step-card">
-            <div class="step-name">Snowflake / PostgreSQL</div>
-            <div class="step-sub">Jittered back-off, near-zero deployment issues</div>
-          </div>
-        </div>
-
-        <div class="diagram-arrow">➔</div>
-
-        <div class="diagram-step">
-          <div class="step-badge badge">5. Observability (all steps)</div>
-          <div class="step-card">
-            <div class="step-name">Splunk &amp; LLM Judge</div>
-            <div class="step-sub">Tool latency telemetry &amp; decision quality audits</div>
+            <div class="step-name">Agent workflows</div>
+            <div class="step-sub">Investigation and decision support, with over 90% less manual case-handling time</div>
           </div>
         </div>
       </div>
+      <p class="agentic-desc" style="margin-top: 1rem;">
+        Observability runs across all of it: Splunk dashboards for agent execution, tool-call performance and decision quality.
+      </p>
     </div>
 
-    <!-- Agentic Capabilities Grid -->
+    <!-- Three-part grounding -->
     <div class="agentic-grid">
       <div class="card capability-card">
         <div class="cap-header">
-          <div class="cap-icon">⚙️</div>
-          <h3 class="heading-sm cap-title">Custom Enterprise MCP Servers</h3>
+          <div class="cap-icon">🏦</div>
+          <h3 class="heading-sm cap-title">At NatWest: the data layer for agents</h3>
         </div>
         <p class="cap-text">
-          Designed and packaged reusable Model Context Protocol servers consumed across multiple downstream agents without repetitive data-access code. Exposing deterministic Python and SQL tools with strict Pydantic schemas.
+          Data contracts, schema validation and quality gates so agent inputs meet banking and financial-crime standards. Reusable MCP servers consumed by several agents. Retrieval and context pipelines debugged at the source. A resilient Snowflake writer with jittered back-off, and Snowflake CI/CD with automated tests.
         </p>
-        <div class="cap-pill font-mono">JSON-RPC • Schema Contracts • Reusable Across Agents</div>
+        <div class="cap-pill font-mono">Data Contracts • Quality Gates • MCP Servers • Splunk</div>
       </div>
 
       <div class="card capability-card">
         <div class="cap-header">
-          <div class="cap-icon">🛡️</div>
-          <h3 class="heading-sm cap-title">Kiro CLI, Antigravity &amp; Claude Code Workflows</h3>
+          <div class="cap-icon">🛠️</div>
+          <h3 class="heading-sm cap-title">How I build: AI coding harnesses</h3>
         </div>
         <p class="cap-text">
-          Building end-to-end autonomous loops. Using isolated workspaces, subagent delegation, deterministic validation tools, and reactive wakeups to ensure agents solve real engineering workflows reliably.
+          I use AI coding harnesses to build faster: Kiro CLI at work, and Claude Code and Google Antigravity on my own projects. I use them to write and test pipelines, MCP servers and tests. They are tools I build with, not the systems I deliver.
         </p>
-        <div class="cap-pill font-mono">Subagent Tiering • Context Economy • Sandbox Isolation</div>
+        <div class="cap-pill font-mono">Kiro CLI • Claude Code • Google Antigravity</div>
       </div>
 
       <div class="card capability-card">
         <div class="cap-header">
-          <div class="cap-icon">📊</div>
-          <h3 class="heading-sm cap-title">Enterprise Observability &amp; Safety</h3>
+          <div class="cap-icon">🧪</div>
+          <h3 class="heading-sm cap-title">Personal projects: other use cases</h3>
         </div>
         <p class="cap-text">
-          Telemetry integrated into Splunk for agent execution trace, tool-call performance, and decision quality. Employing LLM-as-a-judge pipelines to continually evaluate grounding and compliance against UK banking standards.
+          Different problems, all public on GitHub: a governed lakehouse that feeds an assistant on live customer calls (<a href="https://github.com/cloudcruncher/open-lakehouse" target="_blank" rel="noopener noreferrer">open-lakehouse</a>), a local-first personal finance agent (<a href="https://github.com/cloudcruncher/fiduciary-agent" target="_blank" rel="noopener noreferrer">fiduciary-agent</a>), and markets and payments pipelines (<a href="https://github.com/cloudcruncher/lakehouse-markets-data" target="_blank" rel="noopener noreferrer">lakehouse-markets-data</a>).
         </p>
-        <div class="cap-pill font-mono">Splunk Dashboards • LLM-as-a-Judge • 90% Manual Time Saved</div>
+        <div class="cap-pill font-mono">Open Source • github.com/cloudcruncher</div>
       </div>
     </div>
   </div>

@@ -15,59 +15,14 @@ const featuredProjects = projects.filter(p => p.featured);
 ---
 
 <BaseLayout 
-  title="Robin Saini | Lead Data Engineer & Agentic Systems Architect"
-  description="Personal portfolio of Robin Saini: Lead / Senior Data Engineer delivering 1TB+/mo Snowflake lakehouses, enterprise agentic AI harnesses (Kiro CLI, Antigravity & Claude Code), and dialing in precision pour-overs in London."
+  title="Robin Saini | Lead Data Engineer | AI Data Engineering"
+  description="Personal portfolio of Robin Saini: Lead / Senior Data Engineer delivering 1TB+/mo Snowflake platforms, trustworthy data and MCP servers for enterprise AI agents, and dialing in precision pour-overs in London."
 >
   <!-- Hero Section -->
   <Hero />
 
-  <!-- About Pillars Summary -->
-  <section class="pillars-section">
-    <div class="container">
-      <div class="section-badge-row">
-        <span class="badge badge-data">Four Core Dimensions</span>
-        <span class="badge">Who I Am &amp; What I Build</span>
-      </div>
-
-      <div class="pillars-grid">
-        <div class="card pillar-box">
-          <div class="pillar-box-icon text-gradient-data">⚡</div>
-          <h3 class="heading-sm pillar-box-title">Modern Data Lakehouses</h3>
-          <p class="pillar-box-desc">
-            15+ years engineering scalable data platforms. Led NatWest's 50+ source Snowflake ESG platform (1TB+/mo), cut PySpark/dbt batch times by 40%, and built ML-ready data lakes at Lloyds.
-          </p>
-          <a href={url('/cv')} class="pillar-link font-mono">View Experience ➔</a>
-        </div>
-
-        <div class="card pillar-box">
-          <div class="pillar-box-icon text-gradient-ai">🤖</div>
-          <h3 class="heading-sm pillar-box-title">Enterprise Agentic AI</h3>
-          <p class="pillar-box-desc">
-            Architecting production agent systems with Kiro CLI at NatWest, plus Google Antigravity &amp; Claude Code on my own projects. Packaged reusable MCP servers, Pydantic contracts, and cut case-handling time by &gt;90%.
-          </p>
-          <a href="#agentic" class="pillar-link font-mono">Explore Agentic Lab ➔</a>
-        </div>
-
-        <div class="card pillar-box">
-          <div class="pillar-box-icon text-gradient-coffee">☕</div>
-          <h3 class="heading-sm pillar-box-title">Specialty Coffee Science</h3>
-          <p class="pillar-box-desc">
-            Morning flat whites on the Sage Barista Pro &amp; DF54 flat burrs, Lance Hedrick pour-overs on the 1Zpresso ZP6, and strictly London-roasted beans.
-          </p>
-          <a href="#coffee" class="pillar-link font-mono">Brewing Guide ➔</a>
-        </div>
-
-        <div class="card pillar-box">
-          <div class="pillar-box-icon">🍺</div>
-          <h3 class="heading-sm pillar-box-title">Beer, Sourdough &amp; London</h3>
-          <p class="pillar-box-desc">
-            Pinter home beer brewing, stamping the London Beer Passport at historic pubs &amp; microbreweries, and hunting down the city's finest sourdough loaves.
-          </p>
-          <a href="#london" class="pillar-link font-mono">Discover Craft ➔</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Agentic Lab Section -->
+  <AgenticLab />
 
   <!-- Featured GitHub Projects -->
   <section id="projects" class="featured-projects-section">
@@ -82,7 +37,7 @@ const featuredProjects = projects.filter(p => p.featured);
             Featured <span class="text-gradient-ai">GitHub Projects</span>
           </h2>
           <p class="section-subtitle">
-            Autonomous agent harnesses, streaming lakehouses, and deterministic data platforms I am actively building.
+            Personal projects on GitHub, each a different use case: governed data for AI assistants, a local-first finance agent, and markets data pipelines.
           </p>
         </div>
         <a href={url('/projects')} class="btn btn-outline all-projects-btn">
@@ -137,8 +92,7 @@ const featuredProjects = projects.filter(p => p.featured);
             <span class="skill-pill">Apache Iceberg</span>
             <span class="skill-pill">Teradata</span>
             <span class="skill-pill">IBM DB2</span>
-            <span class="skill-pill">Delta Lake</span>
-            <span class="skill-pill">S3 Lakehouse Design</span>
+            <span class="skill-pill">Data Lake Design</span>
           </div>
         </div>
 
@@ -164,7 +118,7 @@ const featuredProjects = projects.filter(p => p.featured);
             <h3 class="heading-sm skill-cat-title">Cloud &amp; DevOps</h3>
           </div>
           <div class="skill-pills">
-            <span class="skill-pill highlight-pill">AWS (Glue, EMR, Athena, S3)</span>
+            <span class="skill-pill highlight-pill">AWS</span>
             <span class="skill-pill">GitLab CI/CD</span>
             <span class="skill-pill">Docker &amp; Containers</span>
             <span class="skill-pill">Terraform (IaC)</span>
@@ -192,8 +146,53 @@ const featuredProjects = projects.filter(p => p.featured);
     </div>
   </section>
 
-  <!-- Agentic Lab Section -->
-  <AgenticLab />
+  <!-- About Pillars Summary -->
+  <section class="pillars-section">
+    <div class="container">
+      <div class="section-badge-row">
+        <span class="badge badge-data">Four Core Dimensions</span>
+        <span class="badge">Who I Am &amp; What I Build</span>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-data">⚡</div>
+          <h3 class="heading-sm pillar-box-title">Modern Data Lakehouses</h3>
+          <p class="pillar-box-desc">
+            15+ years engineering scalable data platforms. Led NatWest's 50+ source Snowflake ESG platform (1TB+/mo), cut PySpark/dbt batch times by 40%, and worked on Teradata modernisation at Lloyds.
+          </p>
+          <a href={url('/cv')} class="pillar-link font-mono">View Experience ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-ai">🤖</div>
+          <h3 class="heading-sm pillar-box-title">AI Data Engineering</h3>
+          <p class="pillar-box-desc">
+            At NatWest I connect agents to data sources and give them trustworthy datasets and context: reusable MCP servers, Pydantic contracts and quality gates, behind workflows that cut manual case-handling time by over 90%.
+          </p>
+          <a href="#agentic" class="pillar-link font-mono">See how it works ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-coffee">☕</div>
+          <h3 class="heading-sm pillar-box-title">Specialty Coffee Science</h3>
+          <p class="pillar-box-desc">
+            Morning flat whites on the Sage Barista Pro &amp; DF54 flat burrs, Lance Hedrick pour-overs on the 1Zpresso ZP6, and strictly London-roasted beans.
+          </p>
+          <a href="#coffee" class="pillar-link font-mono">Brewing Guide ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon">🍺</div>
+          <h3 class="heading-sm pillar-box-title">Beer, Sourdough &amp; London</h3>
+          <p class="pillar-box-desc">
+            Pinter home beer brewing, stamping the London Beer Passport at historic pubs &amp; microbreweries, and hunting down the city's finest sourdough loaves. Weekends mean Formula 1: cheering on Lewis Hamilton at Ferrari and the engineering behind it.
+          </p>
+          <a href="#london" class="pillar-link font-mono">Discover Craft ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Coffee Corner Section -->
   <CoffeeCorner />
@@ -214,7 +213,7 @@ const featuredProjects = projects.filter(p => p.featured);
             Latest <span class="text-gradient-coffee">Field Notes &amp; Articles</span>
           </h2>
           <p class="section-subtitle">
-            Reflections on lakehouse performance, autonomous harnesses, and pour-over mechanics.
+            Reflections on lakehouse performance, data for AI agents, and pour-over mechanics.
           </p>
         </div>
         <a href={url('/blog')} class="btn btn-outline all-projects-btn">
@@ -255,7 +254,7 @@ const featuredProjects = projects.filter(p => p.featured);
           <span class="badge badge-data">Full Career Profile</span>
           <h2 class="heading-lg cv-teaser-title">Interested in Robin's Complete CV &amp; Track Record?</h2>
           <p class="cv-teaser-desc">
-            Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and systems architecture. Available in interactive web format, downloadable Word (.docx), or printable PDF.
+            Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and AI data engineering. Available in interactive web format, downloadable Word (.docx), or printable PDF.
           </p>
           <div class="cv-teaser-actions">
             <a href={url('/cv')} class="btn btn-primary">
