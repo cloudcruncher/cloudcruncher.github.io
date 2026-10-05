@@ -1,0 +1,419 @@
+---
+// CVSection.astro
+---
+
+<div class="cv-wrapper">
+  <!-- Action Bar (hidden on print) -->
+  <div class="cv-action-bar no-print">
+    <div class="cv-action-info">
+      <span class="badge badge-data">Curriculum Vitae</span>
+      <span class="cv-last-updated font-mono">Updated October 2026</span>
+    </div>
+    <div class="cv-action-buttons">
+      <a href="/Robin_Saini_CV.docx" download class="btn btn-primary btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download Word (.docx)
+      </a>
+      <a href="/Robin_Saini_CV.txt" download class="btn btn-outline btn-sm font-mono">
+        Plain Text (.txt)
+      </a>
+      <button onclick="window.print()" class="btn btn-outline btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect width="12" height="8" x="6" y="14"></rect>
+        </svg>
+        Print / PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Main CV Document Paper -->
+  <article class="cv-document card">
+    <!-- Header -->
+    <header class="cv-header">
+      <h1 class="cv-name">ROBIN SAINI</h1>
+      <div class="cv-headline">
+        Lead / Senior Data Engineer | Python | PySpark | Airflow | AWS | Snowflake | SQL | AI-assisted engineering
+      </div>
+      <div class="cv-contact-row font-mono">
+        <span>📍 London, UK</span>
+        <span>•</span>
+        <a href="mailto:robinsaini156@gmail.com">robinsaini156@gmail.com</a>
+        <span>•</span>
+        <span>+44 7466 201865</span>
+        <span>•</span>
+        <a href="https://linkedin.com/in/robinsaini" target="_blank" rel="noopener noreferrer">linkedin.com/in/robinsaini</a>
+        <span>•</span>
+        <a href="https://github.com/cloudcruncher" target="_blank" rel="noopener noreferrer">github.com/cloudcruncher</a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">PROFESSIONAL SUMMARY</h2>
+      <p class="cv-summary-text">
+        Lead / Senior Data Engineer with <strong>15+ years in software and data engineering</strong> (10+ in data engineering), delivering data engineering modernisation and transformation in regulated UK financial services. Hands-on every day in Python, PySpark, SQL and Airflow, with engineering standards, CI/CD and automated testing built into delivery. Led the team that built a large-scale Snowflake ESG data platform (50+ sources, 1TB+ monthly), cut batch processing times by 40% through PySpark and DBT optimisation, and designed and delivered an ML-ready data lake on AWS at Lloyds Banking Group. Currently lead the data engineering function for all agentic AI projects in an enterprise innovation team, taking work from proof of concept to production, and use AI coding assistants (Claude Code and Kiro CLI) extensively in day-to-day engineering. Defined team engineering standards and mentored junior engineers. A contractor who delivers quickly and works with architects, data scientists, platform teams and business stakeholders.
+      </p>
+    </section>
+
+    <!-- Key Skills -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">KEY SKILLS</h2>
+      <div class="cv-skills-grid">
+        <div class="cv-skill-item">
+          <strong>Data Engineering:</strong> Python (advanced), PySpark / Apache Spark, Apache Airflow, SQL (expert), DBT, StreamSets, batch ELT/ETL at scale
+        </div>
+        <div class="cv-skill-item">
+          <strong>Cloud &amp; Engineering:</strong> AWS (S3, Glue, EMR, Athena, SageMaker; working level), GitLab CI/CD, Docker, Git, automated testing, Terraform (maintaining configuration)
+        </div>
+        <div class="cv-skill-item">
+          <strong>Data Platforms &amp; Modelling:</strong> Snowflake (architecture, clustering, materialised views, tuning), PostgreSQL, Teradata, IBM DB2, data lake design, analytical modelling
+        </div>
+        <div class="cv-skill-item">
+          <strong>Quality &amp; Governance:</strong> Data quality gates, data contracts, Pydantic schema validation, audit trails, GDPR-aligned handling, Splunk dashboards, incident management
+        </div>
+        <div class="cv-skill-item">
+          <strong>AI Data Engineering:</strong> AI-assisted engineering (Claude Code, Antigravity, Kiro CLI); agent tool integration via reusable MCP servers; RAG / retrieval pipelines; OpenAI / Agents SDK, LangGraph; LLM-as-a-judge evaluation &amp; observability
+        </div>
+        <div class="cv-skill-item">
+          <strong>Leadership &amp; Delivery:</strong> Team leadership, mentoring, engineering standards, data product frameworks, stakeholder communication, Agile
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Impact -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">SELECTED IMPACT</h2>
+      <ul class="cv-bullet-list">
+        <li><strong>40% faster batch processing</strong> (PySpark and DBT) and <strong>30% fewer data quality incidents</strong> on enterprise Snowflake platforms.</li>
+        <li><strong>Led the team delivering a 50+ source, 1TB+/month Snowflake ESG and climate data platform</strong> for analytics and regulatory reporting.</li>
+        <li><strong>Designed and delivered an ML-ready data lake on AWS</strong> for Lloyds Banking Group data science programmes; <strong>50% lower ETL load times</strong> and <strong>45% fewer data errors</strong> on the enterprise data warehouse.</li>
+        <li><strong>Agentic AI delivery:</strong> cut manual case-handling time by <strong>over 90%</strong> and supported quality checks on <strong>300+ commercial onboarding applications a day</strong>.</li>
+      </ul>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">PROFESSIONAL EXPERIENCE</h2>
+
+      <!-- NatWest Role 1 -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">NatWest Group, London (Hybrid) — Senior Data Engineer: Agentic Systems &amp; LLM Deployment</div>
+          <div class="cv-job-dates font-mono">Aug 2025 – Present</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Lead the data engineering function for all agentic AI projects in an enterprise innovation team, from proof of concept to production.</li>
+          <li>Introduced Snowflake CI/CD and automated CI testing for data loaders; built a resilient microservice Snowflake writer with jittered back-off, reducing deployment issues to near zero.</li>
+          <li>Orchestrate workflows with Airflow across enterprise microservices, Snowflake, PostgreSQL and PCF; built Splunk observability for agent execution, tool-call performance and decision quality.</li>
+          <li>Designed data contracts, Pydantic schema validation, quality gates and audit trails so agent inputs meet banking and financial-crime compliance standards.</li>
+          <li>Delivered agentic investigation and decision-support workflows that cut manual case-handling time by over 90%, and an AI-assisted due-diligence capability supporting quality checks on 300+ commercial onboarding applications a day.</li>
+          <li>Designed and packaged reusable MCP servers consumed by multiple downstream agents with no data-access code, standardising agent access to enterprise systems and cutting integration effort.</li>
+          <li>Built RAG / retrieval and context pipelines, debugging retrieval quality at source and materially improving relevant-result recall; cut agent data-hydration latency with warmed persistent sessions and response caching.</li>
+          <li>Use AI coding assistants (Claude Code, Google Antigravity, Kiro CLI) extensively in day-to-day engineering work.</li>
+          <li>Work with business stakeholders from discovery onwards; partner with ML Engineering, Data Science and Platform teams; deliver via GitLab CI/CD and Docker.</li>
+        </ul>
+      </div>
+
+      <!-- NatWest Role 2 -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">NatWest Group — Senior Data Engineer: Climate Analytics (ESG Data Platform)</div>
+          <div class="cv-job-dates font-mono">Jul 2023 – Aug 2025</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Led a team of Data Engineers delivering NatWest's ESG data platform on Snowflake: 50+ internal and external sources, 1TB+ of climate and ESG data processed monthly, for analytics and regulatory reporting.</li>
+          <li>Cut batch processing times by 40% through PySpark and DBT optimisation.</li>
+          <li>Reduced data quality incidents by 30% with automated monitoring and quality controls.</li>
+          <li>Worked with Data Architects and Data Scientists to deliver production climate risk models; defined team engineering standards and data product frameworks; mentored junior engineers.</li>
+        </ul>
+      </div>
+
+      <!-- NatWest Role 3 -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">NatWest Group — Senior Data Engineer: Retail Analytics</div>
+          <div class="cv-job-dates font-mono">Sep 2021 – Jul 2023</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets for the Retail Data &amp; Analytics Decisioning team.</li>
+          <li>Designed Snowflake data models for high-volume analytical workloads; tuned with clustering, partitioning and materialised views.</li>
+        </ul>
+      </div>
+
+      <!-- Lloyds Role 1 -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">Tata Consultancy Services (Lloyds Banking Group) — Data Engineer: Enterprise Data Platform</div>
+          <div class="cv-job-dates font-mono">Jun 2019 – Sep 2021</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Designed and delivered an ML-ready data lake on AWS serving Lloyds' data science programmes.</li>
+          <li>Led a 5-member Data Services team running the Lloyds enterprise data platform: Teradata warehouse, reporting applications, data support for analytics teams.</li>
+          <li>Gathered requirements for migrating on-premise applications to the cloud.</li>
+          <li>Supported the IBM DB2 operational data store (source extraction, curation and ingestion); tuned SQL queries and batch applications to cut CPU consumption.</li>
+          <li>Led Teradata upgrades and disaster-recovery events; 24/7 support for business-critical, regulatory and legal applications; resolved a critical production incident in under 12 hours.</li>
+        </ul>
+      </div>
+
+      <!-- Lloyds Role 2 -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">Tata Consultancy Services (Lloyds Banking Group) — Enterprise Data Warehouse Engineer</div>
+          <div class="cv-job-dates font-mono">Feb 2016 – May 2019</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Built scalable ETL pipelines that cut data load times by 50%.</li>
+          <li>Implemented a GDPR-compliant data governance framework that reduced data errors by 45%.</li>
+          <li>Built and maintained SQL macros so business teams without SQL knowledge could self-serve data.</li>
+        </ul>
+      </div>
+
+      <!-- Sopra Steria Role -->
+      <div class="cv-job-block">
+        <div class="cv-job-header">
+          <div class="cv-job-role">UST Global &amp; Sopra Steria — Mainframe Software Engineer: COBOL / DB2</div>
+          <div class="cv-job-dates font-mono">2011 – 2016</div>
+        </div>
+        <ul class="cv-bullet-list">
+          <li>Built and supported COBOL / DB2 mainframe systems, including for a major UK retailer, under ITIL incident, problem and change management.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Certifications & Education -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">CERTIFICATIONS &amp; EDUCATION</h2>
+      <div class="cv-edu-grid">
+        <div>
+          <strong>Certifications:</strong> Big Data on AWS (Amazon Web Services, May 2022) • Data Engineering Nanodegree (Udacity, May 2022) • Google Cloud Engineering Specialization (Coursera)
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <strong>Education:</strong> B.Tech, Computer Science, Dr. A.P.J. Abdul Kalam Technical University, India (2006 – 2010)
+        </div>
+      </div>
+    </section>
+  </article>
+</div>
+
+<style>
+  .cv-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cv-action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .cv-action-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .cv-last-updated {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .cv-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-sm {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  .cv-document {
+    padding: 3rem;
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .cv-document {
+      padding: 1.5rem;
+    }
+  }
+
+  .cv-header {
+    border-bottom: 2px solid var(--border-subtle);
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cv-name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .cv-headline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-data-light);
+  }
+
+  .cv-contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+  }
+
+  .cv-contact-row a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+  }
+
+  .cv-contact-row a:hover {
+    color: var(--text-primary);
+  }
+
+  .cv-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .cv-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-summary-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .cv-summary-text strong {
+    color: var(--text-primary);
+  }
+
+  .cv-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .cv-skill-item strong {
+    color: var(--text-primary);
+  }
+
+  .cv-bullet-list {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+  }
+
+  .cv-bullet-list li strong {
+    color: var(--text-primary);
+  }
+
+  .cv-job-block {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cv-job-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .cv-job-header {
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+
+  .cv-job-role {
+    font-weight: 700;
+    font-size: 0.975rem;
+    color: var(--text-primary);
+  }
+
+  .cv-job-dates {
+    font-size: 0.825rem;
+    color: var(--accent-coffee-light);
+    white-space: nowrap;
+  }
+
+  .cv-edu-grid {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .cv-edu-grid strong {
+    color: var(--text-primary);
+  }
+
+  /* Print Specific */
+  @media print {
+    .cv-document {
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+    .cv-name {
+      color: #000000 !important;
+    }
+    .cv-headline {
+      color: #333333 !important;
+    }
+    .cv-summary-text, .cv-bullet-list, .cv-skills-grid, .cv-edu-grid {
+      color: #111111 !important;
+      font-size: 0.85rem !important;
+    }
+    .cv-job-role, .cv-section-title {
+      color: #000000 !important;
+    }
+    .cv-job-dates {
+      color: #444444 !important;
+    }
+  }
+</style>

@@ -1,0 +1,536 @@
+---
+// CoffeeCorner.astro
+---
+
+<section id="coffee" class="coffee-section">
+  <div class="container">
+    <div class="section-badge-row">
+      <span class="badge badge-coffee">☕ The Coffee Lab &amp; Dial-In</span>
+      <span class="badge">Systems Engineering in the Cup</span>
+    </div>
+
+    <div class="coffee-intro-row">
+      <div>
+        <h2 class="heading-lg coffee-title">
+          Dialing In: <span class="text-gradient-coffee">The Science of Brewing &amp; Grinding</span>
+        </h2>
+        <p class="coffee-subtitle">
+          Outside of data lakehouses and autonomous agent loops, I am deeply into specialty coffee brewing. To me, dialing in an extraction on a V60 is identical to tuning a distributed PySpark job: it requires understanding flow rates, particle size distribution, solvent chemistry, and precision feedback loops.
+        </p>
+      </div>
+      <div class="coffee-stats-pill card">
+        <div class="gear-header">My Daily Brewing Rig</div>
+        <ul class="gear-list font-mono">
+          <li><span>Grinder:</span> Comandante C40 MK4 / 64mm Flat Burrs</li>
+          <li><span>Drippers:</span> Hario V60 (Ceramic & Plastic), Kalita 185</li>
+          <li><span>Kettle:</span> Fellow Stagg EKG (Variable Temp Gooseneck)</li>
+          <li><span>Scale:</span> Acaia Pearl (0.1g & flow-rate telemetry)</li>
+          <li><span>Water:</span> Custom Remineralized (50 ppm GH, 20 ppm KH)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- The 3 Pillars of Extraction -->
+    <div class="coffee-pillars-grid">
+      <div class="card pillar-card">
+        <div class="pillar-icon">🔬</div>
+        <h3 class="heading-sm pillar-title">1. Grind Particle Distribution</h3>
+        <p class="pillar-text">
+          Extraction ceiling is set by the grinder, not the kettle. Controlled burr geometry minimizes fines (&lt;100µm) that choke paper filters, preventing astringent channeling and unlocking floral, tea-like clarity.
+        </p>
+        <div class="pillar-metric font-mono">Target: 650 - 750µm (22-24 clicks)</div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-icon">💧</div>
+        <h3 class="heading-sm pillar-title">2. Water Chemistry &amp; Solvents</h3>
+        <p class="pillar-text">
+          Coffee is 98.5% water. Magnesium ions (Mg²⁺) extract bright volatile aromatics and sweet acids, while a restrained bicarbonate buffer (20 ppm) prevents muting delicate heirloom acidity.
+        </p>
+        <div class="pillar-metric font-mono">Ratio: 93°C | 50 ppm GH / 20 ppm KH</div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-icon">⏳</div>
+        <h3 class="heading-sm pillar-title">3. Flow Dynamics &amp; Geometry</h3>
+        <p class="pillar-text">
+          Conical 60° drippers provide high bypass for sparkling transparency. Flat-bottom beds maximize contact uniformity for dense, syrupy sweetness and balanced chocolate notes.
+        </p>
+        <div class="pillar-metric font-mono">Draw-Down: 2m 45s - 3m 15s</div>
+      </div>
+    </div>
+
+    <!-- Interactive Pour-Over Calculator -->
+    <div class="card calc-card">
+      <div class="calc-header">
+        <div>
+          <span class="calc-tag font-mono">INTERACTIVE BREWING TOOL</span>
+          <h3 class="heading-sm calc-title">Robin's Precision Pour-Over Calculator</h3>
+        </div>
+        <div class="calc-method-pills">
+          <button class="calc-tab active" data-method="46">Tetsu 4:6 Method</button>
+          <button class="calc-tab" data-method="3pour">Hoffmann 3-Pour</button>
+          <button class="calc-tab" data-method="kalita">Kalita Wave Flat</button>
+        </div>
+      </div>
+
+      <div class="calc-body">
+        <div class="calc-input-panel">
+          <div class="input-group">
+            <div class="input-label-row">
+              <label for="coffee-dose">Coffee Dose (grams):</label>
+              <span id="dose-val" class="font-mono input-val">18g</span>
+            </div>
+            <input type="range" id="coffee-dose" min="12" max="30" value="18" step="1" class="coffee-slider" />
+          </div>
+
+          <div class="input-group">
+            <div class="input-label-row">
+              <label for="brew-ratio">Brew Ratio (1:X):</label>
+              <span id="ratio-val" class="font-mono input-val">1:15</span>
+            </div>
+            <input type="range" id="brew-ratio" min="14" max="17" value="15" step="0.5" class="coffee-slider" />
+          </div>
+
+          <div class="calc-summary-pill font-mono">
+            <div>Total Water: <strong id="total-water">270g</strong></div>
+            <div>Target Temp: <strong id="target-temp">93°C</strong></div>
+          </div>
+        </div>
+
+        <div class="calc-schedule-panel">
+          <div class="schedule-title font-mono">POUR SEQUENCE &amp; TIMELINE</div>
+          <div id="pour-steps" class="pour-steps-list">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favorite Bean Profiles -->
+    <div class="beans-grid">
+      <div class="card bean-card">
+        <div class="bean-origin">🇪🇹 Washed Ethiopian Yirgacheffe</div>
+        <div class="bean-process font-mono">Heirloom | 2,100m MASL | Washed</div>
+        <div class="bean-notes">Bergamot, Jasmine, White Peach, Sparkling Citric Acidity</div>
+      </div>
+      <div class="card bean-card">
+        <div class="bean-origin">🇨🇴 Colombian Pink Bourbon</div>
+        <div class="bean-process font-mono">Huila | 1,850m MASL | Anaerobic Washed</div>
+        <div class="bean-notes">Pink Guava, Candied Papaya, Wild Honey, Champagne Effervescence</div>
+      </div>
+      <div class="card bean-card">
+        <div class="bean-origin">🇰🇪 Nyeri Kenya AA</div>
+        <div class="bean-process font-mono">SL28 &amp; SL34 | 1,900m MASL | Double Ferment</div>
+        <div class="bean-notes">Blackcurrant Jam, Red Currant, Blood Orange, Syrupy Body</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .coffee-section {
+    padding: 5rem 0;
+    position: relative;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .section-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .coffee-intro-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 900px) {
+    .coffee-intro-row {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  .coffee-title {
+    margin-bottom: 1rem;
+  }
+
+  .coffee-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .coffee-stats-pill {
+    background: var(--bg-tertiary);
+    border-color: rgba(217, 119, 6, 0.3);
+    padding: 1.5rem;
+  }
+
+  .gear-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-coffee-light);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.4rem;
+  }
+
+  .gear-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.825rem;
+  }
+
+  .gear-list li {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-secondary);
+  }
+
+  .gear-list li span {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .coffee-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .coffee-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pillar-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pillar-icon {
+    font-size: 1.75rem;
+  }
+
+  .pillar-title {
+    color: var(--text-primary);
+  }
+
+  .pillar-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .pillar-metric {
+    font-size: 0.75rem;
+    color: var(--accent-coffee-light);
+    background: var(--accent-coffee-bg);
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+
+  .calc-card {
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.05) 0%, var(--bg-card) 100%);
+    border-color: rgba(217, 119, 6, 0.3);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .calc-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .calc-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .calc-tag {
+    font-size: 0.75rem;
+    color: var(--accent-coffee-light);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .calc-title {
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+  }
+
+  .calc-method-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .calc-tab {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    transition: all 0.15s ease;
+  }
+
+  .calc-tab.active,
+  .calc-tab:hover {
+    background: var(--accent-coffee);
+    color: #ffffff;
+    border-color: var(--accent-coffee);
+  }
+
+  .calc-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .calc-body {
+      grid-template-columns: 1fr 1.3fr;
+    }
+  }
+
+  .calc-input-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .input-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .input-val {
+    font-weight: 700;
+    color: var(--accent-coffee-light);
+    background: var(--bg-tertiary);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .coffee-slider {
+    width: 100%;
+    accent-color: var(--accent-coffee);
+  }
+
+  .calc-summary-pill {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .calc-summary-pill strong {
+    color: var(--accent-coffee-light);
+  }
+
+  .schedule-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .pour-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  :global(.pour-step-row) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.85rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-size: 0.825rem;
+  }
+
+  :global(.pour-step-time) {
+    font-family: var(--font-mono);
+    color: var(--accent-coffee-light);
+    font-weight: 700;
+    min-width: 90px;
+  }
+
+  :global(.pour-step-weight) {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  :global(.pour-step-action) {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+  }
+
+  .beans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .beans-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .bean-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .bean-origin {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  .bean-process {
+    font-size: 0.75rem;
+    color: var(--accent-coffee-light);
+  }
+
+  .bean-notes {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+</style>
+
+<script is:inline>
+  function setupCoffeeCalculator() {
+    const doseInput = document.getElementById('coffee-dose');
+    const ratioInput = document.getElementById('brew-ratio');
+    const doseVal = document.getElementById('dose-val');
+    const ratioVal = document.getElementById('ratio-val');
+    const totalWaterEl = document.getElementById('total-water');
+    const targetTempEl = document.getElementById('target-temp');
+    const stepsContainer = document.getElementById('pour-steps');
+    const tabs = document.querySelectorAll('.calc-tab');
+
+    if (!doseInput || !ratioInput || !stepsContainer) return;
+
+    let currentMethod = '46';
+
+    function renderSteps() {
+      const dose = parseFloat(doseInput.value);
+      const ratio = parseFloat(ratioInput.value);
+      const totalWater = Math.round(dose * ratio);
+
+      doseVal.textContent = `${dose}g`;
+      ratioVal.textContent = `1:${ratio}`;
+      totalWaterEl.textContent = `${totalWater}g`;
+
+      let steps = [];
+
+      if (currentMethod === '46') {
+        targetTempEl.textContent = '93°C';
+        const p1 = Math.round(totalWater * 0.16);
+        const p2 = Math.round(totalWater * 0.24);
+        const remaining = totalWater - (p1 + p2);
+        const p3 = Math.round(remaining / 3);
+        const p4 = Math.round(remaining / 3);
+        const p5 = totalWater - (p1 + p2 + p3 + p4);
+
+        steps = [
+          { time: '00:00 - 00:45', weight: `+${p1}g (to ${p1}g)`, action: 'Bloom - degassing & acidity balance' },
+          { time: '00:45 - 01:30', weight: `+${p2}g (to ${p1+p2}g)`, action: 'Sweetness & dynamic balance' },
+          { time: '01:30 - 02:15', weight: `+${p3}g (to ${p1+p2+p3}g)`, action: 'Strength extraction phase 1' },
+          { time: '02:15 - 03:00', weight: `+${p4}g (to ${p1+p2+p3+p4}g)`, action: 'Body & mouthfeel development' },
+          { time: '03:00 - 03:30', weight: `+${p5}g (to ${totalWater}g)`, action: 'Final drawdown & clean bed' },
+        ];
+      } else if (currentMethod === '3pour') {
+        targetTempEl.textContent = '94°C';
+        const bloom = Math.round(dose * 3);
+        const p2 = Math.round((totalWater * 0.6) - bloom);
+        const p3 = totalWater - (bloom + p2);
+
+        steps = [
+          { time: '00:00 - 00:45', weight: `+${bloom}g (to ${bloom}g)`, action: 'Aggressive bloom swirl' },
+          { time: '00:45 - 01:15', weight: `+${p2}g (to ${bloom + p2}g)`, action: 'Gentle circular pour to 60%' },
+          { time: '01:15 - 03:00', weight: `+${p3}g (to ${totalWater}g)`, action: 'Continuous gentle center pour & swirl' },
+        ];
+      } else {
+        targetTempEl.textContent = '92°C';
+        const bloom = Math.round(dose * 2.5);
+        const pulse = Math.round((totalWater - bloom) / 3);
+        const last = totalWater - (bloom + pulse * 2);
+
+        steps = [
+          { time: '00:00 - 00:40', weight: `+${bloom}g (to ${bloom}g)`, action: 'Kalita uniform flat bed bloom' },
+          { time: '00:40 - 01:20', weight: `+${pulse}g (to ${bloom + pulse}g)`, action: 'Pulse 1 - low agitation concentric' },
+          { time: '01:20 - 02:00', weight: `+${pulse}g (to ${bloom + pulse*2}g)`, action: 'Pulse 2 - maintaining bed temperature' },
+          { time: '02:00 - 02:45', weight: `+${last}g (to ${totalWater}g)`, action: 'Final pulse & sweet uniform drawdown' },
+        ];
+      }
+
+      stepsContainer.innerHTML = steps.map(step => `
+        <div class="pour-step-row">
+          <span class="pour-step-time">${step.time}</span>
+          <span class="pour-step-weight">${step.weight}</span>
+          <span class="pour-step-action">${step.action}</span>
+        </div>
+      `).join('');
+    }
+
+    doseInput.addEventListener('input', renderSteps);
+    ratioInput.addEventListener('input', renderSteps);
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentMethod = tab.getAttribute('data-method');
+        renderSteps();
+      });
+    });
+
+    renderSteps();
+  }
+
+  setupCoffeeCalculator();
+  document.addEventListener('astro:after-swap', setupCoffeeCalculator);
+</script>

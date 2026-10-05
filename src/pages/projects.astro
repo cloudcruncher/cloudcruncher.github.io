@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout 
+  title="GitHub Projects & Engineering Systems | Robin Saini"
+  description="Explore open source and enterprise projects built by Robin Saini: autonomous agent harnesses, multi-tenant lakehouse architectures, and financial streaming pipelines."
+>
+  <div class="projects-page-header">
+    <div class="container">
+      <div class="section-badge-row">
+        <span class="badge badge-ai">github.com/cloudcruncher</span>
+        <span class="badge">Open Source &amp; Architectures</span>
+      </div>
+      <h1 class="heading-xl page-title">
+        Featured <span class="text-gradient-ai">GitHub Projects</span>
+      </h1>
+      <p class="page-subtitle">
+        Hands-on systems spanning autonomous agent harnesses, multi-tenant Kafka lakehouses, financial ingestion sensors, and deterministic career tooling.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-bar">
+        <button class="filter-tab active" data-filter="all">All Projects ({projects.length})</button>
+        <button class="filter-tab" data-filter="Agentic AI">Agentic AI</button>
+        <button class="filter-tab" data-filter="Lakehouse & Data">Lakehouse &amp; Data</button>
+        <button class="filter-tab" data-filter="Harnesses & Tools">Harnesses &amp; Tools</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-page-content">
+    <div class="container">
+      <div class="projects-grid" id="projects-grid">
+        {projects.map((project) => (
+          <div class="project-wrapper" data-category={project.category}>
+            <ProjectCard 
+              title={project.title}
+              repo={project.repo}
+              category={project.category}
+              description={project.description}
+              architecture={project.architecture}
+              tags={project.tags}
+              githubUrl={project.githubUrl}
+              featured={project.featured}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .projects-page-header {
+    padding: 4.5rem 0 3rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.04) 0%, transparent 100%);
+  }
+
+  .section-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .page-title {
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 780px;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+  }
+
+  .filter-tab.active,
+  .filter-tab:hover {
+    background: var(--accent-ai);
+    border-color: var(--accent-ai);
+    color: #ffffff;
+  }
+
+  .projects-page-content {
+    padding: 4rem 0 6rem 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<script is:inline>
+  function setupProjectFilters() {
+    const tabs = document.querySelectorAll('.filter-tab');
+    const items = document.querySelectorAll('.project-wrapper');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.getAttribute('data-filter');
+
+        items.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  setupProjectFilters();
+  document.addEventListener('astro:after-swap', setupProjectFilters);
+</script>

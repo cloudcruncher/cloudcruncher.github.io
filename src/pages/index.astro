@@ -1,0 +1,550 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import AgenticLab from '../components/AgenticLab.astro';
+import CoffeeCorner from '../components/CoffeeCorner.astro';
+import LondonGuide from '../components/LondonGuide.astro';
+import { projects } from '../data/projects';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+const featuredProjects = projects.filter(p => p.featured);
+---
+
+<BaseLayout 
+  title="Robin Saini | Lead Data Engineer & Agentic Systems Architect"
+  description="Personal portfolio of Robin Saini: Lead / Senior Data Engineer delivering 1TB+/mo Snowflake lakehouses, enterprise agentic AI harnesses (Antigravity & Claude Code), and dialing in precision pour-overs in London."
+>
+  <!-- Hero Section -->
+  <Hero />
+
+  <!-- About Pillars Summary -->
+  <section class="pillars-section">
+    <div class="container">
+      <div class="section-badge-row">
+        <span class="badge badge-data">Four Core Dimensions</span>
+        <span class="badge">Who I Am &amp; What I Build</span>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-data">⚡</div>
+          <h3 class="heading-sm pillar-box-title">Modern Data Lakehouses</h3>
+          <p class="pillar-box-desc">
+            15+ years engineering scalable data platforms. Led NatWest's 50+ source Snowflake ESG platform (1TB+/mo), cut PySpark/dbt batch times by 40%, and built ML-ready data lakes at Lloyds.
+          </p>
+          <a href="/cv" class="pillar-link font-mono">View Experience ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-ai">🤖</div>
+          <h3 class="heading-sm pillar-box-title">Enterprise Agentic AI</h3>
+          <p class="pillar-box-desc">
+            Architecting production agent harnesses with Google Antigravity &amp; Claude Code. Packaged reusable MCP servers, Pydantic contracts, and cut case-handling time by &gt;90%.
+          </p>
+          <a href="#agentic" class="pillar-link font-mono">Explore Agentic Lab ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon text-gradient-coffee">☕</div>
+          <h3 class="heading-sm pillar-box-title">Specialty Coffee Science</h3>
+          <p class="pillar-box-desc">
+            Passionate about pour-over extraction mechanics, burr grinding particle distributions, water mineral chemistry, and mastering the V60 4:6 technique every morning.
+          </p>
+          <a href="#coffee" class="pillar-link font-mono">Brewing Guide ➔</a>
+        </div>
+
+        <div class="card pillar-box">
+          <div class="pillar-box-icon">📍</div>
+          <h3 class="heading-sm pillar-box-title">London City &amp; Food</h3>
+          <p class="pillar-box-desc">
+            Exploring the London culinary scene: counter dining over wood embers, hand-rolled pasta, independent roasteries, and weekend walks from Southwark to Shoreditch.
+          </p>
+          <a href="#london" class="pillar-link font-mono">Discover Spots ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured GitHub Projects -->
+  <section id="projects" class="featured-projects-section">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-badge-row">
+            <span class="badge badge-ai">Open Source &amp; Systems</span>
+            <span class="badge">github.com/cloudcruncher</span>
+          </div>
+          <h2 class="heading-lg section-title">
+            Featured <span class="text-gradient-ai">GitHub Projects</span>
+          </h2>
+          <p class="section-subtitle">
+            Autonomous agent harnesses, streaming lakehouses, and deterministic data platforms I am actively building.
+          </p>
+        </div>
+        <a href="/projects" class="btn btn-outline all-projects-btn">
+          View All Projects ({projects.length})
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+        {featuredProjects.map((project) => (
+          <ProjectCard 
+            title={project.title}
+            repo={project.repo}
+            category={project.category}
+            description={project.description}
+            architecture={project.architecture}
+            tags={project.tags}
+            githubUrl={project.githubUrl}
+            featured={project.featured}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix Section -->
+  <section class="skills-matrix-section">
+    <div class="container">
+      <div class="section-badge-row">
+        <span class="badge badge-data">Technical Proficiency</span>
+        <span class="badge">Production Battle-Tested</span>
+      </div>
+      <h2 class="heading-lg section-title">
+        Data Engineering &amp; <span class="text-gradient-data">Platform Skills</span>
+      </h2>
+      <p class="section-subtitle">
+        A deep foundation in distributed data pipelines, cloud architecture, and strict banking data governance.
+      </p>
+
+      <div class="skills-category-grid">
+        <div class="card skill-cat-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">💾</div>
+            <h3 class="heading-sm skill-cat-title">Data Platforms &amp; Storage</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill highlight-pill">Snowflake (Clustering, Partitioning)</span>
+            <span class="skill-pill highlight-pill">PostgreSQL</span>
+            <span class="skill-pill">Apache Iceberg</span>
+            <span class="skill-pill">Teradata</span>
+            <span class="skill-pill">IBM DB2</span>
+            <span class="skill-pill">Delta Lake</span>
+            <span class="skill-pill">S3 Lakehouse Design</span>
+          </div>
+        </div>
+
+        <div class="card skill-cat-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">⚙️</div>
+            <h3 class="heading-sm skill-cat-title">Compute &amp; Orchestration</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill highlight-pill">Python 3.11+ (Advanced)</span>
+            <span class="skill-pill highlight-pill">PySpark / Apache Spark</span>
+            <span class="skill-pill highlight-pill">Apache Airflow</span>
+            <span class="skill-pill highlight-pill">SQL (Expert)</span>
+            <span class="skill-pill highlight-pill">dbt Core</span>
+            <span class="skill-pill">StreamSets</span>
+            <span class="skill-pill">Kafka &amp; Event Streams</span>
+          </div>
+        </div>
+
+        <div class="card skill-cat-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">☁️</div>
+            <h3 class="heading-sm skill-cat-title">Cloud &amp; DevOps</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill highlight-pill">AWS (Glue, EMR, Athena, S3)</span>
+            <span class="skill-pill">GitLab CI/CD</span>
+            <span class="skill-pill">Docker &amp; Containers</span>
+            <span class="skill-pill">Terraform (IaC)</span>
+            <span class="skill-pill">Splunk Telemetry</span>
+            <span class="skill-pill">Jittered Backoff Writers</span>
+            <span class="skill-pill">Incident Management</span>
+          </div>
+        </div>
+
+        <div class="card skill-cat-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">🛡️</div>
+            <h3 class="heading-sm skill-cat-title">Quality, Contracts &amp; Governance</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill highlight-pill">Pydantic Schema Contracts</span>
+            <span class="skill-pill highlight-pill">Data Quality Gates</span>
+            <span class="skill-pill">GDPR Data Governance</span>
+            <span class="skill-pill">Audit Trails &amp; Provenance</span>
+            <span class="skill-pill">Automated CI Regression</span>
+            <span class="skill-pill">Financial Crime Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agentic Lab Section -->
+  <AgenticLab />
+
+  <!-- Coffee Corner Section -->
+  <CoffeeCorner />
+
+  <!-- London Guide Section -->
+  <LondonGuide />
+
+  <!-- Recent Blog Posts Section -->
+  <section class="blog-preview-section">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-badge-row">
+            <span class="badge badge-coffee">Writings &amp; Notes</span>
+            <span class="badge">Markdown Blog</span>
+          </div>
+          <h2 class="heading-lg section-title">
+            Latest <span class="text-gradient-coffee">Field Notes &amp; Articles</span>
+          </h2>
+          <p class="section-subtitle">
+            Reflections on lakehouse performance, autonomous harnesses, and pour-over mechanics.
+          </p>
+        </div>
+        <a href="/blog" class="btn btn-outline all-projects-btn">
+          View All Articles
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="posts-grid">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="card post-card">
+            <div class="post-card-meta">
+              <span class="badge badge-coffee">{post.data.category}</span>
+              <span class="post-card-date font-mono">
+                {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </span>
+            </div>
+            <h3 class="heading-sm post-card-title">{post.data.title}</h3>
+            <p class="post-card-desc">{post.data.description}</p>
+            <div class="post-card-footer font-mono">
+              <span>{post.data.readTime || '5 min read'}</span>
+              <span class="read-more">Read Article ➔</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CV Teaser Section -->
+  <section class="cv-teaser-section">
+    <div class="container">
+      <div class="card cv-teaser-card">
+        <div class="cv-teaser-content">
+          <span class="badge badge-data">Full Career Profile</span>
+          <h2 class="heading-lg cv-teaser-title">Interested in Robin's Complete CV &amp; Track Record?</h2>
+          <p class="cv-teaser-desc">
+            Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and systems architecture. Available in interactive web format, downloadable Word (.docx), or printable PDF.
+          </p>
+          <div class="cv-teaser-actions">
+            <a href="/cv" class="btn btn-primary">
+              View Interactive CV
+            </a>
+            <a href="/Robin_Saini_CV.docx" download class="btn btn-outline">
+              Download Word Document (.docx)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pillars-section {
+    padding: 3rem 0;
+  }
+
+  .section-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pillars-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .pillar-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pillar-box-icon {
+    font-size: 1.75rem;
+  }
+
+  .pillar-box-title {
+    color: var(--text-primary);
+  }
+
+  .pillar-box-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+
+  .pillar-link {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+
+  .pillar-link:hover {
+    color: var(--accent-ai-light);
+  }
+
+  .featured-projects-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .section-header-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-header-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .section-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 650px;
+  }
+
+  .all-projects-btn {
+    align-self: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .all-projects-btn {
+      align-self: flex-end;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .skills-matrix-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .skills-category-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .skills-category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .skill-cat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .skill-cat-icon {
+    font-size: 1.5rem;
+  }
+
+  .skill-cat-title {
+    color: var(--text-primary);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .highlight-pill {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: var(--accent-data-light);
+    font-weight: 600;
+  }
+
+  .blog-preview-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .posts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    height: 100%;
+  }
+
+  .post-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-card-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .post-card-title {
+    color: var(--text-primary);
+    transition: color 0.15s ease;
+  }
+
+  .post-card:hover .post-card-title {
+    color: var(--accent-coffee-light);
+  }
+
+  .post-card-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+
+  .read-more {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .cv-teaser-section {
+    padding: 4rem 0 6rem 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .cv-teaser-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
+    border-color: rgba(16, 185, 129, 0.3);
+    padding: 3rem;
+  }
+
+  .cv-teaser-content {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cv-teaser-title {
+    color: var(--text-primary);
+  }
+
+  .cv-teaser-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .cv-teaser-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 0.75rem;
+  }
+</style>

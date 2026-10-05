@@ -1,0 +1,289 @@
+---
+// Hero.astro
+---
+
+<section class="hero-section">
+  <div class="container hero-container">
+    <div class="hero-badge-row">
+      <span class="location-pill">
+        <span class="pulse-dot"></span> London, United Kingdom
+      </span>
+      <span class="role-pill">Lead / Senior Data Engineer</span>
+      <span class="harness-pill">Agentic Systems Architect</span>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="heading-xl hero-title">
+        Engineering modern lakehouses, <br />
+        <span class="text-gradient-ai">autonomous agent harnesses</span>, <br />
+        and <span class="text-gradient-coffee">precision-extracted pour-overs</span>.
+      </h1>
+
+      <p class="hero-description">
+        I'm <strong>Robin Saini</strong>. 15+ years in software & data engineering (10+ in data engineering), currently leading enterprise agentic AI data engineering at <strong>NatWest Group</strong>. I build high-throughput Snowflake lakehouses, resilient microservice loaders, reusable Model Context Protocol (MCP) servers, and autonomous multi-agent systems with Google Antigravity and Claude Code.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          View GitHub Projects
+        </a>
+        <a href="/cv" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Interactive CV & Resume
+        </a>
+        <a href="#coffee" class="btn btn-coffee">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+            <line x1="6" y1="2" x2="6" y2="4"></line>
+            <line x1="10" y1="2" x2="10" y2="4"></line>
+            <line x1="14" y1="2" x2="14" y2="4"></line>
+          </svg>
+          The Coffee Lab
+        </a>
+      </div>
+    </div>
+
+    <!-- Impact Metrics Cards -->
+    <div class="metrics-grid">
+      <div class="metric-card card">
+        <div class="metric-icon metric-icon-data">⚡</div>
+        <div class="metric-number text-gradient-data">15+ Yrs</div>
+        <div class="metric-label">Software & Data Engineering</div>
+        <div class="metric-sub">10+ years dedicated data platforms</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-icon metric-icon-snowflake">❄️</div>
+        <div class="metric-number">1TB+ / mo</div>
+        <div class="metric-label">Snowflake ESG Data Platform</div>
+        <div class="metric-sub">50+ automated sources in banking</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-icon metric-icon-ai">🤖</div>
+        <div class="metric-number text-gradient-ai">&gt;90%</div>
+        <div class="metric-label">Manual Case Time Saved</div>
+        <div class="metric-sub">Agentic investigation workflows</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-icon metric-icon-coffee">☕</div>
+        <div class="metric-number text-gradient-coffee">1:15</div>
+        <div class="metric-label">Pour-Over Golden Ratio</div>
+        <div class="metric-sub">Dialed V60, Kalita & burr grinding</div>
+      </div>
+    </div>
+
+    <!-- Live Tech Stack Banner -->
+    <div class="tech-stack-strip">
+      <span class="tech-strip-label">CORE TOOLKIT &amp; STACK</span>
+      <div class="tech-tags">
+        <span class="tech-tag">Python 3.11+</span>
+        <span class="tech-tag">PySpark</span>
+        <span class="tech-tag">Snowflake</span>
+        <span class="tech-tag">Apache Airflow</span>
+        <span class="tech-tag">dbt Core</span>
+        <span class="tech-tag">AWS (S3/Glue/Athena)</span>
+        <span class="tech-tag">Model Context Protocol (MCP)</span>
+        <span class="tech-tag">Google Antigravity</span>
+        <span class="tech-tag">Claude Code</span>
+        <span class="tech-tag">Pydantic Contracts</span>
+        <span class="tech-tag">Kafka &amp; Streaming</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding: 4.5rem 0 3.5rem 0;
+    position: relative;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  .hero-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .location-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .role-pill {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--accent-data-light);
+    background: var(--accent-data-bg);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+
+  .harness-pill {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--accent-ai-light);
+    background: var(--accent-ai-bg);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+
+  .hero-title {
+    max-width: 980px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 780px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-description strong {
+    color: var(--text-primary);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .metrics-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .metric-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .metric-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .metric-number {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    line-height: 1.1;
+    color: var(--text-primary);
+  }
+
+  .metric-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+  }
+
+  .metric-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .tech-stack-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  @media (min-width: 768px) {
+    .tech-stack-strip {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .tech-strip-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    padding: 0.25rem 0.6rem;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+</style>

@@ -1,0 +1,218 @@
+---
+// LondonGuide.astro
+---
+
+<section id="london" class="london-section">
+  <div class="container">
+    <div class="section-badge-row">
+      <span class="badge badge-coffee">📍 London City &amp; Dining Guide</span>
+      <span class="badge">Culinary Exploration &amp; Roasteries</span>
+    </div>
+
+    <div class="london-header">
+      <h2 class="heading-lg london-title">
+        Exploring London: <span class="text-gradient-coffee">Specialty Counters &amp; Hidden Dining Gems</span>
+      </h2>
+      <p class="london-desc">
+        One of the biggest joys of living in London is the inexhaustible food and coffee scene. When I'm not writing PySpark jobs or configuring MCP harnesses, I love wandering through different London neighborhoods, discovering new independent roasters, tucked-away pasta counters, and vibrant wood-fired kitchens.
+      </p>
+    </div>
+
+    <div class="london-grid">
+      <!-- Card 1: Precision Coffee Counters -->
+      <div class="card guide-card">
+        <div class="guide-badge badge-coffee">☕ Specialty Coffee Roasters</div>
+        <h3 class="heading-sm guide-card-title">Precision Extraction Counters</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>WatchHouse (Bermondsey / St Mary Axe)</strong>
+            <span>Extraordinary modern design with rare anaerobic Geisha pour-overs on brew bar.</span>
+          </li>
+          <li>
+            <strong>Workshop Coffee (Fitzrovia &amp; Marylebone)</strong>
+            <span>Super clean Scandinavian roast profiles; exceptional morning flat whites.</span>
+          </li>
+          <li>
+            <strong>Rosslyn Coffee (Queen Victoria St / Moorgate)</strong>
+            <span>High-volume Australian hospitality in the City with tournament-grade batch brew.</span>
+          </li>
+          <li>
+            <strong>Origin Coffee Roasters (Southwark)</strong>
+            <span>Railway arch roastery serving vibrant seasonal single-origins under the brick vaults.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Handcrafted Pasta & Italian -->
+      <div class="card guide-card">
+        <div class="guide-badge badge-data">🍝 Fresh Pasta &amp; Italian</div>
+        <h3 class="heading-sm guide-card-title">Craft &amp; Texture</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>Bancone (Covent Garden &amp; Soho)</strong>
+            <span>The famous silk handkerchiefs with walnut butter and confit egg yolk are perfection.</span>
+          </li>
+          <li>
+            <strong>Padella (Borough Market)</strong>
+            <span>Pici cacio e pepe and 8-hour beef shin ragu tagliarini, best enjoyed right by the market.</span>
+          </li>
+          <li>
+            <strong>Manteca (Shoreditch)</strong>
+            <span>Nose-to-tail Italian with handmade fazzoletti duck ragu and wood-fired focaccia.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Open-Fire & Distinctive Flavors -->
+      <div class="card guide-card">
+        <div class="guide-badge badge-ai">🔥 Wood-Fire &amp; Regional Flavors</div>
+        <h3 class="heading-sm guide-card-title">Vibrant Dining Spaces</h3>
+        <ul class="guide-list">
+          <li>
+            <strong>Kiln (Soho)</strong>
+            <span>Counter dining over glowing charcoal embers cooking regional northern Thai clay pots.</span>
+          </li>
+          <li>
+            <strong>Brat (Shoreditch)</strong>
+            <span>Basque-inspired cooking: wood-fired bread, smoked potatoes, and wild turbot over embers.</span>
+          </li>
+          <li>
+            <strong>Dishoom (King's Cross / Shoreditch)</strong>
+            <span>The legendary 24-hour slow-cooked Black Daal and gunpowder potatoes never disappoint.</span>
+          </li>
+          <li>
+            <strong>Roti King (Euston / Battersea)</strong>
+            <span>Freshly stretched, flaky roti canai with deeply spiced dahl and kari.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- The Weekend City Walk Route -->
+    <div class="card walk-card">
+      <div class="walk-header">
+        <div class="walk-icon">🚶‍♂️</div>
+        <div>
+          <span class="walk-tag font-mono">FAVORITE WEEKEND RECHARGE</span>
+          <h3 class="heading-sm walk-title">The Southwark-to-Shoreditch Walk</h3>
+        </div>
+      </div>
+      <p class="walk-text">
+        Morning filter coffee at <strong>Origin (Southwark)</strong> ➔ Walk through Borough Market and along the Thames South Bank past Tate Modern ➔ Cross the river towards the historic City alleyways ➔ Wrap up with an afternoon lunch around Spitalfields or Shoreditch, followed by a second pour-over at <strong>Ozone</strong> or <strong>Nude Coffee Roasters</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .london-section {
+    padding: 5rem 0;
+    position: relative;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .london-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .london-title {
+    margin-bottom: 1rem;
+  }
+
+  .london-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 820px;
+  }
+
+  .london-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .london-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .guide-badge {
+    align-self: flex-start;
+  }
+
+  .guide-card-title {
+    color: var(--text-primary);
+  }
+
+  .guide-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .guide-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .guide-list strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  .guide-list span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .walk-card {
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.04) 0%, var(--bg-card) 100%);
+    border-color: rgba(217, 119, 6, 0.25);
+    padding: 1.75rem 2rem;
+  }
+
+  .walk-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .walk-icon {
+    font-size: 2rem;
+  }
+
+  .walk-tag {
+    font-size: 0.75rem;
+    color: var(--accent-coffee-light);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .walk-title {
+    color: var(--text-primary);
+    margin-top: 0.15rem;
+  }
+
+  .walk-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .walk-text strong {
+    color: var(--text-primary);
+  }
+</style>

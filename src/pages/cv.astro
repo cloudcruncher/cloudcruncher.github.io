@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CVSection from '../components/CVSection.astro';
+---
+
+<BaseLayout 
+  title="Curriculum Vitae & Professional Resume | Robin Saini"
+  description="Full CV and engineering track record for Robin Saini: Lead / Senior Data Engineer delivering 1TB+/mo Snowflake platforms, enterprise agentic systems, and cloud data architecture in London."
+>
+  <div class="cv-page-container">
+    <div class="container">
+      <div class="cv-intro-banner no-print">
+        <div>
+          <span class="badge badge-data">Executive Resume</span>
+          <h1 class="heading-lg cv-page-title">Curriculum Vitae</h1>
+          <p class="cv-page-subtitle">
+            15+ years in software &amp; data engineering (10+ in data engineering), modernising banking data platforms at NatWest Group and Lloyds Banking Group, and architecting production agentic AI systems.
+          </p>
+        </div>
+      </div>
+
+      <CVSection />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cv-page-container {
+    padding: 3.5rem 0 6rem 0;
+  }
+
+  .cv-intro-banner {
+    margin-bottom: 2rem;
+  }
+
+  .cv-page-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cv-page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 780px;
+    line-height: 1.6;
+  }
+</style>

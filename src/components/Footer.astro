@@ -1,0 +1,206 @@
+---
+// Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <span class="footer-initials">RS</span>
+          <span class="footer-name">Robin Saini</span>
+        </div>
+        <p class="footer-tagline">
+          Lead / Senior Data Engineer & Agentic Systems Architect based in London, UK. 
+          Specializing in Snowflake lakehouses, enterprise agent harnesses, and dialing in sweet, floral pour-overs.
+        </p>
+        <div class="footer-badges">
+          <span class="badge badge-coffee">☕ V60 & Pour-Over Dialed</span>
+          <span class="badge badge-ai">🤖 Antigravity & Claude Code</span>
+          <span class="badge badge-data">⚡ 15+ Yrs Engineering</span>
+        </div>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About & Story</a></li>
+          <li><a href="/projects">GitHub Projects</a></li>
+          <li><a href="/blog">Blog & Field Notes</a></li>
+          <li><a href="/cv">Interactive CV</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-col-title">Passions & Deep Dives</h4>
+        <ul class="footer-nav">
+          <li><a href="/about#coffee">Coffee Brewing Corner</a></li>
+          <li><a href="/about#agentic">Agentic AI & Harnesses</a></li>
+          <li><a href="/about#london">London City & Food Guide</a></li>
+          <li><a href="/blog/03-the-engineering-of-pour-over-coffee">Pour-Over Engineering</a></li>
+          <li><a href="/blog/01-agentic-systems-mcp-harnesses">Production MCP Servers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-nav">
+          <li>
+            <a href="https://github.com/cloudcruncher" target="_blank" rel="noopener noreferrer">
+              GitHub (cloudcruncher)
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/robinsaini" target="_blank" rel="noopener noreferrer">
+              LinkedIn (robinsaini)
+            </a>
+          </li>
+          <li>
+            <a href="mailto:robinsaini156@gmail.com">
+              robinsaini156@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="/Robin_Saini_CV.docx" download>
+              Download CV (.docx)
+            </a>
+          </li>
+          <li>
+            <span class="footer-location">📍 London, United Kingdom</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © {currentYear} Robin Saini. Engineered with precision using Astro & Markdown.
+      </p>
+      <div class="footer-meta-pill">
+        <span>Handcrafted with ☕ in London</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+    padding: 4rem 0 2rem 0;
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-initials {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--accent-coffee-light);
+    background: var(--bg-tertiary);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+  }
+
+  .footer-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .footer-col-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-nav a {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-location {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 640px) {
+    .footer-bottom {
+      flex-direction: row;
+    }
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .footer-meta-pill {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--accent-coffee-light);
+    background: var(--accent-coffee-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+</style>
