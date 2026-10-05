@@ -7,6 +7,7 @@ import CoffeeCorner from '../components/CoffeeCorner.astro';
 import LondonGuide from '../components/LondonGuide.astro';
 import { projects } from '../data/projects';
 import { getCollection } from 'astro:content';
+import { url } from '../lib/utils';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
@@ -35,7 +36,7 @@ const featuredProjects = projects.filter(p => p.featured);
           <p class="pillar-box-desc">
             15+ years engineering scalable data platforms. Led NatWest's 50+ source Snowflake ESG platform (1TB+/mo), cut PySpark/dbt batch times by 40%, and built ML-ready data lakes at Lloyds.
           </p>
-          <a href="/cv" class="pillar-link font-mono">View Experience ➔</a>
+          <a href={url('/cv')} class="pillar-link font-mono">View Experience ➔</a>
         </div>
 
         <div class="card pillar-box">
@@ -84,7 +85,7 @@ const featuredProjects = projects.filter(p => p.featured);
             Autonomous agent harnesses, streaming lakehouses, and deterministic data platforms I am actively building.
           </p>
         </div>
-        <a href="/projects" class="btn btn-outline all-projects-btn">
+        <a href={url('/projects')} class="btn btn-outline all-projects-btn">
           View All Projects ({projects.length})
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -216,7 +217,7 @@ const featuredProjects = projects.filter(p => p.featured);
             Reflections on lakehouse performance, autonomous harnesses, and pour-over mechanics.
           </p>
         </div>
-        <a href="/blog" class="btn btn-outline all-projects-btn">
+        <a href={url('/blog')} class="btn btn-outline all-projects-btn">
           View All Articles
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -227,7 +228,7 @@ const featuredProjects = projects.filter(p => p.featured);
 
       <div class="posts-grid">
         {sortedPosts.map((post) => (
-          <a href={`/blog/${post.id}`} class="card post-card">
+          <a href={url(`/blog/${post.id}`)} class="card post-card">
             <div class="post-card-meta">
               <span class="badge badge-coffee">{post.data.category}</span>
               <span class="post-card-date font-mono">
@@ -257,10 +258,10 @@ const featuredProjects = projects.filter(p => p.featured);
             Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and systems architecture. Available in interactive web format, downloadable Word (.docx), or printable PDF.
           </p>
           <div class="cv-teaser-actions">
-            <a href="/cv" class="btn btn-primary">
+            <a href={url('/cv')} class="btn btn-primary">
               View Interactive CV
             </a>
-            <a href="/Robin_Saini_CV.docx" download class="btn btn-outline">
+            <a href={url('/Robin_Saini_CV.docx')} download class="btn btn-outline">
               Download Word Document (.docx)
             </a>
           </div>

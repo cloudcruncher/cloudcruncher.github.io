@@ -1,5 +1,6 @@
 ---
 // Footer.astro
+import { url } from '../lib/utils';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -25,22 +26,22 @@ const currentYear = new Date().getFullYear();
       <div class="footer-links-group">
         <h4 class="footer-col-title">Navigation</h4>
         <ul class="footer-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About & Story</a></li>
-          <li><a href="/projects">GitHub Projects</a></li>
-          <li><a href="/blog">Blog & Field Notes</a></li>
-          <li><a href="/cv">Interactive CV</a></li>
+          <li><a href={url('/')}>Home</a></li>
+          <li><a href={url('/about')}>About & Story</a></li>
+          <li><a href={url('/projects')}>GitHub Projects</a></li>
+          <li><a href={url('/blog')}>Blog & Field Notes</a></li>
+          <li><a href={url('/cv')}>Interactive CV</a></li>
         </ul>
       </div>
 
       <div class="footer-links-group">
         <h4 class="footer-col-title">Passions & Deep Dives</h4>
         <ul class="footer-nav">
-          <li><a href="/about#coffee">Coffee Brewing Corner</a></li>
-          <li><a href="/about#agentic">Agentic AI & Harnesses</a></li>
-          <li><a href="/about#london">London City & Food Guide</a></li>
-          <li><a href="/blog/03-the-engineering-of-pour-over-coffee">Pour-Over Engineering</a></li>
-          <li><a href="/blog/01-agentic-systems-mcp-harnesses">Production MCP Servers</a></li>
+          <li><a href={url('/about#coffee')}>Coffee Brewing Corner</a></li>
+          <li><a href={url('/about#agentic')}>Agentic AI & Harnesses</a></li>
+          <li><a href={url('/about#london')}>London City & Food Guide</a></li>
+          <li><a href={url('/blog/03-the-engineering-of-pour-over-coffee')}>Pour-Over Engineering</a></li>
+          <li><a href={url('/blog/01-agentic-systems-mcp-harnesses')}>Production MCP Servers</a></li>
         </ul>
       </div>
 
@@ -63,7 +64,7 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href="/Robin_Saini_CV.docx" download>
+            <a href={url('/Robin_Saini_CV.docx')} download>
               Download CV (.docx)
             </a>
           </li>

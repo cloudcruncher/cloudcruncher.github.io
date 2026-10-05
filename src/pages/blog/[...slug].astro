@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../lib/utils';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -21,7 +22,7 @@ const { Content } = await render(post);
   <article class="post-page">
     <header class="post-header">
       <div class="container container-narrow">
-        <a href="/blog" class="back-link font-mono">
+        <a href={url('/blog')} class="back-link font-mono">
           ← Back to All Articles
         </a>
 
@@ -66,8 +67,8 @@ const { Content } = await render(post);
               I love discussing data lakehouses, agentic harnesses, and dial-in coffee recipes. Feel free to connect on <a href="https://linkedin.com/in/robinsaini" target="_blank" rel="noopener noreferrer">LinkedIn</a> or follow my open-source work on <a href="https://github.com/cloudcruncher" target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
             <div class="post-cta-buttons">
-              <a href="/blog" class="btn btn-outline btn-sm">← More Articles</a>
-              <a href="/cv" class="btn btn-primary btn-sm">View Robin's CV</a>
+              <a href={url('/blog')} class="btn btn-outline btn-sm">← More Articles</a>
+              <a href={url('/cv')} class="btn btn-primary btn-sm">View Robin's CV</a>
             </div>
           </div>
         </footer>

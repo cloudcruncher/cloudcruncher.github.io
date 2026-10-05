@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import { url } from '../lib/utils';
 
 interface Props {
   currentPath?: string;
@@ -8,17 +9,17 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About & Passions' },
-  { href: '/projects', label: 'GitHub Projects' },
-  { href: '/blog', label: 'Blog & Notes' },
-  { href: '/cv', label: 'CV / Resume' },
+  { href: url('/'), label: 'Home', raw: '/' },
+  { href: url('/about'), label: 'About & Passions', raw: '/about' },
+  { href: url('/projects'), label: 'GitHub Projects', raw: '/projects' },
+  { href: url('/blog'), label: 'Blog & Notes', raw: '/blog' },
+  { href: url('/cv'), label: 'CV / Resume', raw: '/cv' },
 ];
 ---
 
 <header class="site-header">
   <div class="container header-container">
-    <a href="/" class="brand-logo" aria-label="Robin Saini - Home">
+    <a href={url('/')} class="brand-logo" aria-label="Robin Saini - Home">
       <div class="brand-avatar">
         <span class="avatar-initials">RS</span>
         <span class="status-dot" title="Lead Engineer, London"></span>

@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/utils';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -57,7 +58,7 @@ const categories = ['All', ...new Set(allPosts.map((p) => p.data.category))];
           </div>
 
           <h2 class="heading-sm blog-card-title">
-            <a href={`/blog/${post.id}`}>
+            <a href={url(`/blog/${post.id}`)}>
               {post.data.title}
             </a>
           </h2>
@@ -74,7 +75,7 @@ const categories = ['All', ...new Set(allPosts.map((p) => p.data.category))];
 
           <div class="blog-card-footer font-mono">
             <span>{post.data.readTime || '5 min read'}</span>
-            <a href={`/blog/${post.id}`} class="read-link">
+            <a href={url(`/blog/${post.id}`)} class="read-link">
               Read Article ➔
             </a>
           </div>

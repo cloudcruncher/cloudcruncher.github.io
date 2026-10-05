@@ -1,5 +1,6 @@
 ---
 // CVSection.astro
+import { url } from '../lib/utils';
 ---
 
 <div class="cv-wrapper">
@@ -10,7 +11,7 @@
       <span class="cv-last-updated font-mono">Updated October 2026</span>
     </div>
     <div class="cv-action-buttons">
-      <a href="/Robin_Saini_CV.docx" download class="btn btn-primary btn-sm">
+      <a href={url('/Robin_Saini_CV.docx')} download class="btn btn-primary btn-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
@@ -18,7 +19,7 @@
         </svg>
         Download Word (.docx)
       </a>
-      <a href="/Robin_Saini_CV.txt" download class="btn btn-outline btn-sm font-mono">
+      <a href={url('/Robin_Saini_CV.txt')} download class="btn btn-outline btn-sm font-mono">
         Plain Text (.txt)
       </a>
       <button onclick="window.print()" class="btn btn-outline btn-sm">
