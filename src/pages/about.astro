@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/utils';
 import CoffeeCorner from '../components/CoffeeCorner.astro';
-import AgenticLab from '../components/AgenticLab.astro';
 import LondonGuide from '../components/LondonGuide.astro';
 ---
 
@@ -58,7 +58,7 @@ import LondonGuide from '../components/LondonGuide.astro';
           <div class="timeline-period font-mono">2025 – Present</div>
           <h3 class="heading-sm timeline-title">The Frontier: AI Data Engineering at NatWest</h3>
           <p class="timeline-desc">
-            Leading data engineering for agentic AI projects at NatWest: connecting agents to data sources, giving them trustworthy datasets and context, and building reusable MCP servers, Pydantic validation gates and observability. The agentic workflows cut manual investigation time by over 90%.
+            Leading data engineering for agentic AI projects at NatWest: connecting agents to data sources, giving them trustworthy datasets and context, and building reusable MCP servers, Pydantic validation gates and observability. The agentic workflows cut manual investigation time by over 90%. <a href={url('/#agentic')}>See the Agentic Lab →</a>
           </p>
         </div>
       </div>
@@ -92,8 +92,7 @@ import LondonGuide from '../components/LondonGuide.astro';
     </section>
   </div>
 
-  <!-- Deep Dive Components -->
-  <AgenticLab />
+  <!-- Personal sections -->
   <CoffeeCorner />
   <LondonGuide />
 </BaseLayout>
