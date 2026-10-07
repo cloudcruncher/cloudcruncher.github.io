@@ -67,7 +67,7 @@ import { url } from '../lib/utils';
       <h2 class="cv-section-title">KEY SKILLS</h2>
       <div class="cv-skills-grid">
         <div class="cv-skill-item">
-          <strong>Data Engineering:</strong> Python (advanced), PySpark / Apache Spark, Apache Airflow, SQL (expert), DBT, StreamSets, batch ELT/ETL at scale
+          <strong>Data Engineering:</strong> Python (advanced), PySpark / Apache Spark (incl. AWS EMR Serverless), Apache Airflow, SQL (expert), DBT, StreamSets, batch ELT/ETL at scale
         </div>
         <div class="cv-skill-item">
           <strong>Cloud &amp; Engineering:</strong> AWS, GitLab CI/CD, Docker, Git, automated testing, Terraform (maintaining configuration)
@@ -91,10 +91,10 @@ import { url } from '../lib/utils';
     <section class="cv-section">
       <h2 class="cv-section-title">SELECTED IMPACT</h2>
       <ul class="cv-bullet-list">
-        <li><strong>40% faster batch processing</strong> (PySpark and DBT) and <strong>30% fewer data quality incidents</strong> on enterprise Snowflake platforms.</li>
-        <li><strong>Led the team delivering a 50+ source, 1TB+/month Snowflake ESG and climate data platform</strong> for analytics and regulatory reporting.</li>
-        <li><strong>Teradata modernisation</strong> on the Lloyds Banking Group enterprise data platform, including exploring a move to BigQuery; <strong>50% lower ETL load times</strong> and <strong>45% fewer data errors</strong> on the enterprise data warehouse.</li>
-        <li><strong>Agentic AI delivery:</strong> cut manual case-handling time by <strong>over 90%</strong> and supported quality checks on <strong>300+ commercial onboarding applications a day</strong>.</li>
+        <li><strong>Agentic AI delivery</strong> (current NatWest innovation team): built the data engineering behind DAVE and the model-evaluation microservice, cutting manual case-handling time by <strong>over 90%</strong> and supporting quality checks on <strong>300+ commercial onboarding applications a day</strong>.</li>
+        <li><strong>Led the team delivering a 50+ source, 1TB+/month Snowflake ESG and climate data platform</strong> (layered DBT, Airflow on AWS MWAA) for analytics and regulatory reporting at NatWest.</li>
+        <li><strong>40% faster batch processing</strong> (PySpark and DBT) and <strong>30% fewer data quality incidents</strong> on NatWest data platforms.</li>
+        <li><strong>Earlier (Lloyds Banking Group):</strong> Teradata modernisation with a BigQuery proof of concept; <strong>50% lower ETL load times</strong> and <strong>45% fewer data errors</strong> on the enterprise data warehouse.</li>
       </ul>
     </section>
 
@@ -109,14 +109,16 @@ import { url } from '../lib/utils';
           <div class="cv-job-dates font-mono">Aug 2025 – Present</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Lead the data engineering function for all agentic AI projects in an enterprise innovation team, from proof of concept to production.</li>
+          <li>Lead the data engineering function across the enterprise innovation team's agentic AI products — DAVE (Decision Assist for complaints), the LLM-as-a-judge evaluation microservice, and the Colleague Assist / CAI contact-centre programme — taking work from proof of concept to production.</li>
           <li>Introduced Snowflake CI/CD and automated CI testing for data loaders; built a resilient microservice Snowflake writer with jittered back-off, reducing deployment issues to near zero.</li>
-          <li>Orchestrate workflows with Airflow across enterprise microservices, Snowflake, PostgreSQL and PCF; built Splunk observability for agent execution, tool-call performance and decision quality.</li>
+          <li>Orchestrate workflows with Airflow across enterprise microservices, Snowflake, PostgreSQL and PCF; built a near-real-time Kafka → LLM-as-a-judge evaluation pipeline (with batch REST path) scoring model decisions and writing metrics to Snowflake, and Splunk observability for agent execution, tool-call performance and decision quality.</li>
+          <li>Built PySpark pipelines on AWS EMR Serverless for model monitoring: extract model inputs and outputs from PostgreSQL and on-prem sources to S3 (Parquet) and Snowflake, computing operational and ML performance metrics (accuracy, precision, recall, F1) plus LLM token-usage and latency tracking, orchestrated by Airflow.</li>
           <li>Designed data contracts, Pydantic schema validation, quality gates and audit trails so agent inputs meet banking and financial-crime compliance standards.</li>
-          <li>Delivered agentic investigation and decision-support workflows that cut manual case-handling time by over 90%, and an AI-assisted due-diligence capability supporting quality checks on 300+ commercial onboarding applications a day.</li>
-          <li>Designed and packaged reusable MCP servers consumed by multiple downstream agents with no data-access code, standardising agent access to enterprise systems and cutting integration effort.</li>
+          <li>Built the data engineering behind DAVE's decision-support workflows (decision-outcome, compensation and fix-classification prediction, plus a graph-following fix-resolution agent) that cut manual case-handling time by over 90%, and an AI-assisted due-diligence capability supporting quality checks on 300+ commercial onboarding applications a day.</li>
+          <li>Designed and packaged a reusable, PII-guardrailed MCP server (bounded JSON slices, role-based field allow-lists, full audit trail) consumed by multiple downstream agents with no data-access code — reused end-to-end by DAVE — standardising agent access to enterprise systems and cutting integration effort.</li>
           <li>Built RAG / retrieval and context pipelines, debugging retrieval quality at source and materially improving relevant-result recall; cut agent data-hydration latency with warmed persistent sessions and response caching.</li>
           <li>Use Kiro CLI as the team's AI coding harness extensively in day-to-day engineering work (Claude Code and Google Antigravity on personal projects).</li>
+          <li>On the Colleague Assist / CAI contact-centre work, engineered Snowflake data models over AWS Connect call transcripts and contact-trace records (turn-timing and silence analytics) for the Data Science team.</li>
           <li>Work with business stakeholders from discovery onwards; partner with ML Engineering, Data Science and Platform teams; deliver via GitLab CI/CD and Docker.</li>
         </ul>
       </div>
@@ -128,10 +130,10 @@ import { url } from '../lib/utils';
           <div class="cv-job-dates font-mono">Jul 2023 – Aug 2025</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Led a team of Data Engineers delivering NatWest's ESG data platform on Snowflake: 50+ internal and external sources, 1TB+ of climate and ESG data processed monthly, for analytics and regulatory reporting.</li>
+          <li>Led a team of Data Engineers delivering NatWest's ESG and climate data platform on Snowflake: 50+ internal and external sources, 1TB+ processed monthly, for analytics and regulatory reporting. Built it as a layered DBT project (RAW → INT → PRS → presentation) orchestrated by Airflow on AWS MWAA.</li>
           <li>Cut batch processing times by 40% through PySpark and DBT optimisation.</li>
-          <li>Reduced data quality incidents by 30% with automated monitoring and quality controls.</li>
-          <li>Worked with Data Architects and Data Scientists to deliver production climate risk models; defined team engineering standards and data product frameworks; mentored junior engineers.</li>
+          <li>Reduced data quality incidents by 30% with metadata-driven ingestion (new sources onboarded by config, not code), idempotent duplicate-load guards for safe re-runs, DBT snapshots for full change history, and automated DBT tests.</li>
+          <li>Cut Snowflake compute cost with per-model warehouse routing and transient tables, and automated deployment of the DBT project to MWAA via a build-and-promote pipeline (Artifactory → S3) with CloudWatch and SNS failure alerting. Worked with Data Architects and Data Scientists to deliver production climate risk models; defined team engineering standards and data product frameworks; mentored junior engineers.</li>
         </ul>
       </div>
 
@@ -142,7 +144,7 @@ import { url } from '../lib/utils';
           <div class="cv-job-dates font-mono">Sep 2021 – Jul 2023</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets for the Retail Data &amp; Analytics Decisioning team.</li>
+          <li>Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets for the Retail Data &amp; Analytics Decisioning team, including PySpark pipelines for Customer Lifetime Value (CLV) analytics on high-volume customer data.</li>
           <li>Designed Snowflake data models for high-volume analytical workloads; tuned with clustering, partitioning and materialised views.</li>
         </ul>
       </div>
