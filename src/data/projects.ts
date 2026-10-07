@@ -24,6 +24,17 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'london-pulse',
+    title: 'London Pulse - Daily Open-Data Tracker for London Food & Drink',
+    repo: 'cloudcruncher/london-pulse',
+    category: 'Lakehouse & Data',
+    description: 'Live PWA tracking what is opening, closing and changing across London\'s 33 boroughs, built in public from FSA hygiene registers and Companies House. Day-over-day diffs, craft coffee and brewing company formation, and an in-browser SQL lab.',
+    architecture: 'GitHub Actions daily pipeline, DuckDB diffing and Parquet exports, snapshots as release assets, sanity gates, a versioned static JSON API on GitHub Pages, DuckDB-WASM for visitor queries, and a Mapbox GL map with a canvas fallback.',
+    tags: ['DuckDB', 'DuckDB-WASM', 'Parquet', 'GitHub Actions', 'Mapbox GL', 'PWA', 'Open Data'],
+    githubUrl: 'https://github.com/cloudcruncher/london-pulse',
+    featured: true,
+  },
+  {
     id: 'open-lakehouse',
     title: 'Open Lakehouse - Enterprise Streaming & Multi-Tenant Platform',
     repo: 'cloudcruncher/open-lakehouse',
