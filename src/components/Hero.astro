@@ -11,6 +11,7 @@ import { url } from '../lib/utils';
       </span>
       <span class="role-pill">Lead / Senior Data Engineer</span>
       <span class="harness-pill">AI Data Engineering</span>
+      <a href={url('/work-with-me')} class="avail-pill">Available for contract · £750/day · UK ILR</a>
     </div>
 
     <div class="hero-content">
@@ -21,7 +22,7 @@ import { url } from '../lib/utils';
       </h1>
 
       <p class="hero-description">
-        I'm <strong>Robin Saini</strong>. 15+ years in software & data engineering (10+ in data engineering), currently the data engineer on agentic AI projects at <strong>NatWest Group</strong>, connecting AI agents to data sources and giving them trustworthy datasets and context. Before that I led a 50+ source Snowflake platform. I build with AI coding tools (Kiro CLI at work, Claude Code and Google Antigravity on my own projects), and my personal projects are public on GitHub.
+        I'm <strong>Robin Saini</strong>. 15+ years in software & data engineering (10+ in data engineering), currently the data engineer on agentic AI projects at <strong>NatWest Group</strong>, connecting AI agents to data sources and giving them trustworthy datasets and context. Before that I led a 50+ source Snowflake platform. Right to work in the UK (ILR), eligible for SC clearance, open to contract and permanent lead roles. I build with AI coding tools (Kiro CLI at work, Claude Code on my own projects), and my personal projects are public on GitHub.
       </p>
 
       <div class="hero-actions">
@@ -41,6 +42,9 @@ import { url } from '../lib/utils';
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
           Interactive CV & Resume
+        </a>
+        <a href={url('/work-with-me')} class="btn btn-outline">
+          Work With Me
         </a>
         <a href={url('/about#coffee')} class="btn btn-coffee">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -97,7 +101,6 @@ import { url } from '../lib/utils';
         <span class="tech-tag">dbt Core</span>
         <span class="tech-tag">Model Context Protocol (MCP)</span>
         <span class="tech-tag">Kiro CLI</span>
-        <span class="tech-tag">Google Antigravity</span>
         <span class="tech-tag">Claude Code</span>
         <span class="tech-tag">Pydantic Contracts</span>
         <span class="tech-tag">Kafka &amp; Streaming</span>
@@ -276,6 +279,17 @@ import { url } from '../lib/utils';
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  .avail-pill {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    color: var(--accent-data-light);
+    background: var(--accent-data-bg);
+    border: 1px solid var(--accent-data);
+    text-decoration: none;
   }
 
   .tech-tag {

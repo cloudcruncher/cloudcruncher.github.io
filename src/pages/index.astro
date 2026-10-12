@@ -110,6 +110,25 @@ const featuredProjects = projects.filter(p => p.featured);
     </div>
   </section>
 
+  <!-- Hire Me Section -->
+  <section class="cv-teaser-section">
+    <div class="container">
+      <div class="card cv-teaser-card">
+        <div class="cv-teaser-content">
+          <span class="badge badge-data">Available for contract</span>
+          <h2 class="heading-lg cv-teaser-title">Hire a Lead Data Engineer: £750/day, UK ILR, SC-eligible</h2>
+          <p class="cv-teaser-desc">
+            Snowflake platforms, Spark/Airflow/dbt pipelines and trusted data for enterprise AI agents, delivered in regulated UK banking. No sponsorship needed; 12 weeks' notice. Open to contract and permanent lead roles.
+          </p>
+          <div class="cv-teaser-actions">
+            <a href={url('/work-with-me')} class="btn btn-primary">Work With Me</a>
+            <a href="mailto:robinsaini156@gmail.com?subject=Contract%20enquiry" class="btn btn-outline">Email Robin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CV Teaser Section -->
   <section class="cv-teaser-section">
     <div class="container">
@@ -118,7 +137,7 @@ const featuredProjects = projects.filter(p => p.featured);
           <span class="badge badge-data">Full Career Profile</span>
           <h2 class="heading-lg cv-teaser-title">Interested in Robin's Complete CV &amp; Track Record?</h2>
           <p class="cv-teaser-desc">
-            Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and AI data engineering. Available in interactive web format, downloadable Word (.docx), or printable PDF.
+            Explore 15+ years of engineering experience across NatWest Group, Lloyds Banking Group, and AI data engineering. Available in interactive web format, downloadable Word (.docx) or PDF.
           </p>
           <div class="cv-teaser-actions">
             <a href={url('/cv')} class="btn btn-primary">
@@ -126,6 +145,9 @@ const featuredProjects = projects.filter(p => p.featured);
             </a>
             <a href={url('/Robin_Saini_CV.docx')} download class="btn btn-outline">
               Download Word Document (.docx)
+            </a>
+            <a href={url('/Robin_Saini_CV.pdf')} download class="btn btn-outline">
+              Download PDF
             </a>
           </div>
         </div>

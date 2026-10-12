@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/utils';
+
+const facts = [
+  { label: 'Day rate', value: '£750 / day', note: 'Contract engagements' },
+  { label: 'Right to work', value: 'UK (ILR)', note: 'Indefinite Leave to Remain, no sponsorship needed' },
+  { label: 'Clearance', value: 'Eligible for SC', note: 'Security Check clearance' },
+  { label: 'Notice period', value: '12 weeks', note: 'Contract or permanent' },
+  { label: 'Base', value: 'London, UK', note: 'Hybrid working' },
+  { label: 'Open to', value: 'Contract & permanent', note: 'Lead / Senior Data Engineer roles' },
+];
+
+const services = [
+  {
+    badge: 'badge-data',
+    tag: 'Data platforms',
+    title: 'Snowflake platform design & optimisation',
+    text: 'Architecture, clustering, materialised views, warehouse routing and cost tuning. Layered dbt projects orchestrated by Airflow.',
+    proof: 'Led the team behind a 50+ source, 1TB+/month Snowflake ESG platform.',
+  },
+  {
+    badge: 'badge-data',
+    tag: 'Pipelines',
+    title: 'Batch ELT/ETL at scale',
+    text: 'Production Python, SQL, PySpark (incl. AWS EMR Serverless), Airflow and dbt, with CI/CD and automated testing built in.',
+    proof: '40% faster batches and 30% fewer data quality incidents at NatWest.',
+  },
+  {
+    badge: 'badge-ai',
+    tag: 'AI data engineering',
+    title: 'Trusted data for AI agents',
+    text: 'Reusable, PII-guardrailed MCP servers, RAG / retrieval and context pipelines, LLM-as-a-judge evaluation and AI observability. From proof of concept to production.',
+    proof: '>90% less manual case-handling time; checks on 300+ onboarding applications a day.',
+  },
+  {
+    badge: 'badge-coffee',
+    tag: 'Quality & governance',
+    title: 'Data contracts, quality gates, audit trails',
+    text: 'Pydantic data contracts, quality gates, audit trails and GDPR-aligned handling that meet banking and financial-crime standards.',
+    proof: '45% fewer data errors from a GDPR-compliant governance framework at Lloyds.',
+  },
+  {
+    badge: 'badge-coffee',
+    tag: 'Modernisation',
+    title: 'Legacy warehouse to cloud',
+    text: 'Teradata modernisation, DB2 operational support, ML-ready data lakes on AWS, BigQuery proofs of concept, tuning and disaster recovery.',
+    proof: '50% lower ETL load times; critical production incident resolved in under 12 hours.',
+  },
+  {
+    badge: 'badge-ai',
+    tag: 'Leadership',
+    title: 'Tech lead & team uplift',
+    text: 'Leading teams of up to 5 engineers: engineering standards, data product frameworks, mentoring, stakeholder management and Agile delivery.',
+    proof: '10+ years in regulated UK banking (NatWest, Lloyds); 15+ years in engineering.',
+  },
+];
+
+const stack = [
+  'Snowflake', 'Python', 'SQL', 'PySpark', 'Apache Airflow', 'dbt', 'AWS (S3, Glue, EMR, Athena)',
+  'Kafka', 'PostgreSQL', 'Teradata', 'MCP', 'RAG', 'LangGraph', 'Pydantic', 'GitLab CI/CD', 'Docker', 'Terraform', 'Splunk', 'Claude Code', 'Kiro CLI',
+];
+---
+
+<BaseLayout
+  title="Work With Me | Contract Data Engineer, London | Robin Saini"
+  description="Robin Saini is available for contract and permanent Lead / Senior Data Engineer roles in London: £750/day, UK ILR (no sponsorship), eligible for SC clearance. Snowflake, Spark, Airflow, dbt and AI data engineering."
+>
+  <section class="work-hero">
+    <div class="container">
+      <div class="badge-row">
+        <span class="badge badge-data">Available for contract</span>
+        <span class="badge">Right to work in the UK (ILR)</span>
+        <span class="badge badge-ai">Eligible for SC clearance</span>
+      </div>
+      <h1 class="heading-xl work-title">
+        Lead / Senior Data Engineer for <span class="text-gradient-ai">hire</span>, built for regulated data.
+      </h1>
+      <p class="work-intro">
+        15+ years in software and data engineering (10+ in data engineering), with the data work in regulated UK banking. I design and deliver Snowflake platforms, production data pipelines and the trusted data layer behind enterprise AI agents, hands-on every day. Based in London, open to contract engagements and permanent lead roles.
+      </p>
+      <div class="work-actions">
+        <a href="mailto:robinsaini156@gmail.com?subject=Contract%20enquiry" class="btn btn-primary">Email me</a>
+        <a href="https://linkedin.com/in/robinsaini" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+        <a href={url('/Robin_Saini_CV.pdf')} download class="btn btn-outline">Download CV (PDF)</a>
+        <a href={url('/Robin_Saini_CV.docx')} download class="btn btn-outline">CV (.docx)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <div class="container">
+      <h2 class="heading-md work-h2">Engagement at a glance</h2>
+      <div class="facts-grid">
+        {facts.map((f) => (
+          <div class="card fact-card">
+            <div class="fact-label font-mono">{f.label}</div>
+            <div class="fact-value">{f.value}</div>
+            <div class="fact-note">{f.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <div class="container">
+      <h2 class="heading-md work-h2">What I can do for you</h2>
+      <div class="services-grid">
+        {services.map((s) => (
+          <article class="card service-card">
+            <span class={`badge ${s.badge}`}>{s.tag}</span>
+            <h3 class="heading-sm">{s.title}</h3>
+            <p class="service-text">{s.text}</p>
+            <p class="service-proof"><strong>Proof:</strong> {s.proof}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <div class="container">
+      <h2 class="heading-md work-h2">Track record</h2>
+      <div class="facts-grid">
+        <div class="card fact-card"><div class="fact-value">&gt;90%</div><div class="fact-note">less manual case-handling time via agentic decision-support (NatWest)</div></div>
+        <div class="card fact-card"><div class="fact-value">300+</div><div class="fact-note">commercial onboarding applications a day supported by AI-assisted checks</div></div>
+        <div class="card fact-card"><div class="fact-value">50+ sources</div><div class="fact-note">1TB+ a month on the Snowflake ESG and climate platform I led</div></div>
+        <div class="card fact-card"><div class="fact-value">40% / 30%</div><div class="fact-note">faster batches / fewer data quality incidents (NatWest)</div></div>
+        <div class="card fact-card"><div class="fact-value">50% / 45%</div><div class="fact-note">lower ETL load times / fewer data errors (Lloyds)</div></div>
+      </div>
+      <p class="work-links">
+        <a href={url('/cv')}>Full CV →</a>
+        <a href={url('/projects')}>GitHub projects →</a>
+        <a href={url('/blog')}>Field notes →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="work-section">
+    <div class="container">
+      <h2 class="heading-md work-h2">Toolkit</h2>
+      <div class="stack-tags">
+        {stack.map((t) => <span class="tech-tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section work-cta-section">
+    <div class="container">
+      <div class="card work-cta">
+        <h2 class="heading-lg">Let's talk about your data platform</h2>
+        <p class="work-intro">
+          Tell me the problem, timeline and clearance requirements. I'll reply with availability and a proposed approach.
+        </p>
+        <div class="work-actions">
+          <a href="mailto:robinsaini156@gmail.com?subject=Contract%20enquiry" class="btn btn-primary">robinsaini156@gmail.com</a>
+          <a href="tel:+447466201865" class="btn btn-outline">+44 7466 201865</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .work-hero {
+    padding: 5rem 0 3rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+  }
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .work-title { margin-bottom: 1.25rem; max-width: 900px; }
+  .work-intro {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 780px;
+    margin-bottom: 1.75rem;
+  }
+  .work-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .work-section { padding: 3rem 0 0 0; }
+  .work-h2 { margin-bottom: 1.25rem; }
+  .facts-grid, .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .facts-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .facts-grid { grid-template-columns: repeat(3, 1fr); }
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .fact-card, .service-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .service-card { align-items: flex-start; }
+  .fact-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .fact-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .fact-note, .service-text, .service-proof {
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .service-proof strong { color: var(--accent-data-light); }
+  .work-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    font-weight: 600;
+  }
+  .stack-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tech-tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    padding: 0.25rem 0.6rem;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+  .work-cta-section { padding-bottom: 5rem; }
+  .work-cta { padding: 2.5rem; }
+  @media (max-width: 640px) { .work-cta { padding: 1.5rem; } }
+</style>

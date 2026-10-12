@@ -10,7 +10,7 @@ featured: true
 
 Building AI agents that work reliably in a regulated enterprise is mostly a data engineering and systems reliability problem, not a prompting exercise.
 
-I lead the data engineering function for agentic AI projects in an enterprise innovation team at NatWest Group, taking work from proof of concept to production. My part is the data side: connecting agents to data sources and giving them trustworthy datasets and context. I build with AI coding tools: Kiro CLI at work, and Google Antigravity and Claude Code on my own projects. This post is about the general patterns that matter, not any one system.
+I lead the data engineering function for agentic AI projects in an enterprise innovation team at NatWest Group, taking work from proof of concept to production. My part is the data side: connecting agents to data sources and giving them trustworthy datasets and context. I build with AI coding tools: Kiro CLI at work, and Claude Code on my own projects. This post is about the general patterns that matter, not any one system.
 
 ---
 
