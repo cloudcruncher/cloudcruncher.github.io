@@ -1,0 +1,124 @@
+---
+// PipelineHero.astro: animated data-to-agent architecture (illustrative, no live data)
+type Node = { id: string; x: number; y: number; w: number; h: number; title: string; sub: string; tone: 'data' | 'ai' | 'coffee' | 'cyan' };
+
+const nodes: Node[] = [
+  { id: 'src1', x: 0, y: 14, w: 118, h: 56, title: 'Kafka feeds', sub: 'case events', tone: 'cyan' },
+  { id: 'src2', x: 0, y: 92, w: 118, h: 56, title: 'Core systems', sub: 'banking · CRM', tone: 'cyan' },
+  { id: 'src3', x: 0, y: 170, w: 118, h: 56, title: 'Vendor data', sub: '50+ sources', tone: 'cyan' },
+  { id: 'pipe', x: 162, y: 80, w: 128, h: 80, title: 'Pipelines', sub: 'Airflow · Spark · dbt', tone: 'data' },
+  { id: 'lake', x: 334, y: 14, w: 128, h: 100, title: 'Snowflake', sub: 'RAW → INT → PRS', tone: 'data' },
+  { id: 'dq', x: 334, y: 134, w: 128, h: 56, title: 'Contracts + DQ', sub: 'Pydantic · audit', tone: 'coffee' },
+  { id: 'mcp', x: 506, y: 40, w: 112, h: 70, title: 'MCP server', sub: 'PII guardrails', tone: 'ai' },
+  { id: 'agent', x: 506, y: 140, w: 112, h: 70, title: 'AI agents', sub: '30-tool registry', tone: 'ai' },
+  { id: 'obs', x: 162, y: 262, w: 456, h: 52, title: 'Evaluate + observe', sub: 'LLM-as-a-judge · human in the loop · Splunk', tone: 'coffee' },
+];
+
+// Edges as cubic beziers: [id, path, delay]
+const edges: [string, string, number][] = [
+  ['e1', 'M118 42 C140 42 140 110 162 112', 0],
+  ['e2', 'M118 120 C140 120 140 120 162 120', 0.6],
+  ['e3', 'M118 198 C140 198 140 130 162 128', 1.2],
+  ['e4', 'M290 100 C312 100 312 64 334 64', 0.3],
+  ['e5', 'M290 140 C312 140 312 162 334 162', 0.9],
+  ['e6', 'M462 64 C484 64 484 75 506 75', 1.5],
+  ['e7', 'M562 110 C562 120 562 130 562 140', 2.1],
+  ['e8', 'M562 210 C562 235 562 245 562 262', 2.7],
+  ['e9', 'M398 190 C398 225 398 235 398 262', 1.8],
+];
+---
+
+<div class="pipe-card" role="img" aria-label="Animated diagram: enterprise data sources flow through Airflow, PySpark and dbt pipelines into a Snowflake lakehouse, through contracts and quality gates and a guardrailed MCP server to AI agents, with evaluation and observability underneath.">
+  <div class="pipe-head font-mono">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span>data → agent architecture · illustrative</span>
+    <span class="live"><b></b>running</span>
+  </div>
+
+  <svg viewBox="0 0 618 336" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="pipe-svg" id="pipe-svg">
+    <defs>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2.5" result="b" />
+        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+
+    {edges.map(([id, d]) => <path id={id} d={d} class="edge" />)}
+
+    {nodes.map((n) => (
+      <g class={`node tone-${n.tone}`}>
+        <rect x={n.x} y={n.y} width={n.w} height={n.h} rx="10" />
+        <text x={n.x + n.w / 2} y={n.y + n.h / 2 - 3} text-anchor="middle" class="t-title">{n.title}</text>
+        <text x={n.x + n.w / 2} y={n.y + n.h / 2 + 13} text-anchor="middle" class="t-sub">{n.sub}</text>
+      </g>
+    ))}
+
+    {edges.map(([id, , delay]) => (
+      <circle r="3.2" class="packet" filter="url(#glow)">
+        <animateMotion dur="2.8s" begin={`-${delay}s`} repeatCount="indefinite" calcMode="linear">
+          <mpath href={`#${id}`} xlink:href={`#${id}`} />
+        </animateMotion>
+      </circle>
+    ))}
+
+    <text x="162" y="326" class="t-cap">scored decisions flow back into the platform</text>
+  </svg>
+</div>
+
+<script>
+  const svg = document.getElementById('pipe-svg') as unknown as SVGSVGElement | null;
+  if (svg && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    svg.pauseAnimations();
+    svg.classList.add('still');
+  }
+</script>
+
+<style>
+  .pipe-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 0.9rem 1rem 1rem;
+    box-shadow: var(--shadow-lg), var(--shadow-glow-ai);
+    backdrop-filter: blur(8px);
+  }
+  .pipe-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .dots { display: inline-flex; gap: 5px; }
+  .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--border-subtle); }
+  .dots i:nth-child(1) { background: #f87171; }
+  .dots i:nth-child(2) { background: #fbbf24; }
+  .dots i:nth-child(3) { background: #34d399; }
+  .live { margin-left: auto; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-data-light); }
+  .live b { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-data-light); animation: blink 1.6s ease-in-out infinite; }
+
+  .pipe-svg { width: 100%; height: auto; overflow: visible; }
+
+  .edge { fill: none; stroke: var(--border-subtle); stroke-width: 1.5; stroke-dasharray: 4 5; animation: dash 1.4s linear infinite; }
+  .node rect { fill: var(--bg-secondary); stroke-width: 1.4; transition: filter 0.2s ease; }
+  .node:hover rect { filter: brightness(1.25); }
+  .tone-data rect { stroke: var(--accent-data); fill: var(--accent-data-bg); }
+  .tone-ai rect { stroke: var(--accent-ai-light); fill: var(--accent-ai-bg); }
+  .tone-coffee rect { stroke: var(--accent-coffee); fill: var(--accent-coffee-bg); }
+  .tone-cyan rect { stroke: var(--accent-cyan); fill: rgba(6, 182, 212, 0.1); }
+  .t-title { fill: var(--text-primary); font-size: 12.5px; font-weight: 700; font-family: var(--font-sans); }
+  .t-sub { fill: var(--text-secondary); font-size: 9px; font-family: var(--font-mono); }
+  .t-cap { fill: var(--text-muted); font-size: 9.5px; font-family: var(--font-mono); }
+  .packet { fill: var(--accent-cyan); }
+
+  .still .edge { animation: none; }
+  .still .packet { display: none; }
+  @media (max-width: 600px) { .t-sub, .t-cap { display: none; } .t-title { font-size: 17px; } }
+  @keyframes dash { to { stroke-dashoffset: -18; } }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) {
+    .edge, .live b { animation: none; }
+    .packet { display: none; }
+  }
+</style>

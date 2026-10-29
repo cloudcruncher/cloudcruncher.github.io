@@ -8,7 +8,7 @@ import { url } from '../lib/utils';
   <div class="cv-action-bar no-print">
     <div class="cv-action-info">
       <span class="badge badge-data">Curriculum Vitae</span>
-      <span class="cv-last-updated font-mono">Updated October 2026</span>
+      <span class="cv-last-updated font-mono">Updated 29 October 2026</span>
     </div>
     <div class="cv-action-buttons">
       <a href={url('/Robin_Saini_CV.docx')} download class="btn btn-primary btn-sm">
@@ -42,7 +42,7 @@ import { url } from '../lib/utils';
     <header class="cv-header">
       <h1 class="cv-name">ROBIN SAINI</h1>
       <div class="cv-headline">
-        Lead / Senior Data Engineer | Snowflake | Python &amp; SQL | Spark | Airflow &amp; dbt | Agentic AI Data Engineering
+        Lead / Principal Data Engineer | Snowflake Data Platforms &amp; Agentic AI | Python &amp; SQL | PySpark | Airflow &amp; dbt
       </div>
       <div class="cv-contact-row font-mono">
         <span>📍 London, UK</span>
@@ -59,139 +59,110 @@ import { url } from '../lib/utils';
         <span>Right to work in the UK (ILR)</span>
         <span>•</span>
         <span>Eligible for SC clearance</span>
-        <span>•</span>
-        <span>Notice period: 12 weeks</span>
       </div>
     </header>
 
-    <!-- Professional Summary -->
     <section class="cv-section">
       <h2 class="cv-section-title">PROFESSIONAL SUMMARY</h2>
-      <p class="cv-summary-text">
-        Lead / Senior Data Engineer with <strong>15+ years in software and data engineering</strong> (10+ in data engineering), all in regulated UK banking. Currently lead data engineering for all agentic AI products in NatWest's enterprise innovation team, taking them from proof of concept to production: <strong>over 90% less manual case-handling time</strong> and quality checks on <strong>300+ commercial onboarding applications a day</strong>. Previously led the team that built a <strong>50+ source, 1TB+/month Snowflake ESG and climate data platform</strong>. Hands-on every day in Python, SQL, PySpark, Airflow and dbt, with CI/CD, automated testing and data-quality controls built into delivery. Open to permanent lead roles and contract engagements.
-      </p>
-    </section>
-
-    <!-- Key Skills -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">KEY SKILLS</h2>
-      <div class="cv-skills-grid">
-        <div class="cv-skill-item">
-          <strong>Data Engineering:</strong> Python (advanced), SQL (expert), PySpark / Apache Spark (incl. AWS EMR Serverless), Apache Airflow (AWS MWAA), dbt, StreamSets, batch ELT/ETL at scale
-        </div>
-        <div class="cv-skill-item">
-          <strong>Data Platforms:</strong> Snowflake (architecture, clustering, materialised views, performance and cost tuning), PostgreSQL, Teradata, IBM DB2, data lake design, dimensional and analytical modelling
-        </div>
-        <div class="cv-skill-item">
-          <strong>AI Data Engineering:</strong> MCP servers and agent tool integration, RAG / retrieval and context pipelines, OpenAI / Agents SDK, LangGraph, Pydantic data contracts, LLM-as-a-judge evaluation, AI observability; AI-assisted engineering (Kiro CLI, Claude Code)
-        </div>
-        <div class="cv-skill-item">
-          <strong>Cloud &amp; DevOps:</strong> AWS (S3, Glue, EMR, Athena, SageMaker), GitLab CI/CD, Docker, Git, Splunk; Terraform (maintaining configuration), GCP
-        </div>
-        <div class="cv-skill-item">
-          <strong>Quality &amp; Leadership:</strong> data quality gates, audit trails, GDPR-aligned handling, automated testing, incident management; team leadership (up to 5 engineers), mentoring, engineering standards, stakeholders, Agile
-        </div>
-      </div>
-    </section>
-
-    <!-- Selected Impact -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">SELECTED IMPACT</h2>
+      <p class="cv-summary-text">Lead data engineer in regulated UK banking: 15+ years in software and data engineering, 8+ in data engineering. Hands-on in Python, SQL, Snowflake, PySpark, Airflow and dbt.</p>
       <ul class="cv-bullet-list">
-        <li><strong>&gt;90% reduction in manual case-handling time</strong> through agentic decision-support workflows; AI-assisted due-diligence checks on <strong>300+ applications a day</strong>.</li>
-        <li><strong>50+ sources, 1TB+ a month</strong> on the Snowflake ESG and climate data platform, delivered as team lead.</li>
-        <li><strong>40% faster batches, 30% fewer data quality incidents</strong> (NatWest); <strong>50% lower ETL load times, 45% fewer data errors</strong> (Lloyds).</li>
+        <li><strong>Now:</strong> lead data engineer for NatWest's enterprise innovation team, taking agentic AI products from proof of concept to production: a complaints investigation agent checked by LLM-as-a-judge evaluations, a GenAI customer due diligence pipeline and a reusable MCP data-access layer.</li>
+        <li><strong>Before:</strong> core engineer on a 50+ source, 1TB+/month Snowflake and dbt ESG and climate data platform whose EPC score data product is shown to customers in the NatWest app; Snowflake and PySpark analytics for Retail Decisioning; Teradata and DB2 data warehousing for Lloyds Banking Group (via TCS).</li>
+        <li><strong>How I work:</strong> hands-on individual contributor; mentoring junior engineers and setting engineering standards is part of the job.</li>
       </ul>
     </section>
 
-    <!-- Professional Experience -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">KEY SKILLS</h2>
+      <div class="cv-skills-grid">
+        <div class="cv-skill-item">Data Engineering: Python (advanced), SQL (expert), PySpark / Apache Spark (incl. AWS EMR Serverless), Apache Airflow (AWS MWAA), dbt, StreamSets, batch ELT/ETL at scale</div>
+        <div class="cv-skill-item">Data Platforms: Snowflake (architecture, warehouses, Tasks/Streams, UDFs/stored procedures, Time Travel, cloning, clustering, materialised views, performance and cost tuning), PostgreSQL, Teradata, IBM DB2, data modelling; familiar with Hadoop and Hive</div>
+        <div class="cv-skill-item">AI Data Engineering: OpenAI / Agents SDK tool calling, Kafka (consumer, familiar), MCP servers and agent tool integration, RAG / retrieval and context pipelines, LangGraph, Pydantic data contracts, LLM-as-a-judge evaluation, AI observability; AI-assisted engineering (Claude Code, Kiro CLI)</div>
+        <div class="cv-skill-item">Cloud &amp; DevOps: AWS (S3, Glue, EMR, Athena, SageMaker), GitLab CI/CD, Docker, Git, Splunk; familiar with Terraform (maintains configuration in team repos)</div>
+        <div class="cv-skill-item">Quality &amp; Leadership: data quality in regulated environments, data contracts, data quality gates, audit trails and lineage, automated testing, incident management; technical leadership, coaching and mentoring, onshore-offshore delivery, engineering standards, stakeholders from discovery onwards, Agile</div>
+      </div>
+    </section>
+
     <section class="cv-section">
       <h2 class="cv-section-title">PROFESSIONAL EXPERIENCE</h2>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">NatWest Group, London (Hybrid) — Senior Data Engineer: Agentic Systems &amp; LLM Deployment</div>
+          <div class="cv-job-role">NatWest Group, London (Hybrid) — Senior Data Engineer - Agentic Systems &amp; LLM Deployment</div>
           <div class="cv-job-dates font-mono">Aug 2025 – Present</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Lead the data engineering function for all agentic AI products in the enterprise innovation team, from proof of concept to production, including a complaints decision-assist product, an LLM-as-a-judge evaluation service and a contact-centre assist programme.</li>
-          <li>Built the data engineering behind decision-support workflows that cut manual case-handling time by over 90%, and an AI-assisted due-diligence capability supporting quality checks on 300+ commercial onboarding applications a day.</li>
-          <li>Designed a reusable, PII-guardrailed MCP server (bounded JSON slices, role-based field allow-lists, full audit trail) that multiple agents consume with no data-access code, standardising access to core banking, CRM and case-management systems.</li>
-          <li>Built RAG / retrieval and context pipelines; debugged retrieval quality at source (segment filtering, candidate-pool sizing, confidence thresholding), materially improving relevant-result recall. Cut agent data-hydration latency with warmed persistent sessions and response caching.</li>
-          <li>Built an LLM-as-a-judge evaluation pipeline (with a batch REST path) scoring model decisions into Snowflake, and PySpark pipelines on AWS EMR Serverless for model monitoring (accuracy, precision, recall, F1, LLM token usage and latency), orchestrated in Airflow.</li>
-          <li>Introduced Snowflake CI/CD and automated testing for data loaders; built a resilient Snowflake writer with jittered back-off, reducing deployment issues to near zero.</li>
-          <li>Designed data contracts, Pydantic validation, quality gates and audit trails to meet banking and financial-crime compliance standards; built Splunk observability for agent execution and decision quality. Deliver via GitLab CI/CD and Docker.</li>
+          <li>Lead data engineer for all agentic AI products in the enterprise innovation team, from proof of concept to production, including a complaints investigation agent, a complaints decision-assist agent, an LLM-as-a-judge evaluation service and a contact-centre assist programme.</li>
+          <li>Complaints AutoInvestigation agent: engineered the data layer for an agent that investigates a complaint across many systems and writes an investigation summary. Built on the OpenAI Agents SDK with a 30-tool registry covering core banking, credit cards, collections and case management, fed by complaints from Kafka, with tools chosen by complaint category. Every source passes data quality checks with auditing and logging, everything the agent receives is logged as facts, and encrypted outputs are stored in PostgreSQL with controls on token usage and made-up answers.</li>
+          <li>Customer due diligence AI checks: led data engineering on a GenAI quality-check programme for commercial customer onboarding. Designed and documented a Polars-based ETL pipeline turning onboarding Kafka payloads into structured PostgreSQL datasets for LLM-driven checks, enriched with Companies House data, supporting 300+ applications a day. Built the data-quality checks, data contracts and audit trails, and wrote the handover documentation and operations runbook.</li>
+          <li>Designed a reusable MCP server with personal-data safeguards (it returns only small slices of data, only the fields each role may see, and keeps a full audit trail) that multiple agents use with no data-access code of their own, standardising access to core banking, CRM and case-management systems.</li>
+          <li>Built RAG / retrieval and context pipelines; traced poor retrieval results back to their source and fixed them (filtering by segment, how many candidates are considered, minimum confidence cut-offs), materially improving relevant-result recall. Cut agent data-hydration latency by keeping connections open and caching responses.</li>
+          <li>Built PySpark pipelines on AWS EMR Serverless for model monitoring (model accuracy, LLM token usage and latency), orchestrated by Airflow.</li>
+          <li>Introduced Snowflake CI/CD and automated testing for data loaders, and built a Snowflake writer that retries failed writes, taking deployment issues to near zero. Built Splunk observability for agent runs, tool-call performance and decision quality; deployed with GitLab CI/CD and Docker.</li>
         </ul>
       </div>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">NatWest Group, Edinburgh — Senior Data Engineer: Climate Analytics (ESG Data Platform)</div>
+          <div class="cv-job-role">NatWest Group, Edinburgh — Senior Data Engineer - Climate Analytics (ESG Data Platform)</div>
           <div class="cv-job-dates font-mono">Jul 2023 – Aug 2025</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Led a team of Data Engineers delivering NatWest's ESG and climate data platform on Snowflake: 50+ internal and external sources, 1TB+ a month, for analytics and regulatory reporting. Layered dbt project (RAW, INT, PRS, presentation) orchestrated by Airflow on AWS MWAA.</li>
-          <li>Cut batch processing times by 40% through PySpark and dbt optimisation.</li>
-          <li>Reduced data quality incidents by 30% with metadata-driven ingestion (new sources by config, not code), idempotent re-run guards, dbt snapshots and automated dbt tests; cut Snowflake compute cost with per-model warehouse routing and transient tables.</li>
-          <li>Delivered production climate risk models with Data Architects and Data Scientists; defined engineering standards and data product frameworks; mentored junior engineers.</li>
+          <li>Senior engineer on the team delivering NatWest's Snowflake ESG and climate data platform on a medallion architecture: 50+ internal and external sources and 1TB+ of data a month, for analytics and regulatory reporting.</li>
+          <li>Built the layered dbt project (RAW landing, INT integration and history, PRS presentation) with lineage, SCD-2 snapshots for vendor history, and dbt tests and docs as living documentation. Orchestrated on Airflow / AWS MWAA with config-driven pipelines, one per source, and tested builds promoted step by step to production.</li>
+          <li>Controlled Snowflake spend by running each dbt model on a right-sized warehouse and using transient tables for rebuildable layers, cutting compute and storage cost.</li>
+          <li>Made ingestion metadata-driven (a new source is a config row, not code) and idempotent, with pre-hook guards against duplicate loads and CloudWatch/SNS alerts that fail fast. Sped up batch processing through PySpark and dbt optimisation and reduced data quality incidents with automated monitoring and quality controls.</li>
+          <li>Delivered climate data products (emissions, residential EPC certificates and others) used by wealth, commercial and retail teams: the EPC score is shown in the NatWest app and the data feeds climate risk scores, and portfolio views by EPC band support data-backed mortgage and green-loan propositions. Each product has a named data steward, quality metrics, data contracts between producers and consumers, and lineage back to source.</li>
+          <li>Delivered production climate risk models with Data Architects and Data Scientists; defined engineering standards and data product frameworks; coached and mentored junior engineers on the platform and the skills they needed.</li>
         </ul>
       </div>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">NatWest Group, Edinburgh — Senior Data Engineer: Retail Analytics</div>
+          <div class="cv-job-role">NatWest Group, Edinburgh — Senior Data Engineer - Retail Analytics</div>
           <div class="cv-job-dates font-mono">Sep 2021 – Jul 2023</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets for the Retail Data &amp; Analytics Decisioning team, including PySpark pipelines for Customer Lifetime Value analytics.</li>
-          <li>Designed Snowflake data models for high-volume analytical workloads, tuned with clustering, partitioning and materialised views.</li>
+          <li>Engineered enterprise batch pipelines in Python, SQL, Snowflake, PySpark and StreamSets that move data from source to destination for the Retail Data &amp; Analytics Decisioning team, including Customer Lifetime Value analytics, building them to be idempotent and robust.</li>
+          <li>Designed Snowflake data models for high-volume retail analytics, using clustering, partitioning and materialised views to speed up queries for Customer Lifetime Value work. Took part in the Teradata-to-Snowflake migration, including moving data marts.</li>
         </ul>
       </div>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">Tata Consultancy Services (client: Lloyds Banking Group), Manchester &amp; Gurugram — Data Engineer: Enterprise Data Platform</div>
+          <div class="cv-job-role">Tata Consultancy Services (client: Lloyds Banking Group), Manchester &amp; Gurugram — Associate Consultant - Enterprise Data Platform</div>
           <div class="cv-job-dates font-mono">Jun 2019 – Sep 2021</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Led a 5-member Data Services team running the Lloyds enterprise data platform: Teradata warehouse, reporting applications and data support for analytics teams.</li>
-          <li>Designed and delivered an ML-ready data lake on AWS for data science programmes; supported the IBM DB2 operational data store; ran a Google BigQuery proof of concept for Teradata modernisation.</li>
-          <li>Tuned SQL and batch applications to cut CPU consumption; led Teradata upgrades and disaster recovery; gave 24/7 support for business-critical, regulatory and legal applications and resolved a critical production incident in under 12 hours.</li>
+          <li>Moved into the enterprise data platform team to work on Teradata, and joined the data quality management unit, resolving issues flagged by overnight batch pipelines through the UI or the DB2 operational system on the mainframe.</li>
+          <li>Worked in an onshore-offshore delivery model, mentoring team members and managing client deliveries for the Lloyds enterprise data platform: Teradata warehouse, reporting applications, other data service applications on SQL Server and Teradata, and data support for analytics teams.</li>
+          <li>Worked in an on-premise Teradata, Hadoop, Hive and Python environment; gathered requirements for cloud migration and tried GCP and Dataform as modernisation towards GCP began.</li>
+          <li>Supported batch runs and sought performance improvements wherever possible; took part in Teradata upgrades and disaster recovery.</li>
         </ul>
       </div>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">Tata Consultancy Services (client: Lloyds Banking Group) — Enterprise Data Warehouse Engineer</div>
+          <div class="cv-job-role">Tata Consultancy Services (client: Lloyds Banking Group) — Associate Consultant - Customer Information System (DB2 ODS)</div>
           <div class="cv-job-dates font-mono">Feb 2016 – May 2019</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Built ETL pipelines that cut data load times by 50%; implemented a GDPR-compliant data governance framework that reduced data errors by 45%.</li>
+          <li>Supported the IBM DB2 operational data store behind the customer information system: managed data quality incidents, including customer profile merge and unmerge issues.</li>
+          <li>Worked on data warehousing and big data across the DB2 operational data store, Teradata and Hadoop.</li>
         </ul>
       </div>
 
       <div class="cv-job-block">
         <div class="cv-job-header">
-          <div class="cv-job-role">UST Global, Gurugram — Senior Software Engineer (Mainframe)</div>
-          <div class="cv-job-dates font-mono">Apr 2015 – Feb 2016</div>
+          <div class="cv-job-role">UST Global, Gurugram &amp; Sopra Steria, Noida — Software Engineer, Mainframe (Senior from 2015)</div>
+          <div class="cv-job-dates font-mono">Apr 2011 – Feb 2016</div>
         </div>
         <ul class="cv-bullet-list">
-          <li>Built and supported COBOL / DB2 mainframe applications under ITIL incident, problem and change management; contributed to high-level designs with business analysts and mentored junior team members.</li>
-        </ul>
-      </div>
-
-      <div class="cv-job-block">
-        <div class="cv-job-header">
-          <div class="cv-job-role">Sopra Steria, Noida — Software Engineer (Mainframe)</div>
-          <div class="cv-job-dates font-mono">Apr 2011 – Mar 2015</div>
-        </div>
-        <ul class="cv-bullet-list">
-          <li>Trained in mainframe technology, then built and supported COBOL / DB2 systems for a UK retailer; prepared detailed designs from business requirements under ITIL processes.</li>
+          <li>Trained in mainframe technology, then built and supported COBOL / DB2 systems for a UK retailer and later at UST Global under ITIL processes; prepared designs with business analysts and mentored junior team members.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Certifications & Education -->
     <section class="cv-section">
       <h2 class="cv-section-title">EDUCATION &amp; CERTIFICATIONS</h2>
       <div class="cv-edu-grid">

@@ -1,0 +1,231 @@
+---
+// Architecture.astro: reference architectures drawn from delivered work (CV-level detail only)
+interface Stage { name: string; tone: 'cyan' | 'data' | 'coffee' | 'ai'; items: string[] }
+interface Arch {
+  id: string;
+  tab: string;
+  title: string;
+  lede: string;
+  stages: Stage[];
+  decisions: string[];
+  outcome: string;
+}
+
+const archs: Arch[] = [
+  {
+    id: 'agents',
+    tab: 'Agent data layer',
+    title: 'Governed data layer for AI agents',
+    lede: 'Agents investigate complaints across many systems. The data layer decides what they can see, proves what they were given, and checks what they say.',
+    stages: [
+      { name: 'Sources', tone: 'cyan', items: ['Kafka complaint feed', 'Core banking and cards', 'Collections, case management'] },
+      { name: 'Quality gates', tone: 'coffee', items: ['Pydantic data contracts', 'DQ checks with audit logs', 'Inputs logged as facts'] },
+      { name: 'Access', tone: 'ai', items: ['Reusable MCP server', 'Bounded JSON slices', 'Role-based field allow-lists'] },
+      { name: 'Agents', tone: 'ai', items: ['OpenAI Agents SDK', '30-tool registry', 'Tools filtered per category'] },
+      { name: 'Assurance', tone: 'data', items: ['LLM-as-a-judge vs facts', 'Human in the loop', 'Encrypted outputs, Splunk'] },
+    ],
+    decisions: [
+      'Agents get tools, not connections: one MCP server serves many agents with no data-access code of their own.',
+      'Least privilege by design: return the smallest slice, only the fields a role may see, and audit every call.',
+      'Ground truth first: everything the agent receives is logged as facts, so the judge can verify each summary against them.',
+      'Fix retrieval at source: segment filters, candidate-pool sizing and confidence cut-offs lifted relevant-result recall.',
+    ],
+    outcome: '>90% less manual case-handling time; agent data hydration made faster with warmed sessions and response caching.',
+  },
+  {
+    id: 'medallion',
+    tab: 'Snowflake platform',
+    title: 'Medallion Snowflake platform for ESG and climate data',
+    lede: 'A config-driven platform that lands 50+ sources, 1TB+ a month, and serves governed data products to customers and risk models.',
+    stages: [
+      { name: 'Sources', tone: 'cyan', items: ['50+ internal and external', 'Vendor files and feeds', '1TB+ a month'] },
+      { name: 'Orchestrate', tone: 'coffee', items: ['Airflow on AWS MWAA', 'One DAG per source', 'New source = a config row'] },
+      { name: 'RAW → INT', tone: 'data', items: ['Idempotent loads', 'Pre-hook duplicate guards', 'SCD-2 vendor history'] },
+      { name: 'PRS products', tone: 'data', items: ['dbt tests and docs', 'Named data steward', 'Contracts and lineage'] },
+      { name: 'Consumers', tone: 'ai', items: ['EPC score in NatWest app', 'Climate risk models', 'Leadership dashboards'] },
+    ],
+    decisions: [
+      'Metadata-driven ingestion: adding a source is configuration, not code, so the platform scales without scaling the team.',
+      'Cost by design: each dbt model runs on a right-sized warehouse, and rebuildable layers use transient tables.',
+      'Fail fast: CloudWatch and SNS alerts, with tested builds promoted step by step to production.',
+      'Data as a product: each climate dataset has a steward, quality metrics and a contract between producer and consumer.',
+    ],
+    outcome: '40% faster batches and 30% fewer data quality incidents; EPC band views support mortgage and green-loan propositions.',
+  },
+  {
+    id: 'cdd',
+    tab: 'GenAI due diligence',
+    title: 'GenAI customer due-diligence pipeline',
+    lede: 'Commercial onboarding quality checks (KYC / AML) that need clean, enriched, auditable data before an LLM touches them.',
+    stages: [
+      { name: 'Ingest', tone: 'cyan', items: ['Kafka onboarding payloads', 'Consumer of the feed'] },
+      { name: 'Transform', tone: 'data', items: ['Polars ETL', 'Structured PostgreSQL datasets'] },
+      { name: 'Enrich', tone: 'data', items: ['Companies House data', 'Onboarding exceptions', 'Individual due-diligence records'] },
+      { name: 'Validate', tone: 'coffee', items: ['DQ validation layer', 'Data contracts', 'Audit trails'] },
+      { name: 'LLM checks', tone: 'ai', items: ['LLM-driven quality checks', '300+ applications a day'] },
+    ],
+    decisions: [
+      'Contracts between the pipeline and the LLM checks, so a bad payload is rejected before it becomes a bad decision.',
+      'Audit trails by default: every dataset the model sees can be traced for compliance review.',
+      'Handover is part of the build: technical documentation and an operations runbook shipped with the pipeline.',
+    ],
+    outcome: 'Supports AI-assisted quality checks on 300+ commercial onboarding applications a day.',
+  },
+  {
+    id: 'evals',
+    tab: 'Model monitoring',
+    title: 'Model and LLM monitoring on Spark',
+    lede: 'Production models and LLM services need numbers, not opinions. This pipeline turns raw decisions into monitoring metrics.',
+    stages: [
+      { name: 'Sources', tone: 'cyan', items: ['PostgreSQL', 'On-prem stores'] },
+      { name: 'Compute', tone: 'data', items: ['PySpark', 'AWS EMR Serverless', 'Airflow-orchestrated'] },
+      { name: 'Store', tone: 'data', items: ['S3 Parquet', 'Snowflake'] },
+      { name: 'Metrics', tone: 'coffee', items: ['Accuracy, precision, recall, F1', 'LLM token usage', 'Latency'] },
+      { name: 'Judge', tone: 'ai', items: ['LLM-as-a-judge service', 'Decisions scored into Snowflake'] },
+    ],
+    decisions: [
+      'Serverless Spark keeps monitoring cheap: no cluster to run when nothing is scheduled.',
+      'Judge scores land in the same warehouse as the metrics, so quality and cost are queried together.',
+    ],
+    outcome: 'A repeatable evaluation path from proof of concept to production, with batch REST scoring.',
+  },
+];
+---
+
+<section id="architecture" class="arch-section">
+  <div class="container">
+    <div class="section-badge-row">
+      <span class="badge badge-ai">Solution design</span>
+      <span class="badge">Reference architectures</span>
+    </div>
+    <h2 class="heading-lg">
+      How I design <span class="text-gradient-ai">data and AI systems</span>
+    </h2>
+    <p class="arch-intro">
+      Four architectures from delivered work, drawn at CV level. I work with data architects and data scientists, own the data layer, set engineering standards and write the handover documentation.
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="Reference architectures">
+      {archs.map((a, i) => (
+        <button type="button" role="tab" tabindex={i === 0 ? 0 : -1} class={`tab font-mono ${i === 0 ? 'active' : ''}`} id={`tab-${a.id}`} aria-controls={`panel-${a.id}`} aria-selected={i === 0 ? 'true' : 'false'} data-target={a.id}>
+          {a.tab}
+        </button>
+      ))}
+    </div>
+
+    {archs.map((a, i) => (
+      <div role="tabpanel" tabindex="0" class="panel card" id={`panel-${a.id}`} aria-labelledby={`tab-${a.id}`} hidden={i !== 0}>
+        <h3 class="heading-md">{a.title}</h3>
+        <p class="lede">{a.lede}</p>
+
+        <div class="flow">
+          {a.stages.map((s, j) => (
+            <>
+              <div class={`stage tone-${s.tone}`} style={`--i:${j}`}>
+                <div class="stage-name font-mono">{s.name}</div>
+                <ul>{s.items.map((it) => <li>{it}</li>)}</ul>
+              </div>
+              {j < a.stages.length - 1 && <div class="link" aria-hidden="true" style={`--i:${j}`}><i></i></div>}
+            </>
+          ))}
+        </div>
+
+        <div class="below">
+          <div>
+            <div class="below-title font-mono">DESIGN DECISIONS</div>
+            <ul class="decisions">{a.decisions.map((d) => <li>{d}</li>)}</ul>
+          </div>
+          <div class="outcome">
+            <div class="below-title font-mono">OUTCOME</div>
+            <p>{a.outcome}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.arch-section .tab');
+  const panels = document.querySelectorAll<HTMLElement>('.arch-section .panel');
+  const select = (btn: HTMLButtonElement) => {
+    tabs.forEach((t) => {
+      const on = t === btn;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach((p) => { p.hidden = p.id !== `panel-${btn.dataset.target}`; });
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', (e) => {
+      const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const idx = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+      const n = tabs[idx];
+      n.focus();
+      select(n);
+    });
+  });
+</script>
+
+<style>
+  .arch-section { padding: 4rem 0; }
+  .section-badge-row { display: flex; gap: 0.5rem; margin-bottom: 1.1rem; }
+  .arch-intro { color: var(--text-secondary); max-width: 70ch; margin: 0.6rem 0 1.6rem; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .tab {
+    font-size: 0.78rem; padding: 0.45rem 0.9rem; border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle); color: var(--text-secondary); background: var(--bg-tertiary);
+    transition: all 0.15s ease;
+  }
+  .tab:hover { color: var(--text-primary); border-color: var(--accent-ai-light); }
+  .tab.active { color: #fff; background: var(--accent-ai); border-color: var(--accent-ai); }
+  .tab:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+
+  .panel { padding: 1.6rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .panel[hidden] { display: none; }
+  .lede { color: var(--text-secondary); max-width: 75ch; }
+
+  .flow { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  @media (min-width: 900px) { .flow { flex-direction: row; align-items: stretch; } }
+  .stage {
+    flex: 1; min-width: 0; padding: 0.85rem 0.9rem; border-radius: var(--radius-md);
+    background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-top-width: 3px;
+    animation: lit 7s ease-in-out infinite; animation-delay: calc(var(--i) * 1.2s);
+  }
+  .stage-name { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.45rem; }
+  .stage ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--text-secondary); }
+  .stage li::before { content: '▸ '; color: var(--text-muted); }
+  .tone-cyan { border-top-color: var(--accent-cyan); } .tone-cyan .stage-name { color: var(--accent-cyan); }
+  .tone-data { border-top-color: var(--accent-data); } .tone-data .stage-name { color: var(--accent-data-light); }
+  .tone-coffee { border-top-color: var(--accent-coffee); } .tone-coffee .stage-name { color: var(--accent-coffee-light); }
+  .tone-ai { border-top-color: var(--accent-ai-light); } .tone-ai .stage-name { color: var(--accent-ai-light); }
+  @keyframes lit { 0%, 18%, 100% { box-shadow: none; } 6% { box-shadow: 0 0 0 1px var(--accent-ai-light), var(--shadow-glow-ai); } }
+
+  .link { position: relative; flex: 0 0 26px; display: flex; align-items: center; justify-content: center; }
+  .link i { position: relative; display: block; width: 2px; height: 26px; background: repeating-linear-gradient(var(--border-subtle) 0 4px, transparent 4px 8px); }
+  .link i::after { content: ''; position: absolute; left: -2px; top: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-cyan); animation: down 2.4s linear infinite; animation-delay: calc(var(--i) * 0.4s); }
+  @keyframes down { from { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } to { transform: translateY(22px); opacity: 0; } }
+  @media (min-width: 900px) {
+    .link { flex-basis: 30px; }
+    .link i { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, var(--border-subtle) 0 4px, transparent 4px 8px); }
+    .link i::after { left: 0; top: -2px; animation-name: across; }
+  }
+  @keyframes across { from { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } to { transform: translateX(26px); opacity: 0; } }
+
+  .below { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+  @media (min-width: 900px) { .below { grid-template-columns: 1.6fr 1fr; } }
+  .below-title { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .decisions { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.9rem; color: var(--text-secondary); }
+  .decisions li { padding-left: 1rem; border-left: 2px solid var(--accent-ai); }
+  .outcome { padding: 1rem; border-radius: var(--radius-md); background: var(--accent-data-bg); border: 1px solid var(--accent-data); align-self: start; }
+  .outcome p { font-size: 0.92rem; color: var(--text-primary); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage, .link i::after { animation: none; }
+  }
+</style>

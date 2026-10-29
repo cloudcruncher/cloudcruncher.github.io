@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import AgenticLab from '../components/AgenticLab.astro';
+import Architecture from '../components/Architecture.astro';
+import StackMatrix from '../components/StackMatrix.astro';
 import { projects } from '../data/projects';
 import { getCollection } from 'astro:content';
 import { url } from '../lib/utils';
@@ -13,14 +14,14 @@ const featuredProjects = projects.filter(p => p.featured);
 ---
 
 <BaseLayout 
-  title="Robin Saini | Lead Data Engineer | AI Data Engineering"
-  description="Personal portfolio of Robin Saini: Lead / Senior Data Engineer delivering 1TB+/mo Snowflake platforms, trustworthy data and MCP servers for enterprise AI agents, and dialing in precision pour-overs in London."
+  title="Robin Saini | Lead Data Engineer | AI Agents & Data Architecture"
+  description="Personal portfolio of Robin Saini: Lead / Principal Data Engineer delivering 1TB+/mo Snowflake platforms, trustworthy data and MCP servers for enterprise AI agents, and dialing in precision pour-overs in London."
 >
   <!-- Hero Section -->
   <Hero />
 
-  <!-- Agentic Lab Section -->
-  <AgenticLab />
+  <Architecture />
+  <StackMatrix />
 
   <!-- Featured GitHub Projects -->
   <section id="projects" class="featured-projects-section">
@@ -115,10 +116,10 @@ const featuredProjects = projects.filter(p => p.featured);
     <div class="container">
       <div class="card cv-teaser-card">
         <div class="cv-teaser-content">
-          <span class="badge badge-data">Available for contract</span>
-          <h2 class="heading-lg cv-teaser-title">Hire a Lead Data Engineer: £750/day, UK ILR, SC-eligible</h2>
+          <span class="badge badge-data">Contract rate £750/day</span>
+          <h2 class="heading-lg cv-teaser-title">Need a Lead Data Engineer? £750/day, UK ILR, SC-eligible</h2>
           <p class="cv-teaser-desc">
-            Snowflake platforms, Spark/Airflow/dbt pipelines and trusted data for enterprise AI agents, delivered in regulated UK banking. No sponsorship needed; 12 weeks' notice. Open to contract and permanent lead roles.
+            Snowflake platforms, Spark/Airflow/dbt pipelines and trusted data for enterprise AI agents, delivered in regulated UK banking. No sponsorship needed. Open to contract and permanent lead roles.
           </p>
           <div class="cv-teaser-actions">
             <a href={url('/work-with-me')} class="btn btn-primary">Work With Me</a>
@@ -155,6 +156,22 @@ const featuredProjects = projects.filter(p => p.featured);
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Scroll-reveal for sections and cards
+  const targets = document.querySelectorAll<HTMLElement>('.arch-section .panel, .matrix-section .row, .featured-projects-section .card, .blog-preview-section .card, .cv-teaser-card');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) {
+        const t = e.target as HTMLElement;
+        t.classList.add('in');
+        io.unobserve(t);
+        setTimeout(() => { t.style.transitionDelay = ''; }, 900);
+      }
+    }), { threshold: 0.12 });
+    targets.forEach((t, i) => { t.classList.add('reveal'); t.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(t); });
+  }
+</script>
 
 <style>
   .pillars-section {

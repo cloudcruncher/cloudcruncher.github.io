@@ -1,304 +1,188 @@
 ---
 // Hero.astro
 import { url } from '../lib/utils';
+import PipelineHero from './PipelineHero.astro';
+import AgentTerminal from './AgentTerminal.astro';
+
+const rotating = ['AI agents', 'Snowflake platforms', 'regulated banking', 'production LLMs'];
+const stack = ['Python', 'SQL', 'Snowflake', 'PySpark', 'Airflow', 'dbt', 'AWS', 'MCP', 'RAG', 'Pydantic', 'LangGraph', 'Claude Code'];
 ---
 
 <section class="hero-section">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="container hero-container">
-    <div class="hero-badge-row">
-      <span class="location-pill">
-        <span class="pulse-dot"></span> London, United Kingdom
-      </span>
-      <span class="role-pill">Lead / Senior Data Engineer</span>
-      <span class="harness-pill">AI Data Engineering</span>
-      <a href={url('/work-with-me')} class="avail-pill">Available for contract · £750/day · UK ILR</a>
-    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge-row">
+          <span class="location-pill"><span class="pulse-dot"></span> London, UK</span>
+          <span class="role-pill">Lead / Principal Data Engineer</span>
+          <a href={url('/work-with-me')} class="avail-pill">£750/day contract · UK ILR · SC-eligible</a>
+        </div>
 
-    <div class="hero-content">
-      <h1 class="heading-xl hero-title">
-        Data platforms <br />
-        <span class="text-gradient-ai">AI agents can trust</span>, <br />
-        and <span class="text-gradient-coffee">precision-extracted pour-overs</span>.
-      </h1>
+        <h1 class="heading-xl hero-title">
+          I build the data layer behind <br />
+          <span class="sr-only">AI agents, Snowflake platforms and regulated banking</span>
+          <span aria-hidden="true" class="text-gradient-ai rotator" data-words={JSON.stringify(rotating)}>{rotating[0]}</span><span class="caret" aria-hidden="true"></span>
+          <button type="button" class="pause-btn font-mono" id="pause-anim" aria-pressed="false">pause motion</button>
+        </h1>
 
-      <p class="hero-description">
-        I'm <strong>Robin Saini</strong>. 15+ years in software & data engineering (10+ in data engineering), currently the data engineer on agentic AI projects at <strong>NatWest Group</strong>, connecting AI agents to data sources and giving them trustworthy datasets and context. Before that I led a 50+ source Snowflake platform. Right to work in the UK (ILR), eligible for SC clearance, open to contract and permanent lead roles. I build with AI coding tools (Kiro CLI at work, Claude Code on my own projects), and my personal projects are public on GitHub.
-      </p>
+        <p class="hero-description">
+          <strong>Robin Saini.</strong> 15+ years in software and data engineering (8+ in data engineering), with the data work in regulated UK banking. I lead the data engineering for agentic AI products at <strong>NatWest Group</strong>, from proof of concept to production, and I design the platforms and data contracts that make agents safe to trust. Before that: a 50+ source, 1TB+/month Snowflake ESG platform whose data product is shown to customers in the NatWest app.
+        </p>
 
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-          View GitHub Projects
-        </a>
-        <a href={url('/cv')} class="btn btn-outline">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-          Interactive CV & Resume
-        </a>
-        <a href={url('/work-with-me')} class="btn btn-outline">
-          Work With Me
-        </a>
-        <a href={url('/about#coffee')} class="btn btn-coffee">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
-            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
-            <line x1="6" y1="2" x2="6" y2="4"></line>
-            <line x1="10" y1="2" x2="10" y2="4"></line>
-            <line x1="14" y1="2" x2="14" y2="4"></line>
-          </svg>
-          The Coffee Lab
-        </a>
+        <div class="hero-actions">
+          <a href="#architecture" class="btn btn-primary">See the architecture</a>
+          <a href={url('/cv')} class="btn btn-outline">Interactive CV</a>
+          <a href={url('/work-with-me')} class="btn btn-outline">Work With Me</a>
+        </div>
+
+        <div class="stack-row" aria-label="Core stack">
+          {stack.map((s) => <span class="chip font-mono">{s}</span>)}
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <PipelineHero />
+        <AgentTerminal />
       </div>
     </div>
 
-    <!-- Impact Metrics Cards -->
     <div class="metrics-grid">
       <div class="metric-card card">
-        <div class="metric-icon metric-icon-data">⚡</div>
-        <div class="metric-number text-gradient-data">15+ Yrs</div>
-        <div class="metric-label">Software & Data Engineering</div>
-        <div class="metric-sub">10+ years dedicated data platforms</div>
+        <div class="metric-number text-gradient-data" data-count="15" data-suffix="+">15+</div>
+        <div class="metric-label">Years in engineering</div>
+        <div class="metric-sub">8+ in data engineering</div>
       </div>
-
       <div class="metric-card card">
-        <div class="metric-icon metric-icon-snowflake">❄️</div>
-        <div class="metric-number">1TB+ / mo</div>
-        <div class="metric-label">Snowflake ESG Data Platform</div>
-        <div class="metric-sub">50+ automated sources in banking</div>
+        <div class="metric-number" data-count="1" data-suffix="TB+/mo">1TB+/mo</div>
+        <div class="metric-label">Snowflake ESG platform</div>
+        <div class="metric-sub">50+ sources, medallion on dbt + Airflow</div>
       </div>
-
       <div class="metric-card card">
-        <div class="metric-icon metric-icon-ai">🤖</div>
-        <div class="metric-number text-gradient-ai">&gt;90%</div>
-        <div class="metric-label">Manual Case Time Saved</div>
-        <div class="metric-sub">Agentic workflows at NatWest, fed by trusted data</div>
+        <div class="metric-number text-gradient-ai" data-count="90" data-prefix=">" data-suffix="%">&gt;90%</div>
+        <div class="metric-label">Less manual case handling</div>
+        <div class="metric-sub">Agentic investigation and decision support</div>
       </div>
-
       <div class="metric-card card">
-        <div class="metric-icon metric-icon-coffee">☕</div>
-        <div class="metric-number text-gradient-coffee">1:15</div>
-        <div class="metric-label">Pour-Over Golden Ratio</div>
-        <div class="metric-sub">Sage Barista, DF54 &amp; 1Zpresso ZP6</div>
-      </div>
-    </div>
-
-    <!-- Live Tech Stack Banner -->
-    <div class="tech-stack-strip">
-      <span class="tech-strip-label">CORE TOOLKIT &amp; STACK</span>
-      <div class="tech-tags">
-        <span class="tech-tag">Python 3.11+</span>
-        <span class="tech-tag">PySpark</span>
-        <span class="tech-tag">Snowflake</span>
-        <span class="tech-tag">Apache Airflow</span>
-        <span class="tech-tag">dbt Core</span>
-        <span class="tech-tag">Model Context Protocol (MCP)</span>
-        <span class="tech-tag">Kiro CLI</span>
-        <span class="tech-tag">Claude Code</span>
-        <span class="tech-tag">Pydantic Contracts</span>
-        <span class="tech-tag">Kafka &amp; Streaming</span>
+        <div class="metric-number text-gradient-coffee" data-count="300" data-suffix="+/day">300+/day</div>
+        <div class="metric-label">Onboarding checks supported</div>
+        <div class="metric-sub">GenAI due-diligence data pipeline</div>
       </div>
     </div>
   </div>
 </section>
 
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Rotating headline word
+  const rot = document.querySelector<HTMLElement>('.rotator');
+  let paused = false;
+  if (rot && !reduce) {
+    const words: string[] = JSON.parse(rot.dataset.words || '[]');
+    let i = 0;
+    setInterval(() => {
+      if (paused) return;
+      rot.classList.add('swap');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        rot.textContent = words[i];
+        rot.classList.remove('swap');
+      }, 280);
+    }, 2600);
+  }
+
+  document.getElementById('pause-anim')?.addEventListener('click', (e) => {
+    paused = !paused;
+    const b = e.currentTarget as HTMLButtonElement;
+    b.setAttribute('aria-pressed', String(paused));
+    b.textContent = paused ? 'resume motion' : 'pause motion';
+    document.documentElement.classList.toggle('motion-paused', paused);
+    (document.getElementById('pipe-svg') as unknown as SVGSVGElement | null)?.[paused ? 'pauseAnimations' : 'unpauseAnimations']();
+  });
+
+  // Count-up metrics when visible
+  const nums = document.querySelectorAll<HTMLElement>('.metric-number[data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        io.unobserve(el);
+        const end = Number(el.dataset.count);
+        const pre = el.dataset.prefix || '';
+        const suf = el.dataset.suffix || '';
+        const t0 = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min((t - t0) / 1200, 1);
+          el.textContent = pre + Math.round(end * (1 - Math.pow(1 - p, 3))) + suf;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach((n) => io.observe(n));
+  }
+</script>
+
 <style>
-  .hero-section {
-    padding: 4.5rem 0 3.5rem 0;
-    position: relative;
+  .hero-section { position: relative; padding: 4rem 0 3rem; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--border-subtle) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.22;
+    mask-image: radial-gradient(ellipse 70% 60% at 60% 30%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 30%, #000 20%, transparent 75%);
+    animation: drift 40s linear infinite;
   }
+  @keyframes drift { to { background-position: 44px 44px; } }
 
-  .hero-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2.75rem;
+  .hero-container { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 3rem; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+  @media (min-width: 1000px) { .hero-grid { grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 3rem; } }
+
+  .hero-copy { display: flex; flex-direction: column; gap: 1.6rem; min-width: 0; }
+  .hero-badge-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  .location-pill, .role-pill, .avail-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-family: var(--font-mono);
+    padding: 0.3rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
+    background: var(--bg-tertiary); color: var(--text-secondary);
   }
+  .role-pill { color: var(--accent-ai-light); border-color: var(--accent-ai); background: var(--accent-ai-bg); }
+  .avail-pill { color: var(--accent-data-light); border-color: var(--accent-data); background: var(--accent-data-bg); }
+  .avail-pill:hover { filter: brightness(1.2); }
+  .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-data-light); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); opacity: 0.6; } 0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); } }
 
-  .hero-badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.65rem;
-  }
+  .hero-title { line-height: 1.12; overflow-wrap: anywhere; }
+  .rotator { display: inline-block; transition: opacity 0.28s ease, transform 0.28s ease; }
+  .rotator.swap { opacity: 0; transform: translateY(8px); }
+  .caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 4px; vertical-align: -0.08em; background: var(--accent-ai-light); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
 
-  .location-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    color: var(--text-secondary);
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-subtle);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-full);
-  }
+  .hero-description { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; max-width: 60ch; }
+  .hero-description strong { color: var(--text-primary); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .stack-row { max-width: 100%; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: var(--radius-sm); background: var(--bg-tertiary); border: 1px solid var(--border-subtle); color: var(--text-secondary); }
 
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: #10b981;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #10b981;
-    animation: pulse 2s infinite ease-in-out;
-  }
+  .hero-visual { min-width: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .pause-btn { display: block; margin-top: 0.6rem; font-size: 0.68rem; font-weight: 400; letter-spacing: 0; color: var(--text-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-full); padding: 0.15rem 0.6rem; }
+  .pause-btn:hover { color: var(--text-primary); }
+  :global(.motion-paused) *, :global(.motion-paused) *::before, :global(.motion-paused) *::after { animation-play-state: paused !important; }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-  }
+  .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  @media (min-width: 900px) { .metrics-grid { grid-template-columns: repeat(4, 1fr); } }
+  .metric-card { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .metric-number { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .metric-label { font-weight: 600; font-size: 0.92rem; }
+  .metric-sub { color: var(--text-muted); font-size: 0.8rem; }
 
-  .role-pill {
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    color: var(--accent-data-light);
-    background: var(--accent-data-bg);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-full);
-  }
-
-  .harness-pill {
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    color: var(--accent-ai-light);
-    background: var(--accent-ai-bg);
-    border: 1px solid rgba(99, 102, 241, 0.25);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-full);
-  }
-
-  .hero-title {
-    max-width: 980px;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-description {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    max-width: 780px;
-    margin-bottom: 2rem;
-  }
-
-  .hero-description strong {
-    color: var(--text-primary);
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.85rem;
-  }
-
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.25rem;
-  }
-
-  @media (min-width: 640px) {
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .metrics-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  .metric-card {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .metric-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .metric-number {
-    font-size: 2rem;
-    font-weight: 800;
-    font-family: var(--font-mono);
-    line-height: 1.1;
-    color: var(--text-primary);
-  }
-
-  .metric-label {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    margin-top: 0.25rem;
-  }
-
-  .metric-sub {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .tech-stack-strip {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-  }
-
-  @media (min-width: 768px) {
-    .tech-stack-strip {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  .tech-strip-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    white-space: nowrap;
-  }
-
-  .tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .avail-pill {
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
-    color: var(--accent-data-light);
-    background: var(--accent-data-bg);
-    border: 1px solid var(--accent-data);
-    text-decoration: none;
-  }
-
-  .tech-tag {
-    font-size: 0.75rem;
-    font-family: var(--font-mono);
-    padding: 0.25rem 0.6rem;
-    background: var(--bg-tertiary);
-    color: var(--text-secondary);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-subtle);
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg, .pulse-dot, .caret { animation: none; }
   }
 </style>

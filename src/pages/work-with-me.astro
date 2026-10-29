@@ -6,9 +6,8 @@ const facts = [
   { label: 'Day rate', value: '£750 / day', note: 'Contract engagements' },
   { label: 'Right to work', value: 'UK (ILR)', note: 'Indefinite Leave to Remain, no sponsorship needed' },
   { label: 'Clearance', value: 'Eligible for SC', note: 'Security Check clearance' },
-  { label: 'Notice period', value: '12 weeks', note: 'Contract or permanent' },
   { label: 'Base', value: 'London, UK', note: 'Hybrid working' },
-  { label: 'Open to', value: 'Contract & permanent', note: 'Lead / Senior Data Engineer roles' },
+  { label: 'Open to', value: 'Contract & permanent', note: 'Lead / Principal Data Engineer roles' },
 ];
 
 const services = [
@@ -16,14 +15,14 @@ const services = [
     badge: 'badge-data',
     tag: 'Data platforms',
     title: 'Snowflake platform design & optimisation',
-    text: 'Architecture, clustering, materialised views, warehouse routing and cost tuning. Layered dbt projects orchestrated by Airflow.',
-    proof: 'Led the team behind a 50+ source, 1TB+/month Snowflake ESG platform.',
+    text: 'Architecture, clustering, materialised views, warehouse routing and cost tuning. Layered dbt projects (RAW, INT, PRS) orchestrated by Airflow, with SCD-2 history and lineage.',
+    proof: 'Core engineer on a 50+ source, 1TB+/month Snowflake ESG platform; EPC data product shown in the NatWest app.',
   },
   {
     badge: 'badge-data',
     tag: 'Pipelines',
     title: 'Batch ELT/ETL at scale',
-    text: 'Production Python, SQL, PySpark (incl. AWS EMR Serverless), Airflow and dbt, with CI/CD and automated testing built in.',
+    text: 'Production Python, SQL, PySpark (incl. AWS EMR Serverless), Airflow and dbt: metadata-driven, idempotent, with CI/CD and automated testing built in.',
     proof: '40% faster batches and 30% fewer data quality incidents at NatWest.',
   },
   {
@@ -37,47 +36,47 @@ const services = [
     badge: 'badge-coffee',
     tag: 'Quality & governance',
     title: 'Data contracts, quality gates, audit trails',
-    text: 'Pydantic data contracts, quality gates, audit trails and GDPR-aligned handling that meet banking and financial-crime standards.',
-    proof: '45% fewer data errors from a GDPR-compliant governance framework at Lloyds.',
+    text: 'Pydantic data contracts, quality gates, audit trails and role-based field access that meet banking and financial-crime standards, with a named steward per data product.',
+    proof: 'Climate data products run with stewards, quality metrics, contracts and lineage to source.',
   },
   {
     badge: 'badge-coffee',
-    tag: 'Modernisation',
-    title: 'Legacy warehouse to cloud',
-    text: 'Teradata modernisation, DB2 operational support, ML-ready data lakes on AWS, BigQuery proofs of concept, tuning and disaster recovery.',
-    proof: '50% lower ETL load times; critical production incident resolved in under 12 hours.',
+    tag: 'Solution design',
+    title: 'Data & AI solution architecture',
+    text: 'Designing the data layer for agentic systems and analytics platforms with architects and data scientists: engineering standards, data product frameworks and handover documentation.',
+    proof: 'Designed a reusable MCP data-access layer used by several agents; defined standards and data product frameworks for the ESG platform.',
   },
   {
     badge: 'badge-ai',
-    tag: 'Leadership',
-    title: 'Tech lead & team uplift',
-    text: 'Leading teams of up to 5 engineers: engineering standards, data product frameworks, mentoring, stakeholder management and Agile delivery.',
-    proof: '10+ years in regulated UK banking (NatWest, Lloyds); 15+ years in engineering.',
+    tag: 'Mentoring',
+    title: 'Hands-on technical lead',
+    text: 'Individual contributor who sets engineering standards, coaches junior engineers and works with stakeholders from discovery onwards, in Agile delivery.',
+    proof: '8+ years in data engineering, 15+ in engineering, in regulated UK banking (NatWest, Lloyds).',
   },
 ];
 
 const stack = [
   'Snowflake', 'Python', 'SQL', 'PySpark', 'Apache Airflow', 'dbt', 'AWS (S3, Glue, EMR, Athena)',
-  'Kafka', 'PostgreSQL', 'Teradata', 'MCP', 'RAG', 'LangGraph', 'Pydantic', 'GitLab CI/CD', 'Docker', 'Terraform', 'Splunk', 'Claude Code', 'Kiro CLI',
+  'PostgreSQL', 'Teradata', 'MCP', 'RAG', 'LangGraph', 'Pydantic', 'GitLab CI/CD', 'Docker', 'Splunk', 'Claude Code', 'Kiro CLI',
 ];
 ---
 
 <BaseLayout
   title="Work With Me | Contract Data Engineer, London | Robin Saini"
-  description="Robin Saini is available for contract and permanent Lead / Senior Data Engineer roles in London: £750/day, UK ILR (no sponsorship), eligible for SC clearance. Snowflake, Spark, Airflow, dbt and AI data engineering."
+  description="Robin Saini takes contract and permanent Lead / Principal Data Engineer roles in London: £750/day, UK ILR (no sponsorship), eligible for SC clearance. Snowflake, Spark, Airflow, dbt and AI data engineering."
 >
   <section class="work-hero">
     <div class="container">
       <div class="badge-row">
-        <span class="badge badge-data">Available for contract</span>
+        <span class="badge badge-data">Contract rate £750/day</span>
         <span class="badge">Right to work in the UK (ILR)</span>
         <span class="badge badge-ai">Eligible for SC clearance</span>
       </div>
       <h1 class="heading-xl work-title">
-        Lead / Senior Data Engineer for <span class="text-gradient-ai">hire</span>, built for regulated data.
+        Lead / Principal Data Engineer for <span class="text-gradient-ai">hire</span>, built for regulated data.
       </h1>
       <p class="work-intro">
-        15+ years in software and data engineering (10+ in data engineering), with the data work in regulated UK banking. I design and deliver Snowflake platforms, production data pipelines and the trusted data layer behind enterprise AI agents, hands-on every day. Based in London, open to contract engagements and permanent lead roles.
+        15+ years in software and data engineering (8+ in data engineering), with the data work in regulated UK banking. I design and deliver Snowflake platforms, production data pipelines and the trusted data layer behind enterprise AI agents, hands-on every day. Based in London, open to contract engagements and permanent lead roles.
       </p>
       <div class="work-actions">
         <a href="mailto:robinsaini156@gmail.com?subject=Contract%20enquiry" class="btn btn-primary">Email me</a>
@@ -125,9 +124,9 @@ const stack = [
       <div class="facts-grid">
         <div class="card fact-card"><div class="fact-value">&gt;90%</div><div class="fact-note">less manual case-handling time via agentic decision-support (NatWest)</div></div>
         <div class="card fact-card"><div class="fact-value">300+</div><div class="fact-note">commercial onboarding applications a day supported by AI-assisted checks</div></div>
-        <div class="card fact-card"><div class="fact-value">50+ sources</div><div class="fact-note">1TB+ a month on the Snowflake ESG and climate platform I led</div></div>
+        <div class="card fact-card"><div class="fact-value">50+ sources</div><div class="fact-note">1TB+ a month on the Snowflake ESG and climate platform I helped build</div></div>
         <div class="card fact-card"><div class="fact-value">40% / 30%</div><div class="fact-note">faster batches / fewer data quality incidents (NatWest)</div></div>
-        <div class="card fact-card"><div class="fact-value">50% / 45%</div><div class="fact-note">lower ETL load times / fewer data errors (Lloyds)</div></div>
+        <div class="card fact-card"><div class="fact-value">30 tools</div><div class="fact-note">in the complaints investigation agent's registry across core banking, cards, collections and case management</div></div>
       </div>
       <p class="work-links">
         <a href={url('/cv')}>Full CV →</a>
@@ -151,7 +150,7 @@ const stack = [
       <div class="card work-cta">
         <h2 class="heading-lg">Let's talk about your data platform</h2>
         <p class="work-intro">
-          Tell me the problem, timeline and clearance requirements. I'll reply with availability and a proposed approach.
+          Tell me the problem, timeline and clearance requirements. I'll reply with a proposed approach.
         </p>
         <div class="work-actions">
           <a href="mailto:robinsaini156@gmail.com?subject=Contract%20enquiry" class="btn btn-primary">robinsaini156@gmail.com</a>

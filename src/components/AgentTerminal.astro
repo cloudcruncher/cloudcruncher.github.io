@@ -1,0 +1,74 @@
+---
+// AgentTerminal.astro: looping, illustrative agent-run log (no real data)
+const script = [
+  { c: 'cmd', t: 'agent.investigate(case="complaint-0001")' },
+  { c: 'dim', t: '  ↳ kafka: event consumed · category=cards' },
+  { c: 'dim', t: '  ↳ registry: 30 tools → 9 relevant for this category' },
+  { c: 'ok', t: '  ✓ mcp.get_account_slice  fields=role_allowlist  rows≤50' },
+  { c: 'ok', t: '  ✓ mcp.get_card_events    audit_id=a91f…' },
+  { c: 'ok', t: '  ✓ dq.gate                contract=pass  nulls=0' },
+  { c: 'dim', t: '  ↳ facts logged: 14 · summary drafted' },
+  { c: 'judge', t: 'judge.evaluate(summary, facts) → supported ✓' },
+  { c: 'ok', t: 'handoff → human review · trace stored · splunk event emitted' },
+];
+---
+
+<div class="term" role="img" aria-label="Illustrative agent run log: an agent investigates a case through guarded MCP tools, and an LLM judge checks the summary against logged facts before human review.">
+  <div class="term-head font-mono"><span>agent-run.log</span><span class="tag">illustrative</span></div>
+  <pre class="term-body font-mono" id="term-body" aria-hidden="true">{script.map((l) => <span class={`ln ${l.c}`}>{l.t + '\n'}</span>)}</pre>
+</div>
+
+<script>
+  const el = document.getElementById('term-body');
+  if (el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const lines = Array.from(el.querySelectorAll<HTMLElement>('.ln'));
+    let i = 0;
+    const step = () => {
+      if (i >= lines.length) {
+        setTimeout(() => { lines.forEach((l) => l.classList.remove('show')); i = 0; step(); }, 3200);
+        return;
+      }
+      lines[i++].classList.add('show');
+      setTimeout(step, 650);
+    };
+    lines.forEach((l) => l.classList.add('pending'));
+    step();
+  }
+</script>
+
+<style>
+  .term {
+    margin-top: 1rem;
+    background: #070b12;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .term-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    color: #64748b;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .tag { color: var(--accent-coffee-light); }
+  .term-body {
+    margin: 0;
+    padding: 0.75rem 0.9rem;
+    min-height: 13rem;
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: #cbd5e1;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .term-body :global(.ln.cmd) { color: #818cf8; font-weight: 600; }
+  .term-body :global(.ln.dim) { color: #64748b; }
+  .term-body :global(.ln.ok) { color: #34d399; }
+  .term-body :global(.ln.judge) { color: #fbbf24; font-weight: 600; }
+  .term-body :global(.ln.pending) { visibility: hidden; }
+  .term-body :global(.ln.pending.show) { visibility: visible; animation: in 0.25s ease-out; }
+  @keyframes in { from { opacity: 0; transform: translateY(3px); } }
+</style>

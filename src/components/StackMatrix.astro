@@ -1,0 +1,51 @@
+---
+// StackMatrix.astro: skills by depth, mirroring the verified strength levels (core / working / familiar)
+const groups = [
+  { label: 'Daily, deep', level: 3, tone: 'data', items: ['Python', 'SQL', 'Snowflake', 'PySpark', 'Airflow', 'dbt', 'PostgreSQL', 'MCP servers', 'RAG pipelines', 'Pydantic contracts', 'GitLab CI/CD', 'Claude Code and Kiro CLI'] },
+  { label: 'Used on real projects', level: 2, tone: 'ai', items: ['AWS (S3, Glue, EMR, Athena)', 'OpenAI Agents SDK', 'LangGraph', 'LLM-as-a-judge evals', 'AI observability', 'Docker', 'Splunk', 'StreamSets', 'Teradata', 'IBM DB2', 'pandas'] },
+  { label: 'Familiar', level: 1, tone: 'coffee', items: ['Kafka (consumer)', 'Terraform (maintains config)', 'Polars', 'GCP', 'Hadoop and Hive', 'AWS Lambda, ECS, EKS'] },
+];
+---
+
+<section class="matrix-section">
+  <div class="container">
+    <div class="section-badge-row">
+      <span class="badge badge-data">Toolkit</span>
+      <span class="badge">Honest depth</span>
+    </div>
+    <h2 class="heading-lg">What I use, and <span class="text-gradient-data">how deeply</span></h2>
+    <div class="rows">
+      {groups.map((g) => (
+        <div class="row card">
+          <div class="meter" aria-hidden="true">
+            {[1, 2, 3].map((n) => <i class={n <= g.level ? `on tone-${g.tone}` : ''}></i>)}
+          </div>
+          <div>
+            <div class="row-label font-mono">{g.label}</div>
+            <div class="tags">{g.items.map((t) => <span class={`tag tone-${g.tone}`}>{t}</span>)}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .matrix-section { padding: 3rem 0; }
+  .section-badge-row { display: flex; gap: 0.5rem; margin-bottom: 1.1rem; }
+  .rows { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.4rem; }
+  .row { display: flex; gap: 1.1rem; padding: 1.1rem 1.3rem; align-items: flex-start; }
+  .meter { display: flex; gap: 3px; padding-top: 0.2rem; flex: none; }
+  .meter i { width: 6px; height: 22px; border-radius: 2px; background: var(--border-subtle); transform-origin: bottom; }
+  .meter i.on { animation: grow 0.7s ease-out both; }
+  .meter i.on:nth-child(2) { animation-delay: 0.1s; } .meter i.on:nth-child(3) { animation-delay: 0.2s; }
+  .meter i.tone-data { background: var(--accent-data); } .meter i.tone-ai { background: var(--accent-ai-light); } .meter i.tone-coffee { background: var(--accent-coffee); }
+  @keyframes grow { from { transform: scaleY(0.2); } }
+  .row-label { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { font-size: 0.8rem; padding: 0.22rem 0.65rem; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); background: var(--bg-secondary); color: var(--text-primary); }
+  .tag.tone-data { border-color: var(--accent-data); }
+  .tag.tone-ai { border-color: var(--accent-ai); }
+  .tag.tone-coffee { border-color: var(--accent-coffee); color: var(--text-secondary); }
+  @media (prefers-reduced-motion: reduce) { .meter i.on { animation: none; } }
+</style>
