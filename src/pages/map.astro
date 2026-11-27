@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import places from '../data/places.json';
+
+const total = places.length;
+const outsideCount = places.filter((p) => p.outside).length;
+const inLondon = places.filter((p) => !p.outside);
+const LABELS: Record<string, string> = { taproom: 'Taproom', pub: 'Pub', bar: 'Bar', coffee: 'Coffee', food: 'Food', bakery: 'Bakery', culture: 'Culture' };
+const CODES: Record<string, string> = { taproom: 'TP', pub: 'PB', bar: 'BR', coffee: 'CF', food: 'FD', bakery: 'BK', culture: 'CU' };
+const countFor = (c: string) => inLondon.filter((p) => c === 'all' || p.cats.includes(c)).length;
+const dirUrl = (p: { name: string; pc?: string; lat: number; lng: number }) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.pc ? p.name + ', ' + p.pc : `${p.lat},${p.lng}`)}`;
+const km = (lat: number, lng: number) => {
+  const r = Math.PI / 180, dLat = (lat - 51.507) * r, dLng = (lng + 0.1278) * r;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(51.507 * r) * Math.cos(lat * r) * Math.sin(dLng / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(a));
+};
+const initial = places
+  .map((p, i) => ({ ...p, i, d: km(p.lat, p.lng) }))
+  .filter((p) => !p.outside)
+  .sort((a, b) => a.d - b.d)
+  .slice(0, 60);
+const cats = [
+  ['taproom', 'Taprooms'],
+  ['pub', 'Pubs'],
+  ['bar', 'Bars'],
+  ['coffee', 'Coffee'],
+  ['food', 'Food'],
+  ['bakery', 'Bakeries'],
+  ['culture', 'Culture'],
+];
+---
+
+<BaseLayout
+  title="London Map — Robin Saini"
+  description="An interactive map of 1,000+ London taprooms, pubs, coffee shops, bakeries and restaurants curated by Robin Saini, sorted nearest first."
+>
+  <div class="map-page" id="map-page" data-total={total}>
+    <aside class="map-side">
+      <div class="map-head">
+        <h1 class="map-title" aria-label="Map">MAP</h1>
+        <p class="map-caption font-mono"><span id="caption">LONDON · {inLondon.length} PLACES</span></p>
+        <label class="sr-only" for="q">Search places</label>
+        <input id="q" class="map-search font-mono" type="search" placeholder="SEARCH NAME OR AREA" autocomplete="off" />
+        <div class="map-cats" id="cats" role="group" aria-label="Filter by category">
+          <button type="button" class="cat-row font-mono" data-cat="all" aria-pressed="true"><span>ALL</span><span class="n">{countFor('all')}</span></button>
+          {cats.map(([key, label]) => (
+            <button type="button" class="cat-row font-mono" data-cat={key} aria-pressed="false"><span>{label.toUpperCase()}</span><span class="n">{countFor(key)}</span></button>
+          ))}
+        </div>
+        <label class="trip font-mono">
+          <input type="checkbox" id="trips" /> Include day trips ({outsideCount})
+        </label>
+        <button type="button" id="locate" class="locate font-mono">◎ USE MY LOCATION</button>
+        <p id="locate-msg" class="locate-msg font-mono" role="status"></p>
+      </div>
+      <div class="list-wrap">
+        <h2 class="list-title font-mono" id="list-title">ALL PLACES · NEAREST FIRST · {inLondon.length}</h2>
+        <ul class="cards" id="cards">
+          {initial.map((p) => (
+            <li class="card-item" data-id={p.i}>
+              <button type="button" class="card-btn"><div class="card-top font-mono"><span>{CODES[p.cats[0]] ?? 'PL'} · {(LABELS[p.cats[0]] ?? '').toUpperCase()}</span><span>{p.d.toFixed(1)} KM</span></div><div class="card-name">{p.name}</div>{p.area && <div class="card-area font-mono">{p.area}</div>}</button>
+              <a class="card-dir font-mono" href={dirUrl(p)} target="_blank" rel="noopener">DIRECTIONS ↗</a>
+            </li>
+          ))}
+        </ul>
+        <button type="button" id="more" class="more font-mono" hidden={inLondon.length <= 60}>SHOW MORE</button>
+        <p class="map-note font-mono">Curated from my saved Google Maps lists. Places may have changed — check before you go.</p>
+      </div>
+    </aside>
+    <div class="map-main">
+      <div id="map" role="region" aria-label="Interactive map of Robin's London places"></div>
+      <noscript><p class="noscript-note font-mono">The interactive map needs JavaScript. The nearest places are listed on the left; each has a directions link.</p></noscript>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .map-page {
+    --m-bg: #000; --m-fg: #fff; --m-dim: #9a9a9a; --m-line: #2a2a2a; --m-focus: #3b82f6;
+    display: grid; grid-template-columns: 320px minmax(0, 1fr);
+    height: calc(100vh - 70px); min-height: 520px; overflow-x: clip;
+  }
+  .map-side { background: var(--m-bg); color: var(--m-fg); display: flex; flex-direction: column; min-height: 0; overflow-y: auto; }
+  .map-head { padding: 16px 16px 8px; }
+  .map-title { font-family: var(--font-sans); font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; font-size: 6.2rem; line-height: 0.85; margin: 0; color: var(--m-fg); }
+  .map-caption { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--m-dim); margin: 10px 0 14px; }
+  .map-search { width: 100%; background: #000; color: var(--m-fg); border: 1px solid var(--m-line); border-radius: 0; padding: 9px 10px; font-size: 0.72rem; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .map-search::placeholder { color: var(--m-dim); }
+  .map-cats { display: flex; flex-direction: column; border-top: 1px solid var(--m-line); }
+  .cat-row { display: flex; justify-content: space-between; align-items: center; width: 100%; background: transparent; color: var(--m-fg); border: 0; border-bottom: 1px solid var(--m-line); padding: 9px 8px; font-size: 0.78rem; letter-spacing: 0.08em; cursor: pointer; text-align: left; }
+  .cat-row:hover { background: #1a1a1a; }
+  .cat-row[aria-pressed="true"] { background: var(--m-fg); color: var(--m-bg); }
+  .trip { display: flex; gap: 8px; align-items: center; font-size: 0.72rem; letter-spacing: 0.05em; margin: 14px 0 10px; cursor: pointer; }
+  .trip input { accent-color: #fff; width: 15px; height: 15px; }
+  .locate { width: 100%; background: transparent; color: var(--m-fg); border: 1px solid var(--m-fg); padding: 9px; font-size: 0.72rem; letter-spacing: 0.08em; cursor: pointer; }
+  .locate:hover { background: var(--m-fg); color: var(--m-bg); }
+  .locate-msg { font-size: 0.66rem; color: var(--m-dim); min-height: 1em; margin: 6px 0 0; }
+  .map-page :is(button, input, a):focus-visible { outline: 2px solid var(--m-focus); outline-offset: 2px; }
+  .list-wrap { padding: 8px 16px 24px; }
+  .list-title { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--m-dim); margin: 10px 0; font-weight: 400; }
+  .cards { list-style: none; margin: 0; padding: 0; }
+  .card-item { border-top: 1px solid var(--m-line); }
+  .card-btn { display: block; width: 100%; text-align: left; background: transparent; color: var(--m-fg); border: 0; padding: 12px 6px; cursor: pointer; font: inherit; }
+  .card-btn:hover, .card-item.active .card-btn { background: #161616; }
+  .card-top { display: flex; justify-content: space-between; font-size: 0.66rem; letter-spacing: 0.08em; color: var(--m-dim); }
+  .card-name { font-family: var(--font-sans); font-weight: 800; text-transform: uppercase; font-size: 0.95rem; letter-spacing: -0.01em; margin: 4px 0 2px; overflow-wrap: anywhere; }
+  .card-area { font-size: 0.7rem; color: var(--m-dim); }
+  .card-dir { display: inline-block; margin: 0 6px 10px; font-size: 0.66rem; letter-spacing: 0.08em; color: var(--m-fg); text-decoration: underline; text-underline-offset: 3px; }
+  .more { width: 100%; margin-top: 12px; background: var(--m-fg); color: var(--m-bg); border: 0; padding: 10px; font-size: 0.72rem; letter-spacing: 0.08em; cursor: pointer; }
+  .map-note { font-size: 0.64rem; color: var(--m-dim); margin: 20px 0 0; line-height: 1.5; }
+  .map-main { position: relative; min-width: 0; min-height: 0; }
+  #map { position: absolute; inset: 0; background: #e8e8e8; }
+  .map-main { scroll-margin-top: 76px; }
+  #map .leaflet-tile-pane { filter: grayscale(1) contrast(1.05); }
+  #map.map-dark .leaflet-tile-pane { filter: grayscale(1) invert(1) brightness(0.9) contrast(0.9); }
+  .noscript-note { position: absolute; inset: 0; margin: 0; padding: 24px; background: #e8e8e8; color: #000; font-size: 0.8rem; z-index: 5; }
+  .pin-wrap { display: flex; align-items: center; justify-content: center; }
+  .pin { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #000; color: #fff; border: 1px solid #fff; font: 700 10px/1 var(--font-mono); letter-spacing: 0; box-sizing: border-box; }
+  #map.map-dark .pin { background: #fff; color: #000; border-color: #000; }
+  #map.zoom-low .pin { width: 7px; height: 7px; font-size: 0; border-width: 1px; }
+  #map.zoom-low .pin.sel { width: 14px; height: 14px; }
+  .pin.sel { outline: 3px solid var(--m-focus); outline-offset: 1px; z-index: 1000; }
+  .pin-you { width: 18px; height: 18px; border-radius: 50%; background: #3b82f6; border: 3px solid #fff; box-shadow: 0 0 0 2px #000; }
+  .leaflet-popup-content-wrapper { border-radius: 0; background: #000; color: #fff; }
+  .leaflet-popup-tip { background: #000; }
+  .leaflet-popup-content { font-family: var(--font-mono); font-size: 12px; margin: 12px 14px; }
+  .leaflet-popup-content strong { display: block; font-family: var(--font-sans); font-weight: 800; text-transform: uppercase; font-size: 14px; margin-bottom: 3px; }
+  .leaflet-popup-content a { color: #fff; text-decoration: underline; }
+  .leaflet-container a.leaflet-popup-close-button { color: #fff; }
+
+  @media (max-width: 767px) {
+    .map-page { display: flex; flex-direction: column; height: auto; }
+    .map-main { order: 1; height: 55vh; flex: none; }
+    .map-side { order: 2; overflow: visible; }
+    .map-head { padding-bottom: 0; }
+    .map-title { font-size: min(22vw, 6rem); }
+    .map-cats { flex-direction: row; overflow-x: auto; gap: 6px; border: 0; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+    .cat-row { width: auto; flex: none; gap: 10px; border: 1px solid var(--m-line); }
+    .list-wrap { padding-top: 0; }
+  }
+</style>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import places from '../data/places.json';
+
+  type Place = { name: string; area: string; pc?: string; lat: number; lng: number; cats: string[]; outside: boolean };
+  type Item = Place & { id: number };
+  const CODES: Record<string, string> = { taproom: 'TP', pub: 'PB', bar: 'BR', coffee: 'CF', food: 'FD', bakery: 'BK', culture: 'CU' };
+  const LABELS: Record<string, string> = { taproom: 'Taproom', pub: 'Pub', bar: 'Bar', coffee: 'Coffee', food: 'Food', bakery: 'Bakery', culture: 'Culture' };
+  const PAGE = 60;
+  const all: Item[] = (places as Place[]).map((p, i) => ({ ...p, id: i }));
+
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const catsEl = $('cats'), cardsEl = $('cards'), moreEl = $<HTMLButtonElement>('more');
+  const qEl = $<HTMLInputElement>('q'), tripsEl = $<HTMLInputElement>('trips');
+  const titleEl = $('list-title'), captionEl = $('caption'), msgEl = $('locate-msg');
+  const mapEl = $('map');
+
+  const map = L.map('map', { center: [51.507, -0.1278], zoom: 11 });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const syncTheme = () => mapEl.classList.toggle('map-dark', document.documentElement.getAttribute('data-theme') !== 'light');
+  const syncZoom = () => mapEl.classList.toggle('zoom-low', map.getZoom() < 13);
+  syncTheme();
+  syncZoom();
+  new MutationObserver(syncTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  map.on('zoomend', syncZoom);
+
+  const code = (p: Place) => CODES[p.cats[0]] ?? 'PL';
+  const dirUrl = (p: Place) =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.pc ? p.name + ', ' + p.pc : `${p.lat},${p.lng}`)}`;
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+
+  let activeCat = 'all', shown = PAGE, selected = -1, flying = false;
+  let origin: L.LatLng = L.latLng(51.507, -0.1278);
+  let usingUser = false;
+  let you: L.Marker | null = null;
+  let visible: Item[] = [];
+  const layer = L.layerGroup().addTo(map);
+  const pinIcon = (p: Place) =>
+    L.divIcon({ className: 'pin-wrap', html: `<div class="pin">${code(p)}</div>`, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+
+  const popupHtml = (p: Place) =>
+    `<strong>${esc(p.name)}</strong>${p.area ? esc(p.area) + '<br>' : ''}${p.cats.map((c) => LABELS[c] ?? c).join(' · ')}<br><a href="${dirUrl(p)}" target="_blank" rel="noopener">DIRECTIONS ↗</a>`;
+
+  // Markers are created once; filtering adds/removes them from the layer.
+  const markers = all.map((p) => {
+    const m = L.marker([p.lat, p.lng], { icon: pinIcon(p), title: p.name, keyboard: false });
+    m.bindPopup(popupHtml(p));
+    m.on('click', () => select(p.id, false));
+    return m;
+  });
+
+  const markSel = (id: number, on: boolean) => {
+    if (id < 0) return;
+    markers[id].getElement()?.querySelector('.pin')?.classList.toggle('sel', on);
+  };
+
+  function matches(p: Place, cat: string) {
+    const q = qEl.value.trim().toLowerCase();
+    if (p.outside && !tripsEl.checked) return false;
+    if (cat !== 'all' && !p.cats.includes(cat)) return false;
+    return !q || p.name.toLowerCase().includes(q) || p.area.toLowerCase().includes(q) || (p.pc ?? '').toLowerCase().includes(q);
+  }
+
+  function updateCounts() {
+    catsEl.querySelectorAll<HTMLButtonElement>('.cat-row').forEach((b) => {
+      const c = b.dataset.cat!;
+      b.querySelector('.n')!.textContent = String(all.filter((p) => matches(p, c)).length);
+    });
+  }
+
+  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+  function select(id: number, fly: boolean) {
+    markSel(selected, false);
+    selected = id;
+    const p = all[id], m = markers[id];
+    cardsEl.querySelectorAll('.card-item.active').forEach((e) => e.classList.remove('active'));
+    cardsEl.querySelector(`[data-id="${id}"]`)?.classList.add('active');
+    if (!layer.hasLayer(m)) layer.addLayer(m);
+    markSel(id, true);
+    if (!fly) { m.openPopup(); return; }
+    if (isMobile()) document.querySelector('.map-main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const target = L.latLng(p.lat, p.lng), zoom = Math.max(map.getZoom(), 15);
+    if (map.getZoom() === zoom && map.getCenter().distanceTo(target) < 2) { m.openPopup(); return; }
+    flying = true;
+    map.once('moveend', () => {
+      flying = false;
+      markSel(id, true);
+      m.openPopup();
+    });
+    map.flyTo(target, zoom, { duration: 0.8 });
+  }
+
+  function renderCards() {
+    const hadFocus = cardsEl.contains(document.activeElement);
+    const frag = document.createDocumentFragment();
+    visible.slice(0, shown).forEach((p) => {
+      const d = (origin.distanceTo([p.lat, p.lng]) / 1000).toFixed(1);
+      const li = document.createElement('li');
+      li.className = 'card-item' + (p.id === selected ? ' active' : '');
+      li.dataset.id = String(p.id);
+      li.innerHTML = `<button type="button" class="card-btn"><div class="card-top font-mono"><span>${code(p)} · ${esc((LABELS[p.cats[0]] ?? '').toUpperCase())}</span><span>${d} KM</span></div><div class="card-name">${esc(p.name)}</div>${p.area ? `<div class="card-area font-mono">${esc(p.area)}</div>` : ''}</button><a class="card-dir font-mono" href="${dirUrl(p)}" target="_blank" rel="noopener">DIRECTIONS ↗</a>`;
+      li.querySelector('button')!.addEventListener('click', () => select(p.id, true));
+      frag.appendChild(li);
+    });
+    cardsEl.replaceChildren(frag);
+    moreEl.hidden = visible.length <= shown;
+    const label = activeCat === 'all' ? 'ALL PLACES' : (LABELS[activeCat] ?? activeCat).toUpperCase() + 'S';
+    titleEl.textContent = `${label} · NEAREST FIRST · ${visible.length}`;
+    if (hadFocus && selected >= 0) {
+      cardsEl.querySelector<HTMLButtonElement>(`[data-id="${selected}"] .card-btn`)?.focus({ preventScroll: true });
+    }
+  }
+
+  function sortAndRender() {
+    const dist = new Map<number, number>();
+    visible.forEach((p) => dist.set(p.id, origin.distanceTo([p.lat, p.lng])));
+    visible.sort((a, b) => dist.get(a.id)! - dist.get(b.id)!);
+    renderCards();
+  }
+
+  function refresh() {
+    updateCounts();
+    visible = all.filter((p) => matches(p, activeCat));
+    const keep = new Set(visible.map((p) => p.id));
+    markers.forEach((m, id) => {
+      const on = layer.hasLayer(m);
+      if (keep.has(id) && !on) layer.addLayer(m);
+      else if (!keep.has(id) && on) layer.removeLayer(m);
+    });
+    markSel(selected, true);
+    captionEl.textContent = `LONDON · ${all.filter((p) => !p.outside || tripsEl.checked).length} PLACES`;
+    shown = PAGE;
+    sortAndRender();
+  }
+
+  catsEl.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.cat-row');
+    if (!b) return;
+    activeCat = b.dataset.cat!;
+    catsEl.querySelectorAll('.cat-row').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    refresh();
+  });
+  let timer: number | undefined;
+  qEl.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = window.setTimeout(refresh, 150);
+  });
+  tripsEl.addEventListener('change', refresh);
+  moreEl.addEventListener('click', () => { shown += PAGE; renderCards(); });
+
+  map.on('moveend', () => {
+    if (usingUser || flying) return;
+    origin = map.getCenter();
+    sortAndRender();
+  });
+
+  $('locate').addEventListener('click', () => {
+    if (!('geolocation' in navigator)) { msgEl.textContent = 'GEOLOCATION NOT AVAILABLE'; return; }
+    msgEl.textContent = 'LOCATING…';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        origin = L.latLng(pos.coords.latitude, pos.coords.longitude);
+        usingUser = true;
+        you?.remove();
+        you = L.marker(origin, { icon: L.divIcon({ className: '', html: '<div class="pin-you"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }), title: 'You are here', zIndexOffset: 2000, keyboard: false }).addTo(map);
+        flying = true;
+        map.once('moveend', () => { flying = false; });
+        map.flyTo(origin, 14);
+        msgEl.textContent = 'SORTED BY DISTANCE FROM YOU';
+        shown = PAGE;
+        sortAndRender();
+      },
+      () => { msgEl.textContent = 'LOCATION UNAVAILABLE OR DENIED'; },
+      { timeout: 10000 },
+    );
+  });
+
+  refresh();
+</script>

@@ -1,5 +1,6 @@
 ---
 // LondonGuide.astro
+import { url } from '../lib/utils';
 const coffeeMapUrl = "https://maps.app.goo.gl/zCmWeUtELyHkAQiW9";
 const taproomMapUrl = "https://maps.app.goo.gl/egQFtgJ4SHpDUike6";
 ---
@@ -32,6 +33,9 @@ const taproomMapUrl = "https://maps.app.goo.gl/egQFtgJ4SHpDUike6";
           </a>
           <a href={taproomMapUrl} target="_blank" rel="noopener noreferrer" class="btn btn-coffee btn-sm">
             🍺 Taproom map ↗
+          </a>
+          <a href={url('/map')} class="btn btn-coffee btn-sm">
+            🗺️ Interactive map
           </a>
         </div>
       </div>
