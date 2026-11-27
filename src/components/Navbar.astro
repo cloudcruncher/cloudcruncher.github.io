@@ -193,7 +193,7 @@ const navLinks = [
     display: none;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .desktop-nav {
       display: block;
     }
@@ -206,13 +206,10 @@ const navLinks = [
     list-style: none;
   }
 
-  @media (min-width: 768px) and (max-width: 1100px) {
-    .nav-list { gap: 0.15rem; }
-    .nav-link { padding: 0.4rem 0.5rem; font-size: 0.78rem; }
-  }
-
   .nav-link {
-    padding: 0.45rem 0.85rem;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0.45rem 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-secondary);
@@ -230,6 +227,18 @@ const navLinks = [
     background: var(--bg-tertiary);
     font-weight: 600;
     border: 1px solid var(--border-subtle);
+  }
+
+  /* Chrome renders the nav font wider than Safari; keep labels on one line
+     and tighten before the row can overflow. */
+  @media (min-width: 1240px) {
+    .brand-title { white-space: nowrap; }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1239px) {
+    .brand-title { display: none; }
+    .nav-list { gap: 0.15rem; }
+    .nav-link { padding: 0.4rem 0.55rem; font-size: 0.82rem; }
   }
 
   .header-actions {
@@ -281,8 +290,11 @@ const navLinks = [
     display: block;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .mobile-menu-btn {
+      display: none;
+    }
+    .mobile-nav {
       display: none;
     }
   }
