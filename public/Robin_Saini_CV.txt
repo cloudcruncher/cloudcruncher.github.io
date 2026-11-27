@@ -1,8 +1,8 @@
 ROBIN SAINI
 
-Lead / Principal Data Engineer | Snowflake Data Platforms & Agentic AI | Python & SQL | PySpark | Airflow & dbt
+Lead Data Engineer | Snowflake Data Platforms & Agentic AI | Python & SQL | PySpark | Airflow & dbt
 London, UK | robinsaini156@gmail.com | +44 7466 201865 | linkedin.com/in/robinsaini | github.com/cloudcruncher
-Right to work in the UK (ILR) | Eligible for SC clearance
+Right to work in the UK (ILR) | Eligible for SC clearance | Available for contracts from 9 February 2027
 
 Professional Summary
 
@@ -14,9 +14,9 @@ Lead data engineer in regulated UK banking: 15+ years in software and data engin
 
 Key Skills
 
-- Data Engineering: Python (advanced), SQL (expert), PySpark / Apache Spark (incl. AWS EMR Serverless), Apache Airflow (AWS MWAA), dbt, StreamSets, batch ELT/ETL at scale
+- Data Engineering: Python (advanced), SQL (expert), PySpark / Apache Spark (incl. AWS EMR Serverless), Apache Airflow (AWS MWAA), dbt, StreamSets, Kafka (consumer, familiar), batch ELT/ETL at scale
 - Data Platforms: Snowflake (architecture, warehouses, Tasks/Streams, UDFs/stored procedures, Time Travel, cloning, clustering, materialised views, performance and cost tuning), PostgreSQL, Teradata, IBM DB2, data modelling; familiar with Hadoop and Hive
-- AI Data Engineering: OpenAI / Agents SDK tool calling, Kafka (consumer, familiar), MCP servers and agent tool integration, RAG / retrieval and context pipelines, LangGraph, Pydantic data contracts, LLM-as-a-judge evaluation, AI observability; AI-assisted engineering (Claude Code, Kiro CLI)
+- AI Data Engineering: OpenAI / Agents SDK tool calling, MCP servers and agent tool integration, RAG / retrieval and context pipelines, LangGraph, Pydantic data contracts, LLM-as-a-judge evaluation, AI observability; AI-assisted engineering (Claude Code, Kiro CLI)
 - Cloud & DevOps: AWS (S3, Glue, EMR, Athena, SageMaker), GitLab CI/CD, Docker, Git, Splunk; familiar with Terraform (maintains configuration in team repos)
 - Quality & Leadership: data quality in regulated environments, data contracts, data quality gates, audit trails and lineage, automated testing, incident management; technical leadership, coaching and mentoring, onshore-offshore delivery, engineering standards, stakeholders from discovery onwards, Agile
 
@@ -77,4 +77,4 @@ UST Global, Gurugram | Apr 2015 - Feb 2016, and Sopra Steria, Noida | Apr 2011 -
 Education & Certifications
 
 - B.Tech, Computer Science, Gautam Buddh Technical University, India (2006 - 2010)
-- Certifications: Big Data on AWS (Amazon Web Services, May 2022); Data Engineering Nanodegree (Udacity, May 2022); Google Cloud Engineering Specialization (Coursera)
+- Certifications: Big Data on AWS (Amazon Web Services, May 2022); Data Engineering Nanodegree (Udacity, May 2022); Google Cloud Engineering Specialization (Coursera); SnowPro Core (in progress)
